@@ -22,17 +22,6 @@ body{
     border-radius: 60px;
 }
 
-.Menu_button{
-    display: none;
-    position: fixed;
-    margin-top: 562px;
-    width: 90px;
-    height: 90px;
-    background:white;
-    border-radius: 60px;
-    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
-}
-
 .Menu_img{
     width: 40px;
     z-index: 2;
@@ -244,17 +233,6 @@ body{
     z-index: 2;
     filter: brightness(25%);
 }
-.Personal_Menu_button{
-    display: none;
-    position: fixed;
-    margin-top: 562px;
-    right: 2.93%;
-    width: 90px;
-    height: 90px;
-    background:white;
-    border-radius: 60px;
-    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
-}
 
 .Avatar2{
     display: flex;
@@ -279,6 +257,32 @@ body{
     margin-top: 25px;
     z-index: 2;
     filter: brightness(25%);
+}
+
+.flex_line{
+    position: fixed;
+    top: 85vh;
+    display: flex;
+    justify-content: space-between;
+    width: 95vw;
+    height: 90px;
+}
+.Personal_Menu_button{
+    display: none;
+    width: 90px;
+    height: 90px;
+    background:white;
+    border-radius: 60px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+}
+
+.Menu_button{
+    display: none;
+    width: 90px;
+    height: 90px;
+    background:white;
+    border-radius: 60px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
 }
 
 
