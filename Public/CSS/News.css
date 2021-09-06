@@ -264,13 +264,14 @@ body{
     top: 85vh;
     display: flex;
     justify-content: space-between;
-    width: 95vw;
+    width: 130vw;
     height: 90px;
 }
 .Personal_Menu_button{
     display: none;
     width: 90px;
     height: 90px;
+    margin-right: 13%;
     background:white;
     border-radius: 60px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
@@ -280,6 +281,7 @@ body{
     display: none;
     width: 90px;
     height: 90px;
+    margin-left: 13%;
     background:white;
     border-radius: 60px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));

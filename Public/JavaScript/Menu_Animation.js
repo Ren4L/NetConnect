@@ -475,26 +475,39 @@ document.querySelector(".slide_menu").addEventListener("click", function(e){
        }
     }
 });
+// document.querySelector(".Personal_Menu_button").addEventListener("click", function(e){
+//     var screenWidth=document.querySelector("html").clientWidth;
+//     var Menu_right=Math.round(((parseFloat(window.getComputedStyle(document.querySelector(".Personal_Menu_container")).right)*100)/screenWidth));
+//     var Button_right=parseFloat(window.getComputedStyle(document.querySelector(".Personal_Menu_button")).right);
+//     var stepEnd=Math.round((Button_right*100)/screenWidth);
+//     var step_button=stepEnd;
+//     p=setInterval(move,1);
+
+//     function move(){
+//        if(Menu_right>stepEnd){
+//            clearInterval(p);
+//        } 
+//        else{
+//            document.querySelector(".Personal_Menu_container").style.right=`${Menu_right}%`;
+//            document.querySelector(".Personal_Menu_button").style.right=`${step_button}%`;
+//            step_button-=0.5;
+//            Menu_right+=0.5;
+//        }
+//     }
+// });
+
+
+
+
 document.querySelector(".Personal_Menu_button").addEventListener("click", function(e){
     var screenWidth=document.querySelector("html").clientWidth;
-    var Menu_right=Math.round(((parseFloat(window.getComputedStyle(document.querySelector(".Personal_Menu_container")).right)*100)/screenWidth));
-    var Button_right=parseFloat(window.getComputedStyle(document.querySelector(".Personal_Menu_button")).right);
-    var stepEnd=Math.round((Button_right*100)/screenWidth);
-    var step_button=stepEnd;
-    p=setInterval(move,1);
-
-    function move(){
-       if(Menu_right>stepEnd){
-           clearInterval(p);
-       } 
-       else{
-           document.querySelector(".Personal_Menu_container").style.right=`${Menu_right}%`;
-           document.querySelector(".Personal_Menu_button").style.right=`${step_button}%`;
-           step_button-=0.5;
-           Menu_right+=0.5;
-       }
-    }
+    
 });
+
+
+
+
+
 
 document.querySelector(".slide_menu_right").addEventListener("click", function(e){
     var screenWidth=document.querySelector("html").clientWidth;
