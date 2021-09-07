@@ -437,8 +437,8 @@ document.querySelector(".Personal_Menu").addEventListener("click",function(e){
 
 document.querySelector(".Menu_button").addEventListener("click", function(e){
     var screenWidth=document.querySelector("html").clientWidth;
-    var Menu_left=Math.round(((parseFloat(window.getComputedStyle(document.querySelector(".Menu_container")).left)*100)/screenWidth));
-    var Button_left=parseFloat(window.getComputedStyle(document.querySelector(".Menu_button")).left);
+    var Menu_left=Math.round(((parseFloat(window.getComputedStyle(document.querySelector(".Menu_container")).marginLeft)*100)/screenWidth));
+    var Button_left=parseFloat(window.getComputedStyle(document.querySelector(".Menu_button")).marginLeft);
     var stepEnd=Math.round((Button_left*100)/screenWidth);
     var step_button=stepEnd;
     p=setInterval(move,1);
@@ -448,8 +448,8 @@ document.querySelector(".Menu_button").addEventListener("click", function(e){
            clearInterval(p);
        } 
        else{
-           document.querySelector(".Menu_container").style.left=`${Menu_left}%`;
-           document.querySelector(".Menu_button").style.left=`${step_button}%`;
+           document.querySelector(".Menu_container").style.marginLeft=`${Menu_left}%`;
+           document.querySelector(".Menu_button").style.marginLeft=`${step_button}%`;
            step_button-=0.5;
            Menu_left+=0.5;
        }
@@ -457,8 +457,8 @@ document.querySelector(".Menu_button").addEventListener("click", function(e){
 });
 document.querySelector(".slide_menu").addEventListener("click", function(e){
     var screenWidth=document.querySelector("html").clientWidth;
-    var Menu_left=Math.round(((parseFloat(window.getComputedStyle(document.querySelector(".Menu_container")).left)*100)/screenWidth));
-    var Button_left=parseFloat(window.getComputedStyle(document.querySelector(".Menu_button")).left);
+    var Menu_left=Math.round(((parseFloat(window.getComputedStyle(document.querySelector(".Menu_container")).marginLeft)*100)/screenWidth));
+    var Button_left=parseFloat(window.getComputedStyle(document.querySelector(".Menu_button")).marginLeft);
     var stepEnd=Math.round((Button_left*100)/screenWidth);
     var step_button=stepEnd;
     p=setInterval(move,1);
@@ -468,8 +468,8 @@ document.querySelector(".slide_menu").addEventListener("click", function(e){
            clearInterval(p);
        } 
        else{
-           document.querySelector(".Menu_container").style.left=`${Menu_left}%`;
-           document.querySelector(".Menu_button").style.left=`${step_button}%`;
+           document.querySelector(".Menu_container").style.marginLeft=`${Menu_left}%`;
+           document.querySelector(".Menu_button").style.marginLeft=`${step_button}%`;
            step_button+=0.5;
            Menu_left-=0.5;
        }
