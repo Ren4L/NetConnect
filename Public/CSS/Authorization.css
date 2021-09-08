@@ -1,0 +1,31 @@
+body{
+    background-image: url("/Public/ICON/Background.png");
+}
+
+.flex_Page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 90vh;
+    margin: 30px;
+}
+
+.Authorization{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    background: #FFFFFF;
+    border-radius: 60px;
+    padding: 50px;
+    font-family: Roboto;
+    color:#5D5D5D;
+    filter: drop-shadow(0px 20px 46px rgba(117, 84, 84, 0.3));
+}
+
+
+
+@font-face{
+    font-family: Roboto;
+    src: url(/Public/Fonts/Roboto.ttf);
+}
