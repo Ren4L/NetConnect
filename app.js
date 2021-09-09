@@ -1,12 +1,22 @@
-import express from 'express'
-import path from 'path';
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
 
-const __dirname=path.resolve();
 const port=3000;
 const app = express();
 
+app.set('Views', path.join(__dirname,'Views'));
+app.set("view engine", 'ejs');
+
+app.use(cookieParser('secret key'));
 app.use('/public', express.static('public'));
 
+app.get('/Registration',(req, res)=>{
+    res.render('Registration');
+});
+app.get('/Authorization',(req, res)=>{
+  res.render('Authorization');
+});
 app.get('/',(req, res)=>{
-    res.sendFile(path.resolve(__dirname,'Views',"Authorization.html"));
+    res.render('Authorization');
 }).listen(3000, ()=>{console.log(`The server is enabled at http://localhost:${port}`)});
