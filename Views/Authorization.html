@@ -10,10 +10,22 @@
 <body>
     <div class="flex_Page">
         <form class="Authorization" action="">
-            <div style="font-weight: bold; font-size: 34pt; width: 190px;">Welcome back!</div>
+            <div class="Welcome">Welcome back!</div>
             <div class="form_group">
-                <input type="email" class="form_input">
-                <label class="form_label">Email</label>
+                <input type="email" name="email" class="form_input" placeholder="Email">
+            </div>
+            <div class="form_group">
+                <input type="password" name="password" class="form_input" placeholder="Password">
+            </div>
+            <div class="footer">
+                <div class="inFooter"> 
+                    <a href="">Sign up</a>
+                    <a href="" style="margin-left: 20px; word-wrap: none;">Forgot Password</a>
+                </div>
+                <label>
+                    <img src="/Public/ICON/Authorization_in.svg" alt="Erorr" width="90px" height="90px" class="in">
+                    <input type="submit" style="display: none;">
+                </label>
             </div>
         </form>
     </div>
