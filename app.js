@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const port=3000;
@@ -11,6 +12,12 @@ app.set("view engine", 'ejs');
 app.use(cookieParser('secret key'));
 app.use('/public', express.static('public'));
 
+const urlencodedParser = bodyParser.urlencoded({extended: false});
+
+app.post('/Registration', urlencodedParser, (req, res) => {
+  login=req.body;
+  console.log(login);
+});
 app.get('/Registration',(req, res)=>{
     res.render('Registration');
 });
