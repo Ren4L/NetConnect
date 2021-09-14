@@ -1,9 +1,18 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const router=express.Router();
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 
-const urlencodedParser = express.urlencoded({extended: false});
+var User=new Object();
 
-app.post('/Registration', urlencodedParser, (req, res) => {
-    login=req.body.login;
-    exports.login=login;
-});
+router.post('/Registration', urlencodedParser, (req, res) => {
+    User={
+      login:req.body.login,
+      password:req.body.password,
+      email:req.body.email,
+    }
+    let writeFile= fs.writeFileSync(`./Public/Users/${User.login}.json`, JSON.stringify(User));
+    
+  });
+  module.exports = router;
