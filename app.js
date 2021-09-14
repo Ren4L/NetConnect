@@ -13,9 +13,7 @@ app.use(cookieParser('secret key'));
 app.use('/public', express.static('public'));
 app.use('/Modules', Registration);
 
-app.get('/Registration',(req, res)=>{
-  res.render('Registration');
-});
+
 app.get('/Authorization',(req, res)=>{
   res.render('Authorization');
 });

@@ -15,4 +15,8 @@ router.post('/Registration', urlencodedParser, (req, res) => {
     let writeFile= fs.writeFileSync(`./Public/Users/${User.login}.json`, JSON.stringify(User));
     
   });
+
+  router.get('/',(req, res)=>{
+    res.render('Registration');
+  });
   module.exports = router;
