@@ -4,7 +4,6 @@ const fs = require('fs');
 const Cipher = require('./CodingDeCoding.js');
 const { json } = require('body-parser');
 const router=express.Router();
-const app = express();
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 var User=new Object();
@@ -20,19 +19,22 @@ router.get('/',(req, res)=>{
     login:req.body.login,
     password:pass,
     email:req.body.email,
+    ConfirmationMail:false,
+    
     moder:false,
   }
   List = {
     User:
       {
         login:req.body.login,
-        email:req.body.email
+        email:req.body.email,
+        ConfirmationMail:false,
       }
   }
   obj.Users.push(List.User)
   fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj));
-  fs.writeFileSync(`./Public/Users/${User.login}.json`, JSON.stringify(User));
-  res.redirect('Registration');
+  fs.writeFileSync(`./Public/Users/NotMail${User.login}.json`, JSON.stringify(User));
+  res.redirect('СonfirmationMail');
   });
 
   module.exports = router;

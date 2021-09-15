@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const Registration = require('./Modules/Registration');
 const Authorization = require('./Modules/Authorization');
+const ConfirmationMail = require('./Modules/ConfirmationMail');
 
 const port=3000;
 
@@ -13,6 +14,7 @@ app.set("view engine", 'ejs');
 app.use('/public', express.static('public'));
 app.use('/Modules/Registration', Registration);
 app.use('/Modules/Authorization', Authorization);
+app.use('/Modules/ConfirmationMail', ConfirmationMail);
 
 
 app.get('/',(req, res)=>{
