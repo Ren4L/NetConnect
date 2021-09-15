@@ -8,9 +8,11 @@ const urlencodedParser = bodyParser.urlencoded({extended: false});
 var User=new Object();
 
 router.get('/',(req, res)=>{
-    res.render('Registration');
-  })
+  res.render('Registration');
+})
 .post('/', urlencodedParser, (req, res) => {
+  let FullList = fs.readFileSync('./Public/Users/Ren4L.json','utf8');
+  console.log(typeof FullList);
   let pass = Cipher.Coding(req.body.password.split(''), req.body.login.split(''));
   let email =  Cipher.Coding(req.body.email.split(''),req.body.login.split(''));
   User = {
@@ -24,5 +26,3 @@ router.get('/',(req, res)=>{
   });
 
   module.exports = router;
-
-  
