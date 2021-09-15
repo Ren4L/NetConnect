@@ -14,6 +14,7 @@ app.use('/public', express.static('public'));
 app.use('/Modules/Registration', Registration);
 app.use('/Modules/Authorization', Authorization);
 
+
 app.get('/',(req, res)=>{
   res.render('Authorization');
 }).listen(port, ()=>{console.log(`The server is enabled at http://localhost:${port}`)});
