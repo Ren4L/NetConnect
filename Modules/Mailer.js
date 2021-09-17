@@ -1,14 +1,13 @@
-
 const nodemailer = require('nodemailer');
 
 function Send(code, login, email){
     let transporter = nodemailer.createTransport({
-        host:'smtp.gmail.com',
-        port:587,
-        secure:false,
+        host:'smtp.mail.ru',
+        port:465,
+        secure:true,
         auth:{
-          user:'netconnectv2.0@gmail.com',
-          pass:'admin221212',
+          user:'netconnectv2.0@mail.ru',
+          pass:'Q0XzYW9aqW8pK3TG9JQ8',
         }
       });
     
