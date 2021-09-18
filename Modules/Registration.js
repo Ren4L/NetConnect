@@ -33,10 +33,12 @@ router.get('/',(req, res)=>{
         ConfirmationMail:false,
       }
   }
-  obj.Users.push(List.User)
-  Mailer.Send(code, req.body.login, req.body.email)
-  fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj));
-  fs.writeFileSync(`./Public/Users/NotMail${User.login}.json`, JSON.stringify(User));
+  obj.Users.push(List.User);
+  Mailer.Send(code, req.body.login, req.body.email);
+  setTimeout(() => {
+    fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj));
+    fs.writeFileSync(`./Public/Users/NotMail${User.login}.json`, JSON.stringify(User));
+  }, 4000);
   res.redirect('Authorization');
   });
 

@@ -4,6 +4,7 @@ const path = require('path');
 const Registration = require('./Modules/Registration');
 const Authorization = require('./Modules/Authorization');
 const ConfirmationMail = require('./Modules/ConfirmationMail');
+const News = require('./Modules/News');
 
 const port=3000;
 
@@ -15,6 +16,7 @@ app.use('/public', express.static('public'));
 app.use('/Modules/Registration', Registration);
 app.use('/Modules/Authorization', Authorization);
 app.use('/Modules/ConfirmationMail', ConfirmationMail);
+app.use('/Modules/News', News);
 
 
 app.get('/',(req, res)=>{

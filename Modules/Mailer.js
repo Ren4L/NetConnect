@@ -1,13 +1,18 @@
+
 const nodemailer = require('nodemailer');
 
 function Send(code, login, email){
     let transporter = nodemailer.createTransport({
-        host:'smtp.mail.ru',
-        port:465,
-        secure:true,
+        host:'smtp.gmail.com',
+        port:587,
+        secure:false,
         auth:{
-          user:'netconnectv2.0@mail.ru',
-          pass:'Q0XzYW9aqW8pK3TG9JQ8',
+          user:'netconnectv2.0@gmail.com',
+          pass:'admin221212',
+        },
+        tls: {
+          // do not fail on invalid certs
+          rejectUnauthorized: false,
         }
       });
     
@@ -20,7 +25,7 @@ function Send(code, login, email){
         to confirm, follow this link <a href="http://localhost:3000/Modules/ConfirmationMail/${login}">http://localhost:3000/Modules/ConfirmationMail/${login}</a> and enter this code <strong>${code}</strong>, if it was not you, 
         then ignore this message.`,
       };
-    transporter.sendMail(message, (err, res)=>{
+      transporter.sendMail(message, (err, res)=>{
         if(err){
             console.log(err);
         }else{
