@@ -5,15 +5,17 @@ const Cipher = require('./CodingDeCoding.js');
 const jsonparser = express.json();
 
 router.get('/',(req, res)=>{
-    res.render('Authorization');
+  res.clearCookie('sid', {path: '/'});
+  res.render('Authorization');
   })
   .post('/',jsonparser,(req,res)=>{
     let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
     let obj = new Function(`return (${readFile})`)();
-    let login;
+    let login, index;
     for (let i = 0; i < obj.Users.length; i++) {
       if(obj.Users[i].email == req.body.email){
         login = obj.Users[i].login;
+        index = i;
       }
     }
     let User = fs.readFileSync(`./Public/Users/${login}.json`,'utf-8');
@@ -25,6 +27,7 @@ router.get('/',(req, res)=>{
     }
     else{
       user = {confirmation:true};
+      req.session.userName = login;
       res.json(user);
     }
   });
