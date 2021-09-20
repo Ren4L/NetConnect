@@ -10,7 +10,6 @@ const urlencodedParser = bodyParser.urlencoded({extended: false});
 var User=new Object();
 
 router.get('/',(req, res)=>{
-  res.clearCookie('sid', {path: '/'});
   res.render('Registration');
 })
 .post('/', urlencodedParser, (req, res) => {

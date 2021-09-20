@@ -13,6 +13,7 @@ router.get('/',(req, res)=>{
         flag = true;
       }
     }
+    
     if(flag){res.render('News');}
     else{res.render('Authorization')}
   });

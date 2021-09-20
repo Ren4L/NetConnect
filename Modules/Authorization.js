@@ -5,7 +5,6 @@ const Cipher = require('./CodingDeCoding.js');
 const jsonparser = express.json();
 
 router.get('/',(req, res)=>{
-  res.clearCookie('sid', {path: '/'});
   res.render('Authorization');
   })
   .post('/',jsonparser,(req,res)=>{
