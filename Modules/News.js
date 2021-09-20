@@ -14,8 +14,8 @@ router.get('/',(req, res)=>{
       }
     }
     
-    if(flag){res.render('News');}
-    else{res.render('Authorization')}
+    if(flag){res.render('News')}
+    else{res.render('News')}
   });
   
 module.exports = router;

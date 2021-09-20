@@ -30,7 +30,7 @@ body{
     filter: brightness(25%);
 }
 
-.Home_img, .News_img, .Friends_img, .Photos_img, .Videos_img, .Games_img, .slide_menu{
+.Home_img, .News_img, .Friends_img, .Photos_img, .Videos_img, .Posts_img, .slide_menu{
     width: 40px;
     margin-top: 45px;
     margin-left: 25px;
@@ -48,21 +48,13 @@ body{
     filter: brightness(25%);
 }
 
-.Home_img:hover, .News_img:hover, .Friends_img:hover, .Photos_img:hover, .Videos_img:hover, .Games_img:hover,.Setting_img:hover, .LogOut_img:hover, .Arrow:hover, .Add_News:hover, .Menu_img:hover, .slide_menu:hover, .Avatar2:hover, .slide_menu_right:hover{
+.Home_img:hover, .News_img:hover, .Friends_img:hover, .Photos_img:hover, .Videos_img:hover, .Posts_img:hover,.Setting_img:hover, .LogOut_img:hover, .Arrow:hover, .Add_News:hover, .Menu_img:hover, .slide_menu:hover, .Avatar2:hover, .slide_menu_right:hover{
     cursor: pointer;
 }
 .hidden{
     visibility: hidden;
     width: 10px;
     height: 43px;
-}
-.activeblock{
-    position: absolute;
-    width: 35px;
-    height: 150px;
-    left: 90px;
-    top: 125px;
-    z-index: 1;
 }
 #active{
     width: 55px;
@@ -182,14 +174,7 @@ body{
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
 }
 
-.activeblock_right{
-    position: absolute;
-    width: 0px;
-    height: 150px;
-    left: 0px;
-    top: 130px;
-    z-index: 1;
-}
+
 
 #active_right{
     width: 55px;

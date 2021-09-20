@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Public/CSS/Template.css">
     <link rel="shortcut icon" href="/Public/ICON/News_active.svg" type="image/x-icon">
-    <style>
+    <style>    
         .activeblock{
             position: absolute;
-            width: 35px;
+            width: 0px;
             height: 150px;
             left: 90px;
             top: 126px;
@@ -17,10 +17,10 @@
         }
         .activeblock_right{
             position: absolute;
-            width: 0px;
+            width: 35px;
             height: 150px;
-            left: 0px;
-            top: 130px;
+            left: -35px;
+            top: 65px;
             z-index: 1;
         }
     </style>
@@ -32,7 +32,7 @@
             <nav class="Menu">
                 <div class="hidden"></div>
                 <img src="/Public/ICON/Home_active.svg" alt="Error" class="Home_img">
-                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img" id="active">
+                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img">
                 <img src="/Public/ICON/Posts_active.svg" alt="Error" class="Posts_img" >
                 <img src="/Public/ICON/Friends_active.svg" alt="Error" class="Friends_img">
                 <img src="/Public/ICON/Photos_active.svg" alt="Error" class="Photos_img" >
@@ -43,34 +43,13 @@
         </div>
         <div class="Container">
             <div class="News">
-                <div class="Union_text_arrow">
-                    <div>
-                        <img src="/Public/News_Photos/VlsD2EjtlOM.jpg" alt="Error" class="News_Photo">
-                        <div class="News_Text">
-                            Пребывание в России комика Идрака Мирзализаде (гражданина Беларуси) МВД признало пожизненно нежелательным.
-                            Всё из-за «шутки», в которой Идрак сравнил русских с обосранным матрасом, и за которую он уже отсидел 10 суток в изоляторе.
-                            Закон «О порядке выезда в РФ и въезда в РФ» предусматривает, что иностранец, чье пребывание в России признали нежелательным, «обязан выехать из Российской Федерации».
-                        </div>
-                    </div>
-                    <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="Arrow">
-                </div>
-                <div style="padding-top: 5px; padding-bottom: 10px;">
-                    <hr color="black" size="1px" class="News_Line" width="2000px" >
-                </div>
-                <div class="News_Footer">
-                    <div class="News_avatar_container">
-                        <img src="/Public/News_Photos/E9fCln-HXBg.jpg" alt="Error" class="News_avatar">
-                    </div>
-                    <div class="Name_Avatar">На приеме у Шевцова</div>
-                    <div class="Date_Avatar">30.08.2021 21:35</div>
-                </div>
+                
             </div>
-            
         </div>   
         <div class="Personal_Menu_container">
             <nav class="Personal_Menu">
                 <div class="Avatar">R</div>
-                <img src="/Public/ICON/Plus.svg" alt="Error" class="Add_News">
+                <img src="/Public/ICON/Plus.svg" alt="Error" class="Add_News" id="active_right">
                 <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
                 <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
                 <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu_right">

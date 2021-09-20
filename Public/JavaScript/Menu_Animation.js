@@ -1,5 +1,6 @@
 var flag_left=true;
 var flag_right=true;
+
 document.querySelector(".Menu").addEventListener("click",function(e){
     if(flag_left){
         flag_left=false;
@@ -11,13 +12,13 @@ document.querySelector(".Menu").addEventListener("click",function(e){
                 }
                 else if(target.className=="News_img"){
                     document.querySelector(".activeblock").style.top="126px";
-                }else if(target.className=="Friends_img"){
+                }else if(target.className=="Posts_img"){
                     document.querySelector(".activeblock").style.top="210px";
-                }else if(target.className=="Photos_img"){
+                }else if(target.className=="Friends_img"){
                     document.querySelector(".activeblock").style.top="295px";
-                }else if(target.className=="Videos_img"){
+                }else if(target.className=="Photos_img"){
                     document.querySelector(".activeblock").style.top="380px";
-                }else if(target.className=="Games_img"){
+                }else if(target.className=="Videos_img"){
                     document.querySelector(".activeblock").style.top="465px";
                 }
                 size=0;
@@ -197,10 +198,10 @@ document.querySelector(".Menu").addEventListener("click",function(e){
 
             // if(target.className=="Home_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Home",500)}else
             // if(target.className=="News_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/News",500)}else
-            // if(target.className=="Friends_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Friends",500)}else
-            // if(target.className=="Photos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Photos",500)}else
-            // if(target.className=="Videos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Videos",500)}else
-            // if(target.className=="Games_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Games",500)};
+            // if(target.className=="Posts_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Friends",500)}else
+            // if(target.className=="Friends_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Photos",500)}else
+            // if(target.className=="Photos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Videos",500)}else
+            // if(target.className=="Videos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Games",500)};
             
     }
     flag_left=true;
@@ -431,6 +432,10 @@ document.querySelector(".Personal_Menu").addEventListener("click",function(e){
                 }
             }
         }
+        if(target.className=="Add_News" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/CreateNews",500)}else
+        if(target.className=="Setting_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="",500)}else
+        if(target.className=="LogOut_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Authorization",500)};
+        
     }
     flag_right=true;
 });
