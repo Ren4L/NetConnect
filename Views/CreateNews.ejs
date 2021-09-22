@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Public/CSS/Template.css">
-    <link rel="shortcut icon" href="/Public/ICON/News_active.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/Public/CSS/CreateNews.css">
+    <link rel="shortcut icon" href="/Public/ICON/Plus.svg" type="image/x-icon">
     <style>    
         .activeblock{
             position: absolute;
@@ -24,7 +25,7 @@
             z-index: 1;
         }
     </style>
-    <title>News</title>
+    <title>Create News</title>
 </head>
 <body onload="Check()">
     <main class="flex_Page">
@@ -42,9 +43,41 @@
             </nav>
         </div>
         <div class="Container">
-            <div class="News">
-                
-            </div>
+                <form class="CreateNews" method="POST" action="/Modules/CreateNews" enctype="multipart/form-data">
+                    <div class="adNews">Adding news</div>
+                    <div class="imgAndText">
+                        <label>
+                            <div class="headUp"><div class="head"></div></div>
+                            <input type="file" style="display: none;" name="firstFile" accept="image/*" onchange="inPhoto(this)" required>
+                        </label>
+                        <div class="titAndArt">
+                            <div class="form_group">
+                                <input type="text" name="title" class="form_input" placeholder="Title" required>
+                            </div>
+                            <div class="form_group">
+                                <textarea name="content" class="content" placeholder="Text of article"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center; flex-wrap: wrap; width: 100%; margin-top: 2vw;">
+                        <label>
+                            <div class="container1"><div class="dopPhoto1"></div></div>
+                            <input type="file" style="display: none;" name="dopFile"  accept="image/*" onchange="DopPhoto1(this)" >
+                        </label>
+                        <label>
+                            <div class="container2"><div class="dopPhoto2"></div></div>
+                            <input type="file" style="display: none;" name="dopFile"  accept="image/*" onchange="DopPhoto2(this)" >
+                        </label>
+                        <label>
+                            <div class="container3"><div class="dopPhoto3"></div></div>
+                            <input type="file" style="display: none;" name="dopFile" accept="image/*" onchange="DopPhoto3(this)" >
+                        </label>
+                    </div>
+                    <label>
+                        <div class="send"></div>
+                        <input type="submit" style="display: none;">
+                    </label>
+                </form>
         </div>   
         <div class="Personal_Menu_container">
             <nav class="Personal_Menu">
@@ -66,5 +99,6 @@
         </div>
     </main>
     <script src="/Public/JavaScript/Menu_Animation.js"></script>
+    <script src="/Public/JavaScript/CreateNews.js"></script>
 </body>
 </html>

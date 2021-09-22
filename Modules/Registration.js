@@ -31,6 +31,7 @@ router.get('/',(req, res)=>{
         login:req.body.login,
         email:req.body.email,
         ConfirmationMail:false,
+        moder:false,
       }
   }
   obj.Users.push(List.User);

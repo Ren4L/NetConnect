@@ -5,6 +5,9 @@ const Cipher = require('./CodingDeCoding.js');
 const jsonparser = express.json();
 
 router.get('/',(req, res)=>{
+  req.session.destroy(()=>{
+    res.render('Authorization');
+  });
   res.render('Authorization');
   })
   .post('/',jsonparser,(req,res)=>{
@@ -27,6 +30,7 @@ router.get('/',(req, res)=>{
     else{
       user = {confirmation:true};
       req.session.userName = login;
+      req.session.moder = obj2.moder;
       res.json(user);
     }
   });

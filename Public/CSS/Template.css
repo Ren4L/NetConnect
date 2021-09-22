@@ -337,9 +337,6 @@ body{
     .News_Photo{margin-left: 3%;}
 }
 
-
-
-
 @media (max-width:650px) {
     .News_Text{font-size: 2vw;}
     .News_Footer{font-size: 2vw;}

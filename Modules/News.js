@@ -11,11 +11,19 @@ router.get('/',(req, res)=>{
       if(obj.Users[i].login == req.session.userName){
         login = obj.Users[i].login;
         flag = true;
+        break;
       }
     }
     
-    if(flag){res.render('News')}
-    else{res.render('News')}
+    if(flag){
+      if(req.session.moder){
+        res.render('News')
+      }
+      else{
+        res.render('NewsNotModer')
+      }
+    }
+    else{res.render('NewsNotModer')}
   });
   
 module.exports = router;

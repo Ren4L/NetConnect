@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const session = require('express-session');
 const fs = require('fs');
+const multer = require('multer');
 var FileStore = require('session-file-store')(session);
 const Registration = require('./Modules/Registration');
 const Authorization = require('./Modules/Authorization');
