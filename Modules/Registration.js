@@ -24,6 +24,7 @@ router.get('/',(req, res)=>{
     ConfirmationMail:false,
     Code:code,
     moder:false,
+    avatar:"",
   }
   List = {
     User:

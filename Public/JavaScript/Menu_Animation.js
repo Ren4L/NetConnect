@@ -196,12 +196,12 @@ document.querySelector(".Menu").addEventListener("click",function(e){
             }
         }
 
-            // if(target.className=="Home_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Home",500)}else
-            // if(target.className=="News_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/News",500)}else
-            // if(target.className=="Posts_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Friends",500)}else
-            // if(target.className=="Friends_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Photos",500)}else
-            // if(target.className=="Photos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Videos",500)}else
-            // if(target.className=="Videos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Games",500)};
+        if(target.className=="Home_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Home",500)}else
+        if(target.className=="News_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/News",500)}else
+        if(target.className=="Posts_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Posts",500)}else
+        if(target.className=="Friends_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Friends",500)}else
+        if(target.className=="Photos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Photos",500)}else
+        if(target.className=="Videos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Videos",500)};
             
     }
     flag_left=true;
@@ -527,7 +527,7 @@ function Check() {
     Check_Photo=document.getElementsByClassName('News_Photo');
 
         for(let i=0; i<Check_Photo.length; i++){
-            if(window.getComputedStyle(Check_Photo[i]).width> window.getComputedStyle(Check_Photo[i]).height){
+            if(parseFloat(window.getComputedStyle(Check_Photo[i]).width) > parseFloat(window.getComputedStyle(Check_Photo[i]).height)){
                 Check_Photo[i].style.width="45%";
             }
             else{

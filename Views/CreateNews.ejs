@@ -55,7 +55,7 @@
                                 <input type="text" name="title" class="form_input" placeholder="Title" required>
                             </div>
                             <div class="form_group">
-                                <textarea name="content" class="content" placeholder="Text of article"></textarea>
+                                <textarea name="content" class="content" placeholder="Text of article" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
         </div>   
         <div class="Personal_Menu_container">
             <nav class="Personal_Menu">
-                <div class="Avatar">R</div>
+                <%-avatar%>
                 <img src="/Public/ICON/Plus.svg" alt="Error" class="Add_News" id="active_right">
                 <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
                 <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
@@ -94,7 +94,7 @@
                 <img src="/Public/ICON/Menu.svg" alt="Error" class="Menu_img">
             </div>
             <div class="Personal_Menu_button">
-                <div class="Avatar2">R</div>
+                <%-avatar2%>
             </div>
         </div>
     </main>

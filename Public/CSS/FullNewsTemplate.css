@@ -1,0 +1,99 @@
+.FullNews{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 30px;
+    margin-right: 35px;
+    overflow: hidden;
+    
+}
+
+.Avatar_News{
+    border-radius: 50%;
+    width: 4vw;
+    height: 4vw;
+}
+
+.NewsPhoto{
+    display: flex;
+    border-radius: 50px;
+    min-width: 200px;
+    height: auto;
+    float: left;
+    padding: 25px;
+    margin-bottom: -15px;
+}
+
+.title{
+    font-family: Roboto;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: justify;
+    white-space: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    margin-top: -2vw;
+}
+
+.content{
+    font-family: Roboto;
+    font-size: 1.2vw;
+    text-align: justify;
+    white-space: wrap;
+    padding-right: 20px;
+}
+
+.ArrowOut{
+    width: 40px;
+    margin-left: 25px;
+    filter: brightness(25%);
+}
+
+.slider{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.sliderPhoto{
+    width: 50%;
+    border-radius: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.swipeRight{
+    position: absolute;
+    right: 12%;
+    width: 10%;
+    opacity: 0.9;
+    filter: brightness(25%);
+    transition: 0.3s;
+}
+
+.swipeLeft{
+    position: absolute;
+    left: 12%;
+    width: 10%;
+    opacity: 0.9;
+    transform: scale(-1,1);
+    filter: brightness(25%);
+    transition: 0.3s;
+}
+
+.swipeLeft:hover, .swipeRight:hover{
+    cursor: pointer;
+    width: 12%;
+    opacity: 1;
+    filter: brightness(100%);
+}
+
+@media (max-width: 1100px) {
+    .Container{width: 100%;}
+}

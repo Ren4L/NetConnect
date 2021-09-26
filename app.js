@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const session = require('express-session');
 const fs = require('fs');
 const multer = require('multer');
@@ -10,10 +9,9 @@ const Authorization = require('./Modules/Authorization');
 const ConfirmationMail = require('./Modules/ConfirmationMail');
 const News = require('./Modules/News');
 const CreateNews = require('./Modules/CreateNews');
-
+const FullNews = require('./Modules/FullNewsTemplate');
 const port=3000;
-
-app.set('Views', path.join(__dirname,'Views'));
+app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
 
 app.use('/public', express.static('public'));
@@ -32,6 +30,7 @@ app.use('/Modules/Authorization', Authorization);
 app.use('/Modules/ConfirmationMail', ConfirmationMail);
 app.use('/Modules/News', News);
 app.use('/Modules/CreateNews', CreateNews);
+app.use('/Modules/FullNewsTemplate', FullNews);
 
 
 app.get('/',(req, res)=>{
