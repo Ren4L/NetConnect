@@ -27,7 +27,7 @@
     </style>
     <title>Create News</title>
 </head>
-<body onload="Check()">
+<body>
     <main class="flex_Page">
         <div class="Menu_container">
             <nav class="Menu">
@@ -47,7 +47,7 @@
                     <div class="adNews">Adding news</div>
                     <div class="imgAndText">
                         <label>
-                            <div class="headUp"><div class="head"></div></div>
+                            <div class="headUp" onchange="Photo()"><div class="head"></div></div>
                             <input type="file" style="display: none;" name="firstFile" accept="image/*" onchange="inPhoto(this)" required>
                         </label>
                         <div class="titAndArt">

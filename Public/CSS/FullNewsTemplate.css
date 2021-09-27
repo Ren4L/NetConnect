@@ -63,6 +63,7 @@
 
 .sliderPhoto{
     width: 50%;
+    height: auto;
     border-radius: 25px;
     margin-top: 15px;
     margin-bottom: 15px;
