@@ -41,7 +41,9 @@ router.get('/',(req, res)=>{
           res.render('Authorization',{avatar:avatar, avatar2:avatar2})
         }
       }
-      else{res.render('Authorization',{avatar:avatar, avatar2:avatar2})}
+      else{
+        res.render('Authorization',{avatar:avatar, avatar2:avatar2})
+      }
     })
     .post('/', urlencodedParser, (req, res)=>{
         let arr = new Array();

@@ -421,7 +421,7 @@ document.querySelector(".Personal_Menu").addEventListener("click",function(e){
                 }
             }
         }
-        if(target.className=="Setting_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="",500)}else
+        if(target.className=="Setting_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Setting",500)}else
         if(target.className=="LogOut_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Authorization",500)};
         
     }

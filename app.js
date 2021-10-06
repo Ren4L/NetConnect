@@ -10,6 +10,7 @@ const ConfirmationMail = require('./Modules/ConfirmationMail');
 const News = require('./Modules/News');
 const CreateNews = require('./Modules/CreateNews');
 const FullNews = require('./Modules/FullNewsTemplate');
+const Setting = require('./Modules/Setting');
 const port=3000;
 app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
@@ -31,6 +32,7 @@ app.use('/Modules/ConfirmationMail', ConfirmationMail);
 app.use('/Modules/News', News);
 app.use('/Modules/CreateNews', CreateNews);
 app.use('/Modules/FullNewsTemplate', FullNews);
+app.use('/Modules/Setting', Setting);
 
 
 app.get('/',(req, res)=>{
