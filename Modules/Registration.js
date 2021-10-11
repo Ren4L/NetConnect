@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const Cipher = require('./CodingDeCoding.js');
+const Cipher = require('./EncryptionDecryption.js');
 const { json } = require('body-parser');
 const Mailer = require('./Mailer');
 const router=express.Router();
@@ -15,7 +15,7 @@ router.get('/',(req, res)=>{
 .post('/', urlencodedParser, (req, res) => {
   let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
   let obj = new Function(`return (${readFile})`)();
-  let pass = Cipher.Coding(req.body.password.split(''), req.body.login.split(''));
+  let pass = Cipher.Encryption(req.body.password.split(''), req.body.login.split(''));
   let code = Math.floor(Math.random() * (100000 - 10000)) + 10000;
   User = {
     login:req.body.login,

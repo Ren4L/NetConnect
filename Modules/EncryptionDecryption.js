@@ -1,4 +1,4 @@
-function Coding(arg, log){
+function Encryption(arg, log){
     let length = arg.length;
     let logChap = log[2].charCodeAt();
     for (let i = 0; i < arg.length; i++) {
@@ -8,7 +8,7 @@ function Coding(arg, log){
     return arg.join('')
   }
 
-  function deCoding(arg, log){
+  function Decryption(arg, log){
     let length = arg.length;
     let logChap = log[2].charCodeAt();
     for (let i = 0; i < arg.length; i++) {
@@ -18,5 +18,5 @@ function Coding(arg, log){
     return arg.join('')
   }
 
-  module.exports.Coding = Coding;
-  module.exports.deCoding = deCoding;
+  module.exports.Encryption = Encryption;
+  module.exports.Decryption = Decryption;

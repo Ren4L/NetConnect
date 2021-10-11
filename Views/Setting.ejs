@@ -46,24 +46,22 @@
             <div class="Setting">
                 <div class="MenuContainer">
                     <div class="slider"></div>
-                    <div class="Inf">Личная Информация</div>
-                    <div class="Av">Аватар</div>
-                    <div class="Pass">Сменить пароль</div>
+                    <div class="Av" id="ActiveCenter">Avatar</div>
+                    <div class="Inf">Personal information</div>
+                    <div class="Pass">Change password</div>
                 </div>
-                <div class="form">
-                    <form name="Inf">
-                        <input type="text" name="firstName" placeholder="Firstname" required>
-                        <input type="text" name="lastName" placeholder="Lastname" required>
-                        <input type="text" name="patronymic" placeholder="Patronymic" required>
-                        <input type="date" name="">
-                        <select name="gender">
-                            <option>Gender</option>
-                            <option>Gender</option>
-                            <option>Gender</option>
-                        </select>
-                        <input type="submit">
-                    </form>
-                </div>
+            </div>
+            <div class="form">
+                <form name="Av">
+                    <label>
+                        <div class="DownloadAvatar"></div>
+                        <input type="file" style="display: none;" name="avatar" class="file" accept="image/*" onchange="Avatar(this)">
+                    </label>
+                    <div class="InputAvatar"></div>
+                    <label>
+                        <div class="send" onclick="SendFile()"></div>
+                    </label>
+                </form>
             </div>
         </div>   
         <div class="Personal_Menu_container">

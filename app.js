@@ -16,6 +16,7 @@ app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
 
 app.use('/public', express.static('public'));
+app.use(multer({dest:"./Public/Files"}).any());
 app.use(session({
   secret:'Witcher Wild Hunt',
   key:'sid',
