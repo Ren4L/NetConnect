@@ -29,6 +29,7 @@ app.use(session({
   }),
   saveUninitialized:true,
 }));
+
 app.use('/Modules/Registration', Registration);
 app.use('/Modules/Authorization', Authorization);
 app.use('/Modules/ConfirmationMail', ConfirmationMail);
@@ -40,11 +41,16 @@ app.use('/Modules/ForgotPassword', ForgotPassword);
 app.use('/Modules/ChangePassword', ChangePassword);
 
 
+
 app.get('/',(req, res)=>{
   req.session.destroy(()=>{
     res.render('Authorization');
   });
 }).listen(port, ()=>{console.log(`The server is enabled at http://localhost:${port}`)});
+
+app.get('*',(req, res)=>{
+  res.render('404NotFound');
+});
 
 function sessionTime(){
   let date = new Date();
