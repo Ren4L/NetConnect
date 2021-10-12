@@ -11,6 +11,8 @@ const News = require('./Modules/News');
 const CreateNews = require('./Modules/CreateNews');
 const FullNews = require('./Modules/FullNewsTemplate');
 const Setting = require('./Modules/Setting');
+const ForgotPassword = require('./Modules/ForgotPassword');
+const ChangePassword = require('./Modules/ChangePassword');
 const port=3000;
 app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
@@ -34,6 +36,8 @@ app.use('/Modules/News', News);
 app.use('/Modules/CreateNews', CreateNews);
 app.use('/Modules/FullNewsTemplate', FullNews);
 app.use('/Modules/Setting', Setting);
+app.use('/Modules/ForgotPassword', ForgotPassword);
+app.use('/Modules/ChangePassword', ChangePassword);
 
 
 app.get('/',(req, res)=>{

@@ -79,6 +79,9 @@ router.get('/',(req, res)=>{
       }
   }
   else{
+    if(obj.avatar != ''){
+      fs.unlinkSync(`./Public/Files/${obj.avatar}`);
+    }
     obj.avatar = req.files[0].filename;
     fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj));
     let Result = {result:'AvatarDone'};

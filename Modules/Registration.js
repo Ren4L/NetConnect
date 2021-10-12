@@ -36,12 +36,12 @@ router.get('/',(req, res)=>{
       }
   }
   obj.Users.push(List.User);
-  Mailer.Send(code, req.body.login, req.body.email);
+  Mailer.Send(code, req.body.login, req.body.email, 'MailConfir');
   setTimeout(() => {
     fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj));
     fs.writeFileSync(`./Public/Users/NotMail${User.login}.json`, JSON.stringify(User));
-  }, 4000);
-  res.redirect('Authorization');
+    res.redirect('Authorization');
+  }, 3000);
   });
 
   module.exports = router;

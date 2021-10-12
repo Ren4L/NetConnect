@@ -8,7 +8,6 @@ router.get('/',(req, res)=>{
   req.session.destroy(()=>{
     res.render('Authorization');
   });
-  res.render('Authorization');
   })
   .post('/',jsonparser,(req,res)=>{
     let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
@@ -25,14 +24,13 @@ router.get('/',(req, res)=>{
     password=Cipher.Decryption(obj2.password.split(''), login.split(''));
     if(password != req.body.password){
       user = {confirmation:false};
-      res.json(user);
     }
     else{
       user = {confirmation:true};
       req.session.userName = login;
       req.session.moder = obj2.moder;
-      res.json(user);
     }
+    res.json(user);
   });
 
 
