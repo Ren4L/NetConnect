@@ -4,7 +4,6 @@ const fs = require('fs');
 const Cipher = require('./EncryptionDecryption.js');
 const router = express.Router();
 
-// router.use(formData.parse());
 router.use(formData.format());
 router.use(express.json());
 

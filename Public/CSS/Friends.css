@@ -1,0 +1,167 @@
+.Friends{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 15px;
+    margin-top: 30px;
+    margin-right: 35px;
+    overflow: hidden;
+}
+
+.MenuContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 13pt;
+    z-index: 0;
+}
+
+.form{
+    width: 85%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 15px;
+    margin-top: 30px;
+    margin-right: 35px;
+    overflow: hidden;
+}
+
+.slider{
+    position: absolute;
+    top: 15px;
+    height: 45px;
+    border-radius: 50px;
+    background: #66cdec;
+    opacity: 0.6;
+    z-index: -1;
+    transition: left 0.5s ease-in-out, width 0.5s ease-in-out;
+}
+
+.App, .Sear, .Fr{
+    text-align: center;
+    padding: 15px;
+}
+
+.App:hover, .Sear:hover, .Fr:hover{
+    cursor: pointer;
+}
+
+[type=text]{
+    font-family: Roboto;
+    font-size: 100%;
+    width: 30vw;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+
+[type=text]:focus{
+    border-bottom: 3px solid #5EAAC1;
+    transition: 0.3s;
+}
+
+.Search{
+    width: 30%;
+}
+
+.FriendsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin-right: 35px;
+}
+
+.FriendsList{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 97%;
+    font-family: Roboto;
+    font-size: 20pt;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 30px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.FriendsAvatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #EDBABA;
+    font-size: 75pt;
+    font-weight: normal;
+    color: white;
+    font-family: Roboto;
+}
+
+.buttonAdd{
+    width: 10vw;
+    height: 10vw;
+    background: url('/Public/ICON/AddFriendsFinal.svg');
+    opacity: 0.9;
+    background-size: 8vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+
+.button{
+    width: 10vw;
+    height: 10vw;
+    background: url('/Public/ICON/AddFriendsDark.svg');
+    opacity: 0.9;
+    background-size: 8vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+.button:hover{
+    cursor: pointer;
+    background: url('/Public/ICON/AddFriendsHover.svg');
+    background-size: 9vw;
+    opacity: 1;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+@font-face{
+    font-family: Roboto;
+    src: url(/Public/Fonts/Roboto.ttf);
+}
+
+@media (max-width: 1100px) {
+    .Friends, .form{width: 90%; margin-right: 0px;}
+}
+
+@media (max-width:685px) {
+    .MenuContainer{justify-content: space-around;}
+}
+
+@media (max-width:490px) {
+    .App, .Sear, .Fr{padding: 5px;}
+}
+
+@media (max-width:380px) {
+    .MenuContainer{font-size: 8pt;}
+}
+

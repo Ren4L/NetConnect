@@ -13,6 +13,7 @@ const FullNews = require('./Modules/FullNewsTemplate');
 const Setting = require('./Modules/Setting');
 const ForgotPassword = require('./Modules/ForgotPassword');
 const ChangePassword = require('./Modules/ChangePassword');
+const Friends = require('./Modules/Friends');
 const port=3000;
 app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
@@ -39,6 +40,7 @@ app.use('/Modules/FullNewsTemplate', FullNews);
 app.use('/Modules/Setting', Setting);
 app.use('/Modules/ForgotPassword', ForgotPassword);
 app.use('/Modules/ChangePassword', ChangePassword);
+app.use('/Modules/Friends', Friends);
 
 
 
