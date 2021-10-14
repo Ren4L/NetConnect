@@ -1,1 +1,26 @@
-{"login":"Ren4L","password":"ÚÝæâç««ª«ª«","email":"vladisakov28@gmail.com","ConfirmationMail":true,"moder":true,"avatar":"c415bc007883b8dab81d24d381d6c0f0","firstName":"Владислав","lastName":"Исаков","patronymic":"Алексеевич","gender":"Male","date":"2003-03-10","country":"Беларусь","city":"Брест","visibility":"Only friends","friends":[{"login":"Dantey"}],"applications":[]}
+{
+ "login": "Ren4L",
+ "password": "ÚÝæâç««ª«ª«",
+ "email": "vladisakov28@gmail.com",
+ "ConfirmationMail": true,
+ "moder": true,
+ "avatar": "5b360014931e348a3c8a7ae5f5ffcb9f",
+ "firstName": "Владислав",
+ "lastName": "Исаков",
+ "patronymic": "Алексеевич",
+ "gender": "Male",
+ "date": "2003-03-10",
+ "country": "Беларусь",
+ "city": "Брест",
+ "visibility": "Only friends",
+ "friends": [
+  {
+   "login": "Dantey"
+  }
+ ],
+ "applications": [
+  {
+   "login":"RenVen"
+  }
+ ]
+}

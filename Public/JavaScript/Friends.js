@@ -59,11 +59,16 @@ function CheckFr(){
                     document.querySelector('.FriendsContainer').innerHTML = '';
                     for(i = 0; i < answer.name.length; i++){
                         let but;
-                        if(answer.name[i].friend){
-                            but = 'buttonAdd';
-                        }
-                        else{
+                        switch (answer.name[i].friend) {
+                            case 'yes':
+                            but = 'buttonFr' 
+                            break;
+                            case 'application':
+                            but = 'buttonAdd'
+                            break;
+                            case 'no':
                             but = 'button'
+                            break;
                         }
                         if(answer.name[i].avatar != '' && document.querySelector('.Search').value != '' ){
                             document.querySelector('.FriendsContainer').innerHTML += `<div class="FriendsList">

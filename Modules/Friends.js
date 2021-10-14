@@ -61,19 +61,33 @@ router.get('/',(req, res)=>{
               let obj = new Function(`return (${readFile})`)();
               let readFileREQ = fs.readFileSync(`./Public/Users/${req.session.userName}.json`, 'utf-8');
               let objREQ = new Function(`return (${readFileREQ})`)();
-              let buf, flag = false;
+              let buf, flag1 = false, flag2 = false;
               for(j = 0; j < objREQ.friends.length; j++){
                 if(objREQ.friends[j].login == Users[i]){
-                  flag = true;
+                  flag1 = true;
                   break;
                 }
               }
-              if(flag){                
+              for(j = 0; j < objREQ.applications.length; j++){
+                if(objREQ.applications[j].login == Users[i]){
+                  flag2 = true;
+                  break;
+                }
+              }
+              if(flag1){                
                 buf = {
                   avatar:obj.avatar,
                   email:obj.email,
                   login:Users[i],
-                  friend:true
+                  friend:'yes'
+                }
+              }
+              else if(flag2){
+                buf = {
+                  avatar:obj.avatar,
+                  email:obj.email,
+                  login:Users[i],
+                  friend:'application'
                 }
               }
               else{
@@ -81,7 +95,7 @@ router.get('/',(req, res)=>{
                   avatar:obj.avatar,
                   email:obj.email,
                   login:Users[i],
-                  friend:false
+                  friend:'no'
                 }
               }
               arr.push(buf);

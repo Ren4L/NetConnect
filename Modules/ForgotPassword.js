@@ -25,7 +25,7 @@ router.get('/', (req, res)=>{
     obj.Users[index].PassCode = code;
     Mailer.Send(code, login, req.body.email, 'ForgotPass');
     setTimeout(() => {
-      fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj));
+      fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj, null, ' '));
       res.redirect('Authorization');
     }, 3000);
 });

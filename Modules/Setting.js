@@ -1,12 +1,13 @@
 const express = require('express');
 const formData = require("express-form-data");
 const fs = require('fs');
+const multer = require('multer');
 const Cipher = require('./EncryptionDecryption.js');
 const router = express.Router();
 
 router.use(formData.format());
 router.use(express.json());
-
+router.use(multer({dest:"./Public/Files"}).any());
 router.get('/',(req, res)=>{
     let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
     let obj = new Function(`return (${readFile})`)();
@@ -55,7 +56,7 @@ router.get('/',(req, res)=>{
         obj[element] = req.body[element];
       }
     }
-    fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj));
+    fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj, null, ' '));
     let answer={result:'Done'};
     res.json(answer);
   }
@@ -72,7 +73,7 @@ router.get('/',(req, res)=>{
     else{
       pass = Cipher.Encryption(req.body.NewPass.split(''), obj.login.split(''));
       obj.password = pass;
-      fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj));
+      fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj, null, ' '));
       let Result = {result:'Done'};
       res.json(Result);
       }
@@ -82,7 +83,7 @@ router.get('/',(req, res)=>{
       fs.unlinkSync(`./Public/Files/${obj.avatar}`);
     }
     obj.avatar = req.files[0].filename;
-    fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj));
+    fs.writeFileSync(`./Public/Users/${req.session.userName}.json`, JSON.stringify(obj, null, ' '));
     let Result = {result:'AvatarDone'};
     res.json(Result);
   }

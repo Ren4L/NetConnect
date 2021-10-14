@@ -111,16 +111,37 @@
     font-family: Roboto;
 }
 
+.buttonFr{
+    width: 10vw;
+    height: 10vw;
+    background: url('/Public/ICON/FriendAdd.svg');
+    opacity: 0.9;
+    background-size: 8vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
 .buttonAdd{
     width: 10vw;
     height: 10vw;
-    background: url('/Public/ICON/AddFriendsFinal.svg');
+    background: url('/Public/ICON/AddFriendsDark.svg');
     opacity: 0.9;
     background-size: 8vw;
     background-position-x: center;
     background-position-y: center;
     background-repeat: no-repeat;
     transition: 0.3s;
+}
+
+.buttonAdd:hover{
+    background: url('/Public/ICON/AddFriendsFinal.svg');
+    cursor: pointer;
+    background-size: 9vw;
+    opacity: 1;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
 }
 
 .button{

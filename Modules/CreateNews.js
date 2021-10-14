@@ -60,7 +60,8 @@ router.get('/',(req, res)=>{
             NewsPhoto:req.files[0].filename,
             dopPhoto:arr,
         }
-        fs.writeFileSync(`./Public/News/${Date.now()}.json`, JSON.stringify(News));
+        fs.writeFileSync(`./Public/News/${Date.now()}.json`, JSON.stringify(News, null, ' '
+        ));
         if(req.session.userName == undefined){
           avatar = '<img src="/Public/ICON/Enter.svg" class="Avatar">';
           avatar2 = '<img src="/Public/ICON/Enter.svg" class="Avatar2">';

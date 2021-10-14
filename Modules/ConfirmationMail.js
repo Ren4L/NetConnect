@@ -25,8 +25,8 @@ router.get('/:id',(req, res)=>{
       obj2.ConfirmationMail = true;
       delete obj2.Code;
       fs.unlinkSync(`./Public/Users/NotMail${req.body.login}.json`);
-      fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj1));
-      fs.writeFileSync(`./Public/Users/${req.body.login}.json`, JSON.stringify(obj2));
+      fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj1, null, ' '));
+      fs.writeFileSync(`./Public/Users/${req.body.login}.json`, JSON.stringify(obj2, null, ' '));
       res.redirect('Authorization');
     }
     });

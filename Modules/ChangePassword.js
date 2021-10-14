@@ -30,9 +30,9 @@ router.get('/:login&:code',(req, res)=>{
         else{
             obj.password = Cipher.Encryption(req.body.pass.split(''), obj.login.split(''));
             console.log(obj.password);
-            fs.writeFileSync(`./Public/Users/${obj.login}.json`, JSON.stringify(obj));
+            fs.writeFileSync(`./Public/Users/${obj.login}.json`, JSON.stringify(obj, null, ' '));
             delete obj2.Users[index].PassCode;            
-            fs.writeFileSync(`./Public/Users/FullList.json`, JSON.stringify(obj2));
+            fs.writeFileSync(`./Public/Users/FullList.json`, JSON.stringify(obj2, null, ' '));
             answer = {confirmation:true};
         }
     }
