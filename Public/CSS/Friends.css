@@ -1,3 +1,6 @@
+body{
+    height: 100vh;
+}
 .Friends{
     display: flex;
     flex-direction: column;
@@ -16,6 +19,18 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 13pt;
+    z-index: 0;
+}
+
+.ContainerFr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    margin-right: 30px;
     font-family: Roboto;
     font-weight: bold;
     font-size: 13pt;
@@ -122,6 +137,17 @@
     background-repeat: no-repeat;
 }
 
+.buttonSend{
+    width: 10vw;
+    height: 10vw;
+    background: url('/Public/ICON/AddFriendsSend.svg');
+    opacity: 0.9;
+    background-size: 8vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
 .buttonAdd{
     width: 10vw;
     height: 10vw;
@@ -136,6 +162,50 @@
 
 .buttonAdd:hover{
     background: url('/Public/ICON/AddFriendsFinal.svg');
+    cursor: pointer;
+    background-size: 9vw;
+    opacity: 1;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.buttonDel{
+    width: 10vw;
+    height: 10vw;
+    background: url('/Public/ICON/delFrAppDark.svg');
+    opacity: 0.9;
+    background-size: 8vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+
+.buttonDel:hover{
+    background: url('/Public/ICON/delFrApp.svg');
+    cursor: pointer;
+    background-size: 9vw;
+    opacity: 1;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.delFr{
+    width: 10vw;
+    height: 10vw;
+    background: url('/Public/ICON/delFrDark.svg');
+    opacity: 0.9;
+    background-size: 8vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+
+.delFr:hover{
+    background: url('/Public/ICON/delFr.svg');
     cursor: pointer;
     background-size: 9vw;
     opacity: 1;
@@ -163,6 +233,13 @@
     background-position-x: center;
     background-position-y: center;
     background-repeat: no-repeat;
+}
+
+.ArroW{
+    width: 60px;
+    margin-left: 25px;
+    z-index: 2;
+    filter: brightness(25%);
 }
 
 @font-face{

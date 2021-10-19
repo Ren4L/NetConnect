@@ -25,6 +25,9 @@ router.get('/',(req, res)=>{
     Code:code,
     moder:false,
     avatar:"",
+    friends: [],
+    applications: [],
+    sendApplications: []
   }
   List = {
     User:

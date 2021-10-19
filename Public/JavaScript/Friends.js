@@ -1,3 +1,4 @@
+
 let slider = document.querySelector('.slider');
 
 function SlideCheck(){
@@ -34,10 +35,20 @@ function move(target){
     setTimeout(() => {
         switch(target.className){
             case 'Fr': 
+                document.querySelector('.ContainerFr').innerHTML = '';
+                FriendsLoad();
             break;
             case 'Sear':
+                document.querySelector('.ContainerFr').innerHTML = `
+                                                                <input type="text" oninput="CheckFr()" placeholder="Search" class="Search">
+                                                                <div class="FriendsContainer">
+                                                                    
+                                                                </div>
+                                                                <div class="log"></div>`
             break;
             case 'App': 
+                document.querySelector('.ContainerFr').innerHTML = '';
+                applicationsLoad();
             break;
         }
         document.querySelector('#ActiveCenter').removeAttribute('id');
@@ -65,6 +76,9 @@ function CheckFr(){
                             break;
                             case 'application':
                             but = 'buttonAdd'
+                            break;
+                            case 'sendApplication':
+                            but = 'buttonSend'
                             break;
                             case 'no':
                             but = 'button'
@@ -96,7 +110,7 @@ function CheckFr(){
                         }
                     }
                     for(i = 0; i < answer.name.length; i++){
-                        document.querySelectorAll('.button')[i].setAttribute('onclick', 'AddFriend(this)');
+                        document.querySelectorAll('[value]')[i].setAttribute('onclick', 'AddFriend(this)');
                     }
             });
             request.send(JSON.stringify(inquiry));
@@ -107,13 +121,172 @@ function CheckFr(){
 }
 
 function AddFriend(e){
-    var request = new XMLHttpRequest();
-    request.overrideMimeType("application/json");
-    request.open('POST','/Modules/Friends',true);
-    request.setRequestHeader('Content-type', 'application/json');
-    let inquiry = {name:e.getAttribute('value'), post:'add'};
-    request.addEventListener('load', ()=>{
-        let answer = JSON.parse(request.response);
+        var request = new XMLHttpRequest();
+        request.overrideMimeType("application/json");
+        request.open('POST','/Modules/Friends',true);
+        request.setRequestHeader('Content-type', 'application/json');
+        let inquiry;
+        switch (e.className) {
+            case 'buttonAdd':
+                inquiry = {name:e.getAttribute('value'), post:'add'};
+                request.addEventListener('load', ()=>{
+                    let answer = JSON.parse(request.response);
+                    if(answer){
+                        // e.transition = 'none';
+                        // e.style.background = `url('/Public/ICON/AddFriendsDark.svg')`
+                        e.transition = '0.3s'
+                        e.style.background = `url('/Public/ICON/FriendAdd.svg')`;
+                        e.classList.remove('buttonAdd');
+                        e.classList.add('buttonFr');
+                    }
+                });
+            break;
+            case 'button':
+                inquiry = {name:e.getAttribute('value'), post:'send'};
+                request.addEventListener('load', ()=>{
+                    let answer = JSON.parse(request.response);
+                    if(answer){
+                        e.classList.remove('button');
+                        e.classList.add('buttonSend');
+                    }
+                });
+            break;
+        }
+        console.log(inquiry);
+        request.send(JSON.stringify(inquiry));
+}
+
+function FriendsLoad(){
+    let req = new XMLHttpRequest();
+    req.overrideMimeType('application/json');
+    req.open('POST', '/Modules/Friends', true);
+    req.setRequestHeader('Content-type', 'application/json');
+    req.addEventListener('load', ()=>{
+       let answer = JSON.parse(req.response);
+       console.log(answer);
+       for(let i = 0; i < answer.name.length; i++){
+        if(answer.name[i].avatar == ''){
+            document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
+                                                                <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                    <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
+                                                                    <div style="display: flex; flex-direction: column; margin-left: 25px;">
+                                                                        <div><strong>Login:</strong> ${answer.name[i].login}</div>
+                                                                        <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="display:flex; justify-content: center;align-items: center;">
+                                                                        <div class="delFr" value="${answer.name[i].login}"></div>
+                                                                        <a href="/Modules/PersonalPage/${answer.name[i].login}"><img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="ArroW"></a>
+                                                                </div>
+                                                            </div>`;
+       }
+       else{
+            document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
+                                                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                        <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
+                                                                        <div style="display: flex; flex-direction: column; margin-left: 25px;">
+                                                                            <div><strong>Login:</strong> ${answer.name[i].login}</div>
+                                                                            <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="display:flex; justify-content: center;align-items: center;">
+                                                                        <div class="delFr" value="${answer.name[i].login}"></div>
+                                                                        <a href="/Modules/PersonalPage/${answer.name[i].login}"><img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="ArroW"></a>
+                                                                    </div>
+                                                                </div>`;
+        }
+        document.querySelectorAll('.delFr')[i].setAttribute('onclick', 'delFr(this)');
+       }
     });
-    request.send(JSON.stringify(inquiry));
+    let answer = {post:'friendsList'};
+    req.send(JSON.stringify(answer));
+}
+
+
+function delFr(e){
+    let req = new XMLHttpRequest();
+    req.overrideMimeType('application/json');
+    req.open('POST', '/Modules/Friends', true);
+    req.setRequestHeader('Content-type', 'application/json');
+    req.addEventListener('load', ()=>{
+       let answer = JSON.parse(req.response);
+       if(answer.flag){e.parentNode.parentNode.remove();}
+    });
+    let answer = {post:'delFr', name:e.getAttribute('value')};
+    req.send(JSON.stringify(answer));
+}
+
+function applicationsLoad(){
+    let req = new XMLHttpRequest();
+    req.overrideMimeType('application/json');
+    req.open('POST', '/Modules/Friends', true);
+    req.setRequestHeader('Content-type', 'application/json');
+    req.addEventListener('load', ()=>{
+       let answer = JSON.parse(req.response);
+       console.log(answer);
+       for(let i = 0; i < answer.name.length; i++){
+           if(answer.name[i].avatar == ""){
+            document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
+                                                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                        <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
+                                                                        <div style="display: flex; flex-direction: column; margin-left: 25px;">
+                                                                            <div><strong>Login:</strong> ${answer.name[i].login}</div>
+                                                                            <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="display:flex;">
+                                                                        <div class="buttonAdd" value="${answer.name[i].login}"></div>
+                                                                        <div class="buttonDel" value="${answer.name[i].login}"></div>
+                                                                    </div>
+                                                                </div>`;
+           }
+           else{
+            document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
+                                                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                        <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
+                                                                        <div style="display: flex; flex-direction: column; margin-left: 25px;">
+                                                                            <div><strong>Login:</strong> ${answer.name[i].login}</div>
+                                                                            <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div style="display:flex;">
+                                                                        <div class="buttonAdd" value="${answer.name[i].login}"></div>
+                                                                        <div class="buttonDel" value="${answer.name[i].login}"></div>
+                                                                    </div>
+                                                                </div>`;
+           }
+           document.querySelectorAll('.buttonAdd')[i].setAttribute('onclick', 'AcceptFr(this)');
+           document.querySelectorAll('.buttonDel')[i].setAttribute('onclick', 'NotAcceptFr(this)');
+
+       }
+    });
+    let answer = {post:'applicationList'};
+    req.send(JSON.stringify(answer));
+}
+
+
+function AcceptFr(e){
+    let req = new XMLHttpRequest();
+    req.overrideMimeType('application/json');
+    req.open('POST', '/Modules/Friends', true);
+    req.setRequestHeader('Content-type', 'application/json');
+    req.addEventListener('load', ()=>{
+       let answer = JSON.parse(req.response);
+       if(answer.flag){e.parentNode.parentNode.remove();}
+    });
+    let answer = {post:'add', name:e.getAttribute('value')};
+    req.send(JSON.stringify(answer));
+}
+
+function NotAcceptFr(e){
+    let req = new XMLHttpRequest();
+    req.overrideMimeType('application/json');
+    req.open('POST', '/Modules/Friends', true);
+    req.setRequestHeader('Content-type', 'application/json');
+    req.addEventListener('load', ()=>{
+       let answer = JSON.parse(req.response);
+       if(answer.flag){e.parentNode.parentNode.remove();}
+    });
+    let answer = {post:'notAccept', name:e.getAttribute('value')};
+    req.send(JSON.stringify(answer));
 }

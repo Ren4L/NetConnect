@@ -22,6 +22,7 @@ router.get('/',(req, res)=>{
     let User = fs.readFileSync(`./Public/Users/${login}.json`,'utf-8');
     let obj2 = new Function(`return (${User})`)();
     password=Cipher.Decryption(obj2.password.split(''), login.split(''));
+    console.log(password);
     if(password != req.body.password){
       user = {confirmation:false};
     }
