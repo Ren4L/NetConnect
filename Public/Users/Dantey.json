@@ -5,7 +5,18 @@
  "ConfirmationMail": true,
  "moder": false,
  "avatar": "d260f605d49f2723337d4643530bd62c",
- "friends": [{"login":"Ren4L"}],
+ "friends": [
+  {
+   "login": "Ren4L"
+  },
+  {
+   "login": "MSTkrut2"
+  }
+ ],
  "applications": [],
- "sendApplications": []
+ "sendApplications": [],
+ "firstName": "Илья",
+ "lastName": "Мисько",
+ "gender": "Male",
+ "visibility": "Only friends"
 }

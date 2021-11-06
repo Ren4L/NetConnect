@@ -14,6 +14,8 @@ const Setting = require('./Modules/Setting');
 const ForgotPassword = require('./Modules/ForgotPassword');
 const ChangePassword = require('./Modules/ChangePassword');
 const Friends = require('./Modules/Friends');
+const PersonalPage = require('./Modules/PersonalPage');
+const Photos = require('./Modules/Photos');
 const port=3000;
 app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
@@ -40,6 +42,8 @@ app.use('/Modules/Setting', Setting);
 app.use('/Modules/ForgotPassword', ForgotPassword);
 app.use('/Modules/ChangePassword', ChangePassword);
 app.use('/Modules/Friends', Friends);
+app.use('/Modules/PersonalPage', PersonalPage);
+app.use('/Modules/Photos', Photos);
 
 
 

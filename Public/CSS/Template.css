@@ -1,4 +1,7 @@
 
+::-webkit-scrollbar {
+    width: 0;
+}
 body{
     background-image: url("/Public/ICON/Background.png");
 }

@@ -13,7 +13,6 @@ router.use(express.json());
 router.get('/',(req, res)=>{
     let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
     let obj = new Function(`return (${readFile})`)();
-    let login;
     let flag = false;
     for (let i = 0; i < obj.Users.length; i++) {
       if(obj.Users[i].login == req.session.userName){

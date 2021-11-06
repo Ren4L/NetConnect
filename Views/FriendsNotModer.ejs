@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Public/CSS/Template.css">
+    <link rel="stylesheet" href="/Public/CSS/Friends.css">
+    <link rel="shortcut icon" href="/Public/ICON/Friends_active.svg" type="image/x-icon">
+    <style>    
+        .activeblock{
+            position: absolute;
+            width: 35px;
+            height: 150px;
+            left: 90px;
+            top: 295px;
+            z-index: 1;
+        }
+        .activeblock_right{
+            position: absolute;
+            width: 0px;
+            height: 150px;
+            left: -35px;
+            top: 130px;
+            z-index: 1;
+        }
+        .Personal_Menu{
+            display: flex;
+            width: 90px;
+            flex: 0 0 90px;
+            flex-direction: column;
+            align-items: center;
+            height: 316px;
+            background:white;
+            border-radius: 60px;
+            filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+        }
+    </style>
+    <title>Friends</title>
+</head>
+<body onload="SlideCheck(), FriendsLoad()">
+    <main class="flex_Page">
+        <div class="Menu_container">
+            <nav class="Menu">
+                <div class="hidden"></div>
+                <img src="/Public/ICON/Home_active.svg" alt="Error" class="Home_img">
+                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img">
+                <img src="/Public/ICON/Posts_active.svg" alt="Error" class="Posts_img" >
+                <img src="/Public/ICON/Friends_active.svg" alt="Error" class="Friends_img" id="active">
+                <img src="/Public/ICON/Photos_active.svg" alt="Error" class="Photos_img" >
+                <img src="/Public/ICON/Videos_active.svg" alt="Error" class="Videos_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu">
+                <img src="/Public/ICON/ActiveBlock.png" alt="Error" class="activeblock">
+            </nav>
+        </div>
+        <div class="Container">
+            <div class="Friends">
+                <div class="MenuContainer">
+                    <div class="slider"></div>
+                    <div class="Fr" id="ActiveCenter">Friends</div>
+                    <div class="Sear">Search friends</div>
+                    <div class="App">Applications</div>
+                </div>
+            </div>
+            <div class="ContainerFr">
+                
+            </div>
+        </div>   
+        <div class="Personal_Menu_container">
+            <nav class="Personal_Menu">
+                <%-avatar%>
+                <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
+                <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu_right">
+                <img src="/Public/ICON/ActiveBlock_right.png" alt="Error" class="activeblock_right">
+            </nav>
+        </div>
+        <div class="flex_line">
+            <div class="Menu_button">
+                <img src="/Public/ICON/Menu.svg" alt="Error" class="Menu_img">
+            </div>
+            <div class="Personal_Menu_button">
+                <%-avatar2%>
+            </div>
+        </div>
+    </main>
+    <script src="/Public/JavaScript/Menu_AnimationNotModer.js"></script>
+    <script src="/Public/JavaScript/Friends.js"></script>
+</body>
+</html>

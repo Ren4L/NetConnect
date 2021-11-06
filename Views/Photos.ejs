@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Public/CSS/Template.css">
+    <link rel="stylesheet" href="/Public/CSS/Photos.css">
+    <link rel="shortcut icon" href="/Public/ICON/Photos_active.svg" type="image/x-icon">
+    <style>    
+        .activeblock{
+            position: absolute;
+            width: 35px;
+            height: 150px;
+            left: 90px;
+            top: 380px;
+            z-index: 1;
+        }
+        .activeblock_right{
+            position: absolute;
+            width: 0px;
+            height: 150px;
+            left: -35px;
+            top: 130px;
+            z-index: 1;
+        }
+    </style>
+    <title>Photos</title>
+</head>
+<body onload="PhotosSize()">
+    <main class="flex_Page">
+        <div class="Menu_container">
+            <nav class="Menu">
+                <div class="hidden"></div>
+                <img src="/Public/ICON/Home_active.svg" alt="Error" class="Home_img">
+                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img">
+                <img src="/Public/ICON/Posts_active.svg" alt="Error" class="Posts_img" >
+                <img src="/Public/ICON/Friends_active.svg" alt="Error" class="Friends_img">
+                <img src="/Public/ICON/Photos_active.svg" alt="Error" class="Photos_img" id="active">
+                <img src="/Public/ICON/Videos_active.svg" alt="Error" class="Videos_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu">
+                <img src="/Public/ICON/ActiveBlock.png" alt="Error" class="activeblock">
+            </nav>
+        </div>
+        <div class="Container">
+            <div class="PhotosContainer">
+                <div class="PlusText"><div class="plus"></div><div>To upload a photo</div></div>
+                <div style="padding-top: 10px; padding-bottom: 10px;">
+                    <hr color="black" size="3px" class="News_Line" width="2000px" >
+                </div>
+                <div class="AllPhotos">
+                    <img src="/Public/Files/561bb6794a2bb94c978242a1d39d5bc9" class="Photos">
+                    <img src="/Public/Files/79450765baf5566c09a4acf411eda11d" class="Photos">
+                    <img src="/Public/Files/c6cad2f9891c94f28c8c2479b34d33a2" class="Photos">
+                    <img src="/Public/Files/d260f605d49f2723337d4643530bd62c" class="Photos">
+                </div>
+            </div>
+        </div>   
+        <div class="Personal_Menu_container">
+            <nav class="Personal_Menu">
+                <%-avatar%>
+                <img src="/Public/ICON/Plus.svg" alt="Error" class="Add_News" >
+                <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
+                <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu_right">
+                <img src="/Public/ICON/ActiveBlock_right.png" alt="Error" class="activeblock_right">
+            </nav>
+        </div>
+        <div class="flex_line">
+            <div class="Menu_button">
+                <img src="/Public/ICON/Menu.svg" alt="Error" class="Menu_img">
+            </div>
+            <div class="Personal_Menu_button">
+                <%-avatar2%>
+            </div>
+        </div>
+    </main>
+    <script src="/Public/JavaScript/Menu_Animation.js"></script>
+    <script src="/Public/JavaScript/Photos.js"></script>
+</body>
+</html>

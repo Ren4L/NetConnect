@@ -5,7 +5,11 @@
  "ConfirmationMail": true,
  "moder": true,
  "avatar": "",
- "friends": [],
+ "friends": [
+  {
+   "login": "Dantey"
+  }
+ ],
  "applications": [],
  "sendApplications": [
   {
