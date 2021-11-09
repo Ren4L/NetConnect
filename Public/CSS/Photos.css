@@ -52,15 +52,29 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .Photos{
-    display: flex;
     border-radius: 20px;
-    height: auto;
+    min-height: 100px;
     padding: 10px;
-    width: 33%;
+    height: 10vw;
+    transition: 0.3s ease-in-out;
+}
+
+.Photos:hover{
+    cursor: pointer;
+    height: 10.7vw;
+}
+
+.OpenPhoto{
+    height: 40vw;
+    border-radius: 15px;
+}
+
+.conPhoto{
+    z-index: 1;
 }
 
 .back{
@@ -87,20 +101,26 @@
     z-index: 1;
 }
 
-.upload{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 14pt;
-    padding: 20px;
-    padding-bottom: 35px;
-    font-family: Roboto;
-    height: auto;
-    background: #FFFFFF;
-    border-radius: 40px;
-    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
-    width: 60%;
+.swLeft{
+    width: 10%;
+    filter: brightness(10%);
+    opacity: 0.9;
+    transform: scale(-1,1);
+}
+
+.swLeft:hover{
+    cursor: pointer;
+}
+
+
+.swRight{
+    width: 10%;
+    filter: brightness(10%);
+    opacity: 0.9;
+}
+
+.swRight:hover{
+    cursor: pointer;
 }
 
 form{
@@ -132,7 +152,10 @@ form{
     background-repeat: no-repeat;
 }
 
-
+.AvatarView{
+    border-radius: 10px;
+    transition: 0.5s;
+}
 
 #InputAvatar{
     display: flex;

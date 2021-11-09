@@ -37,17 +37,17 @@ function move(target){
     slider.style.width = `${target.offsetWidth}px`;
     setTimeout(() => {
         switch(target.className){
-            case 'Av': document.querySelector('.form').innerHTML = `<form name="Av" method="POST" action="/Modules/Setting">
+            case 'Av': document.querySelector('.form').innerHTML = `<form name="Av">
                                                                         <label>
                                                                             <div class="DownloadAvatar"></div>
-                                                                            <input type="file" style="display: none;" class="file" >
+                                                                            <input type="file" style="display: none;" name="avatar" class="file" accept="image/*" onchange="Avatar(this)">
                                                                         </label>
                                                                         <div class="InputAvatar"></div>
                                                                         <label>
-                                                                            <div class="send"></div>
-                                                                            <input type="submit" style="display: none;" accept="image/*" onchange="Avatar(this)">
+                                                                            <div class="send" onclick="SendFile()"></div>
                                                                         </label>
                                                                     </form>`;
+            document.querySelector('.send').setAttribute('onclick', 'SendFile()');
             document.querySelector('[type=file]').setAttribute('onchange', 'Avatar(this)');
             document.querySelector('[type=file]').setAttribute('accept', 'image/*');
             break;
