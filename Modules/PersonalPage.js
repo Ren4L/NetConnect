@@ -16,9 +16,9 @@ router.get('/:id',(req, res)=>{
         login:Acc.login,
         avatar:'',
         friends:[],
-        FriendsNum:Acc.friends.length,
-        PhotosNum:5,
-        VideosNum:3,
+        FriendsNum:Acc.friends != undefined ? Acc.friends.length : 0,
+        PhotosNum:Acc.Photos != undefined ? Acc.Photos.length : 0,
+        VideosNum:Acc.Videos != undefined ? Acc.Videos.length : 0,
         PostsNum:1,
       }
       if(Acc.avatar==''){
@@ -66,26 +66,28 @@ router.get('/:id',(req, res)=>{
         }
       }
       else if(PI.Visibility == 'Only friends'){
-        let flag = false;
-        for(let i = 0; i < Acc.friends.length; i++){
-          if(Acc.friends[i].login == req.session.userName){
-            flag = true;
-          }
-        }
-        if(flag){
-          for (let key in PI) {
-            if(PI[key] != '' && key != 'Visibility'){
-              PIEnd+=`<div class="PIText"><strong>${key}</strong>: ${PI[key]}</div>`;
+        if(Acc.friends != undefined){
+          let flag = false;
+          for(let i = 0; i < Acc.friends.length; i++){
+            if(Acc.friends[i].login == req.session.userName){
+              flag = true;
             }
           }
-          if(PIEnd == ''){
-            PIEnd = '<div align="center" class="PIText"><strong>No information</strong></div>';
+          if(flag){
+            for (let key in PI) {
+              if(PI[key] != '' && key != 'Visibility'){
+                PIEnd+=`<div class="PIText"><strong>${key}</strong>: ${PI[key]}</div>`;
+              }
+            }
+            if(PIEnd == ''){
+              PIEnd = '<div align="center" class="PIText"><strong>No information</strong></div>';
+            }
+          }
+          else{
+            PIEnd = `<div class="PIText" align="center"><strong>Information is not available</strong></div>`
           }
         }
-        else{
-          PIEnd = `<div class="PIText" align="center"><strong>Information is not available</strong></div>`
         }
-      }
       else if(PI.Visibility == 'No one'){
         PIEnd = `<div class="PIText" align="center"><strong>Information is not available</strong></div>`
       }

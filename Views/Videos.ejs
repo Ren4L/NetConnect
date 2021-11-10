@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Public/CSS/Template.css">
+    <link rel="stylesheet" href="/Public/CSS/Videos.css">
+    <link rel="stylesheet" href="/Public/CSS/Player.css">
+    <link rel="shortcut icon" href="/Public/ICON/Videos_active.svg" type="image/x-icon">
+    <style>    
+        .activeblock{
+            position: absolute;
+            width: 35px;
+            height: 150px;
+            left: 90px;
+            top: 465px;
+            z-index: 1;
+        }
+        .activeblock_right{
+            position: absolute;
+            width: 0px;
+            height: 150px;
+            left: -35px;
+            top: 130px;
+            z-index: 1;
+        }
+    </style>
+    <title>Videos</title>
+</head>
+<body>
+    <main class="flex_Page">
+        <div class="Menu_container">
+            <nav class="Menu">
+                <div class="hidden"></div>
+                <img src="/Public/ICON/Home_active.svg" alt="Error" class="Home_img">
+                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img">
+                <img src="/Public/ICON/Posts_active.svg" alt="Error" class="Posts_img" >
+                <img src="/Public/ICON/Friends_active.svg" alt="Error" class="Friends_img">
+                <img src="/Public/ICON/Photos_active.svg" alt="Error" class="Photos_img">
+                <img src="/Public/ICON/Videos_active.svg" alt="Error" class="Videos_img" id="active">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu">
+                <img src="/Public/ICON/ActiveBlock.png" alt="Error" class="activeblock">
+            </nav>
+        </div>
+        <div class="Container">
+            <div class="VideosContainer">
+                <div class="PlusText"><div class="plus"></div><div>To upload a video</div></div>
+                <div style="padding-top: 10px; padding-bottom: 10px;">
+                    <hr color="black" size="3px" class="News_Line" width="2000px" >
+                </div>
+                <div class="AllVideos">
+                      <% if (Video.length != 0) { %>
+                        <% Video.forEach(function(v){ %>
+                            <div class="player" style='width:30%'>
+                                <video src="/Public/Files/<%=v%>" class="video" ontimeupdate="Progress(this)"></video>
+                                <div class="controls" onmouseover="DontHidden(this)" onmouseleave="Hidden(this)">
+                                    <img src="/Public/ICON/Play.svg" class="PlayPause" width="20px" onclick="Play(this)">
+                                    <input type="range" name="ProgressBar" class="ProgressBar" min="0" max="100" step="0.05" value="0" oninput="Rewind(this)">
+                                    <input type="range" name="volume" class="volume" min="0" max="1" step="0.005" value="1" oninput="Volume(this)">
+                                    <div class="TwoX" onclick="Speed(this)">2X</div>
+                                    <img src="/Public/ICON/FullSrceenIn.svg" class="FullScreen" width="20px" onclick="FullScreen(this)">
+                                </div>
+                            </div>
+                          <% }); %>
+                      <% } %>
+                    
+                </div>
+            </div>
+        </div>   
+        <div class="Personal_Menu_container">
+            <nav class="Personal_Menu">
+                <%-avatar%>
+                <img src="/Public/ICON/Plus.svg" alt="Error" class="Add_News" >
+                <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
+                <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu_right">
+                <img src="/Public/ICON/ActiveBlock_right.png" alt="Error" class="activeblock_right">
+            </nav>
+        </div>
+        <div class="flex_line">
+            <div class="Menu_button">
+                <img src="/Public/ICON/Menu.svg" alt="Error" class="Menu_img">
+            </div>
+            <div class="Personal_Menu_button">
+                <%-avatar2%>
+            </div>
+        </div>
+    </main>
+    <script src="/Public/JavaScript/Menu_Animation.js"></script>
+    <script src="/Public/JavaScript/Videos.js"></script>
+    <script src="/Public/JavaScript/Player.js"></script>
+</body>
+</html>

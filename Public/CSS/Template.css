@@ -272,9 +272,9 @@ body{
 }
 
 .flex_line{
+    display: none;
     position: fixed;
     top: 85vh;
-    display: flex;
     justify-content: space-between;
     width: 100vw;
     height: 90px;
@@ -306,6 +306,7 @@ body{
 }
 
 @media (max-width: 1100px) {
+    .flex_line{display: flex;}
     .Container{width: 100%; margin-left: 0vw;}
     .Menu_container{position: fixed; z-index: 1; left: 0px; margin-left: -150px; top: 7vh; }
     .Menu_button{display: inline; z-index: 2;}
