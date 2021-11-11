@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Public/CSS/Template.css">
     <link rel="stylesheet" href="/Public/CSS/PersonalPage.css">
+    <link rel="stylesheet" href="/Public/CSS/Player.css">
     <link rel="shortcut icon" href="/Public/ICON/Friends_active.svg" type="image/x-icon">
     <style>    
         .activeblock{
@@ -27,7 +28,7 @@
     </style>
     <title>Friends</title>
 </head>
-<body onload="fr()">
+<body onload="FPV()">
     <main class="flex_Page">
         <div class="Menu_container">
             <nav class="Menu">
@@ -47,9 +48,9 @@
                 <div class="avatarContainer">
                     <%-Person.avatar%>
                 </div>
-                <div class="friendsList">
+                <div class="ListFPV">
                     <div>Friends</div>
-                    <div class="friendsListContainer">
+                    <div class="ListContainer">
                         <% Person.friends.forEach(function(fr){%>
                             <a href="/Modules/PersonalPage/<%-fr.login%>">
                                 <figure>
@@ -57,6 +58,24 @@
                                     <figcaption><%-fr.login%></figcaption>
                                 </figure>
                             </a>
+                        <%});%>
+                    </div>
+                </div>
+
+                <div class="ListFPV" onclick="OpenPhoto()">
+                    <div>Photos</div>
+                    <div class="ListContainer">
+                        <% Person.Photos.forEach(function(buf){%>
+                            <img src="/Public/Files/<%-buf.photo%>" height="40vw" style="border-radius: 7px;">
+                        <%});%>
+                    </div>
+                </div>
+
+                <div class="ListFPV" onclick="OpenVideo()">
+                    <div>Videos</div>
+                    <div class="ListContainer">
+                        <% Person.Videos.forEach(function(buf){%>
+                            <video src="/Public/Files/<%-buf.video%>" height="40vw" style="border-radius: 7px;"></video>
                         <%});%>
                     </div>
                 </div>
@@ -76,29 +95,31 @@
                         <hr color="black" size="2px" class="News_Line" width="2000px" >
                     </div>
                     <div class="Statis">
-                        <div class="FrNum"><%=Person.FriendsNum%><br>Friends</div>
-                        <div><%=Person.PhotosNum%><br>Photos</div>
-                        <div><%=Person.VideosNum%><br>Videos</div>
-                        <div><%=Person.PostsNum%><br>Posts</div>
+                        <div class="FrNum" onclick="OpenFriend()"><%=Person.FriendsNum%><br>Friends</div>
+                        <div class="PhNum" onclick="OpenPhoto()"><%=Person.PhotosNum%><br>Photos</div>
+                        <div class="ViNum"><%=Person.VideosNum%><br>Videos</div>
+                        <div class="PoNum"><%=Person.PostsNum%><br>Posts</div>
                     </div>
                 </div>
-                <div class="Post">
-                    <div class="Union_text_arrow">
-                        <div>
-                            <div class="News_Text">A Computer Network is a system of connected computers, peripherals and communication devices that can exchange data and share resources. If the network is limited to a single building or group of buildings then it is described as a Local Area Network (LAN). Computers in a LAN can be linked together directly but more commonly are linked through a hub or switch. The network connections can be cable, fiber-optic, or wireless (infra-red, microwave or radio). A router acts as an interface between networks, passing data packets back and forth between them.</div>
-                        </div>
-                    </div>
-                    <div style="padding-top: 5px; padding-bottom: 10px;">
-                        <hr color="black" size="1px" class="News_Line" width="2000px" >
-                    </div>
-                    <div class="News_Footer">
-                        <div style="display: flex; align-items: center; ">
-                            <div class="News_avatar_container">
-                                
+                <div class="Posts">
+                    <div class="Post">
+                        <div class="Union_text_arrow">
+                            <div>
+                                <div class="News_Text">A Computer Network is a system of connected computers, peripherals and communication devices that can exchange data and share resources. If the network is limited to a single building or group of buildings then it is described as a Local Area Network (LAN). Computers in a LAN can be linked together directly but more commonly are linked through a hub or switch. The network connections can be cable, fiber-optic, or wireless (infra-red, microwave or radio). A router acts as an interface between networks, passing data packets back and forth between them.</div>
                             </div>
-                            <div class="Name_Avatar">Ren4L</div>
                         </div>
-                        <div class="Date_Avatar" style="display: flex; justify-content: center; align-items: center;">10.03.2003 14:22<div class="Like"></div></div>
+                        <div style="padding-top: 5px; padding-bottom: 10px;">
+                            <hr color="black" size="1px" class="News_Line" width="2000px" >
+                        </div>
+                        <div class="News_Footer">
+                            <div style="display: flex; align-items: center; ">
+                                <div class="News_avatar_container">
+                                    
+                                </div>
+                                <div class="Name_Avatar">Ren4L</div>
+                            </div>
+                            <div class="Date_Avatar" style="display: flex; justify-content: center; align-items: center;">10.03.2003 14:22<div class="Like"></div></div>
+                        </div>
                     </div>
                 </div>
                 
@@ -125,5 +146,6 @@
     </main>
     <script src="/Public/JavaScript/Menu_Animation.js"></script>
     <script src="/Public/JavaScript/PersonalPage.js"></script>
+    <script src="/Public/JavaScript/Player.js"></script>
 </body>
 </html>

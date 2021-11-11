@@ -16,10 +16,12 @@ router.get('/:id',(req, res)=>{
         login:Acc.login,
         avatar:'',
         friends:[],
+        Photos:[],
+        Videos:[],
         FriendsNum:Acc.friends != undefined ? Acc.friends.length : 0,
         PhotosNum:Acc.Photos != undefined ? Acc.Photos.length : 0,
         VideosNum:Acc.Videos != undefined ? Acc.Videos.length : 0,
-        PostsNum:1,
+        PostsNum:Acc.Posts != undefined ? Acc.Posts.length : 0,
       }
       if(Acc.avatar==''){
         Person.avatar = `<div class="avatar">${Acc.login.slice(0,1)}</div>`;
@@ -42,6 +44,20 @@ router.get('/:id',(req, res)=>{
           buf.avatar = `<div class="avatarFriend">${buf.login.slice(0,1)}</div>`;
         }
         Person.friends.push(buf);
+      }
+
+      for(let i = 0; i < (Person.PhotosNum < 3 ? Person.PhotosNum : 3 ); i++){
+        let buf = {
+          photo:Acc.Photos[i]
+        }
+        Person.Photos.push(buf);
+      }
+      
+      for(let i = 0; i < (Person.VideosNum < 3 ? Person.VideosNum : 3 ); i++){
+        let buf = {
+          video:Acc.Videos[i]
+        }
+        Person.Videos.push(buf);
       }
 
       let PI = {
@@ -135,17 +151,27 @@ router.get('/:id',(req, res)=>{
       case "FrNum":
         let readFile = fs.readFileSync(`./Public/Users/${req.body.login}.json`, 'utf-8');
         let obj = new Function(`return ${readFile}`)();
-        let FrList = {list:[]};
+        let List = {list:[]};
         for (let i = 0; i < obj.friends.length; i++) {
           let read = fs.readFileSync(`./Public/Users/${obj.friends[i].login}.json`);
-          let objFr = new Function(`return ${read}`)();
+          let objF = new Function(`return ${read}`)();
           let buf = {
-            login: objFr.login,
-            avatar: objFr.avatar
+            login: objF.login,
+            avatar: objF.avatar
           }
-          FrList.list.push(buf);
+          List.list.push(buf);
         }
-        res.json(FrList);
+        res.json(List);
+        break;
+      case "PhNum":
+        let readFileP = fs.readFileSync(`./Public/Users/${req.body.login}.json`, 'utf-8');
+        let objP = new Function(`return ${readFileP}`)();
+        res.json(objP.Photos);
+        break;
+      case "ViNum":
+        let readFileV = fs.readFileSync(`./Public/Users/${req.body.login}.json`, 'utf-8');
+        let objV = new Function(`return ${readFileV}`)();
+        res.json(objV.Videos);
         break;
     }
   });

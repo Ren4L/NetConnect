@@ -1,7 +1,17 @@
-let SpeedFlag = false;
 function Play(e){
     let video = e.parentNode.parentNode.querySelector('.video');
+    let allVideo = document.querySelectorAll('.video');
     if(video.paused){
+        for (let i = 0; i < allVideo.length; i++) {
+            if(video != allVideo[i] && allVideo[i].played){
+                console.log(allVideo[i]);
+                allVideo[i].pause();
+                allVideo[i].currentTime = 0;
+                allVideo[i].parentNode.querySelector('.PlayPause').src = '/Public/ICON/Play.svg';
+                allVideo[i].parentNode.querySelector('.ProgressBar').value = 0;
+                allVideo[i].currentTime = 0;   
+            }
+        }
         video.play();
         e.src = '/Public/ICON/Pause.svg';
     }
@@ -48,16 +58,14 @@ function FullScreen(e){
 
 function Speed(e){
     let video = e.parentNode.parentNode.querySelector('.video');
-    if(SpeedFlag){
+    if(video.playbackRate == 2){
         e.style.opacity = '0.5';
         e.style.color = 'white'
-        SpeedFlag = false;
         video.playbackRate = 1.0;
     }
     else{
         e.style.opacity = '1';
         e.style.color = "#5EAAC1"
-        SpeedFlag = true;
         video.playbackRate = 2.0;
     }
 }
@@ -68,8 +76,9 @@ function Volume(e){
 }
 
 function Progress(e){
-    let video = e.parentNode.parentNode.querySelector('.video');
-    e.parentNode.querySelector('.controls').querySelector('.ProgressBar').value = (video.currentTime / video.duration * 100);
+    let video = e.parentNode.querySelector('.video');
+    e.parentNode.querySelector('.ProgressBar').value = (video.currentTime / video.duration * 100);
+    console.log(e.parentNode.parentNode.querySelector('.ProgressBar'));
 }
 
 function Rewind(e){

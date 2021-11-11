@@ -13,6 +13,7 @@
 
 .video{
   width: 100%;
+  height: 100%;
 }
 
 .controls{
@@ -99,5 +100,5 @@
     height: 20px;
     cursor: pointer;
     background: #6dd6f7;
-    box-shadow: -200px 0 0 200px #5EAAC1;
+    box-shadow: -500px 0 0 500px #5EAAC1;
   }
