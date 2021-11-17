@@ -19,7 +19,7 @@ const Photos = require('./Modules/Photos');
 const Videos = require('./Modules/Videos');
 const Home = require('./Modules/Home');
 const Posts = require('./Modules/Posts');
-const port=3000;
+const port = process.env.PORT || 3000;
 app.set('Views',__dirname + 'Views');
 app.set("view engine", 'ejs');
 
