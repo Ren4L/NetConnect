@@ -15,12 +15,15 @@
  "visibility": "Only friends",
  "friends": [
   {
-   "login": "Dantey"
+   "login": "BloodFire"
+  },
+  {
+   "login": "MSTkrut2"
   }
  ],
  "applications": [
   {
-   "login": "MSTkrut2"
+   "login": "Dantey"
   }
  ],
  "sendApplications": [],
@@ -35,6 +38,22 @@
  ],
  "Videos": [
   "99cef62c7374b42b6e14070c113e12d3",
-  "05b942614d2a4367d98fbab828e5e751"
+  "05b942614d2a4367d98fbab828e5e751",
+  "0a7621f7f6b8e002af1cef9083e1e97f",
+  "2631d587506327ab6644c21c2b2bc342"
+ ],
+ "Posts": [
+  {
+   "date": 1636669598150,
+   "content": "Wise men speak because they have something to say; fools because they have to say something"
+  },
+  {
+   "date": 1636669662203,
+   "content": "When you do something noble and beautiful and nobody noticed, do not be sad. For the sun every morning is a beautiful spectacle and yet most of the audience still sleeps."
+  },
+  {
+   "date": 1636670020112,
+   "content": "A Computer Network is a system of connected computers, peripherals and communication devices that can exchange data and share resources. If the network is limited to a single building or group of buildings then it is described as a Local Area Network (LAN). Computers in a LAN can be linked together directly but more commonly are linked through a hub or switch. The network connections can be cable, fiber-optic, or wireless (infra-red, microwave or radio). A router acts as an interface between networks, passing data packets back and forth between them."
+  }
  ]
 }

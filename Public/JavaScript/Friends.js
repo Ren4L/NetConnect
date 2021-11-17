@@ -86,7 +86,7 @@ function CheckFr(){
                         }
                         if(answer.name[i].avatar != '' && document.querySelector('.Search').value != '' ){
                             document.querySelector('.FriendsContainer').innerHTML += `<div class="FriendsList">
-                                                                                        <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                                        <div class="AvText">
                                                                                             <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
                                                                                             <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                                                 <div><strong>Login:</strong> ${answer.name[i].login}</div>
@@ -98,7 +98,7 @@ function CheckFr(){
                         }
                         else if(answer.name[i].avatar == '' && document.querySelector('.Search').value != '' ){
                             document.querySelector('.FriendsContainer').innerHTML += `<div class="FriendsList">
-                                                                                        <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                                        <div class="AvText">
                                                                                             <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
                                                                                             <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                                                 <div><strong>Login:</strong> ${answer.name[i].login}</div>
@@ -132,8 +132,6 @@ function AddFriend(e){
                 request.addEventListener('load', ()=>{
                     let answer = JSON.parse(request.response);
                     if(answer){
-                        // e.transition = 'none';
-                        // e.style.background = `url('/Public/ICON/AddFriendsDark.svg')`
                         e.transition = '0.3s'
                         e.style.background = `url('/Public/ICON/FriendAdd.svg')`;
                         e.classList.remove('buttonAdd');
@@ -167,7 +165,7 @@ function FriendsLoad(){
        for(let i = 0; i < answer.name.length; i++){
         if(answer.name[i].avatar == ''){
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
-                                                                <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                <div class="AvText">
                                                                     <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
                                                                     <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                         <div><strong>Login:</strong> ${answer.name[i].login}</div>
@@ -182,7 +180,7 @@ function FriendsLoad(){
        }
        else{
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
-                                                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                    <div class="AvText">
                                                                         <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
                                                                         <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                             <div><strong>Login:</strong> ${answer.name[i].login}</div>
@@ -227,7 +225,7 @@ function applicationsLoad(){
        for(let i = 0; i < answer.name.length; i++){
            if(answer.name[i].avatar == ""){
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
-                                                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                    <div class="AvText">
                                                                         <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
                                                                         <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                             <div><strong>Login:</strong> ${answer.name[i].login}</div>
@@ -242,7 +240,7 @@ function applicationsLoad(){
            }
            else{
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
-                                                                    <div style="display: flex; flex-direction: row; align-items: center;">
+                                                                    <div class="AvText">
                                                                         <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
                                                                         <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                             <div><strong>Login:</strong> ${answer.name[i].login}</div>

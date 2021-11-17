@@ -1,4 +1,5 @@
 let flag = true;
+let LikeFlag = true;
 document.querySelector('.Show').addEventListener('click', ()=>{
     if(flag){
         flag = false;
@@ -134,15 +135,6 @@ function OpenVideo(){
     }
 }
 
-function FPV(){
-    for (let i = 0; i < document.querySelectorAll('.ListFPV').length; i++) {
-        if(document.querySelectorAll('.ListContainer')[i].children.length == 0){
-            document.querySelectorAll('.ListFPV')[i].remove();
-        }
-        
-    }
-}
-
 function del(e){
     if(e.className == 'back' || e.className == 'back2'){
         if(document.querySelector('.OpenPhoto') != undefined){
@@ -184,6 +176,7 @@ function Full(e){
     document.querySelector('.containerModal2').setAttribute('onclick', 'del(this)');
     document.querySelector('.swRight').setAttribute('onclick', 'Right()');
     document.querySelector('.swLeft').setAttribute('onclick', 'Left()');
+    document.querySelector('.back2').scrollIntoView({behavior: 'smooth', block: 'start'});
 }
 
 function Right(){
@@ -249,3 +242,47 @@ document.addEventListener('keyup', (e)=>{
         }       
     }
 });
+
+function Like(e){
+    if(LikeFlag){
+        LikeFlag = false;
+        let req = new XMLHttpRequest();
+        req.overrideMimeType('application/json');
+        req.open('POST', '/Modules/PersonalPage');
+        req.setRequestHeader('Content-type', 'application/json');
+        switch (e.className) {
+            case "Like":
+                req.addEventListener('load',()=>{
+                    let answer = JSON.parse(req.response);
+                    if(answer.bool){
+                        e.className = 'LikeOn';
+                        e.parentNode.querySelector('.LikesNum').innerHTML = Number.parseInt(e.parentNode.querySelector('.LikesNum').innerHTML)+1;
+                        LikeFlag = true;
+                    }
+                });
+                list = {
+                    post: 'Like',
+                    name: e.parentNode.parentNode.parentNode.getAttribute('value'),
+                    login: document.querySelector('.Name_Avatar').innerHTML
+                }
+                req.send(JSON.stringify(list));
+                break;
+            case "LikeOn":
+                req.addEventListener('load',()=>{
+                    let answer = JSON.parse(req.response);
+                    if(answer.bool){
+                        e.className = 'Like';
+                        e.parentNode.querySelector('.LikesNum').innerHTML = Number.parseInt(e.parentNode.querySelector('.LikesNum').innerHTML)-1;
+                        LikeFlag = true;
+                    }
+                });
+                list = {
+                    post: 'DisLike',
+                    name: e.parentNode.parentNode.parentNode.getAttribute('value'),
+                    login: document.querySelector('.Name_Avatar').innerHTML
+                }
+                req.send(JSON.stringify(list));
+                break;
+        }
+    }
+}

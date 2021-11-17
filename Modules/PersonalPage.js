@@ -107,6 +107,17 @@ router.get('/:id',(req, res)=>{
       else if(PI.Visibility == 'No one'){
         PIEnd = `<div class="PIText" align="center"><strong>Information is not available</strong></div>`
       }
+      let Posts = new Array();
+      if(Acc.Posts == undefined){Acc.Posts = [];}
+      for (let i = 0; i < Acc.Posts.length; i++) {
+        let readPost = fs.readFileSync(`./Public/Posts/${req.params.id}/${Acc.Posts[i].date}.json`);
+        let post = new Function(`return ${readPost}`)();
+        post.classLike = post.likes.indexOf(req.session.userName) == -1 ? 'Like' : 'LikeOn'; 
+        post.likes = post.likes.length;
+        post.avatar = Acc.avatar == '' ? `<div class="News_avatar_container">${post.login.slice(0,1)}</div>` : `<img src="/Public/Files/${Acc.avatar}" class="News_avatar_container">`;
+        Posts.push(post);
+      }
+      Posts.reverse();
         let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
         let obj = new Function(`return (${readFile})`)();
         let flag = false;
@@ -134,10 +145,20 @@ router.get('/:id',(req, res)=>{
           }
           if(flag){
             if(req.session.moder){
-              res.render('PersonalPageTemplate',{avatar:avatar, avatar2:avatar2, Person:Person, PI:PIEnd})
+              if(req.session.userName == req.params.id){
+                res.redirect('/Modules/Home');
+              }
+              else{
+                res.render('PersonalPageTemplate',{avatar:avatar, avatar2:avatar2, Person:Person, PI:PIEnd, Posts:Posts})
+              }
             }
             else{
-              res.render('PersonalPageTemplateNotModer',{avatar:avatar, avatar2:avatar2, Person:Person, PI:PIEnd})
+              if(req.session.userName == req.params.id){
+                res.redirect('/Modules/HomeNotModer');
+              }
+              else{
+                res.render('PersonalPageTemplateNotModer',{avatar:avatar, avatar2:avatar2, Person:Person, PI:PIEnd, Posts:Posts})
+              }
             }
           }
           else{
@@ -173,6 +194,22 @@ router.get('/:id',(req, res)=>{
         let objV = new Function(`return ${readFileV}`)();
         res.json(objV.Videos);
         break;
+      case "Like":
+        let readPost = fs.readFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`);
+        let post = new Function(`return ${readPost}`)();
+        post.likes.push(req.session.userName);
+        fs.writeFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`, JSON.stringify( post, null, ' '));
+        let bufLK = {bool:true};
+        res.json(bufLK);
+      break;
+      case "DisLike":
+        let readPostDis = fs.readFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`);
+        let postDis = new Function(`return ${readPostDis}`)();
+        postDis.likes.splice(postDis.likes.indexOf(req.session.userName), postDis.likes.indexOf(req.session.userName) + 1);
+        fs.writeFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`, JSON.stringify( postDis, null, ' '));
+        let bufDis = {bool:true};
+        res.json(bufDis);
+      break;
     }
   });
 

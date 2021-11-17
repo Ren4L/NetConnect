@@ -36,11 +36,9 @@
 .PlusText:hover{
     cursor: pointer;
     color: #5EAAC1;
-    font-size: 26pt;
+    font-size: 23pt;
 }
 .PlusText:hover .plus{
-    width: 60px;
-    height: 60px;
     background: url('/Public/ICON/Plus.svg');
     background-size: 60px;
     background-position-x: center;
@@ -155,4 +153,11 @@ form{
     background-position-x: center;
     background-position-y: center;
     background-repeat: no-repeat;
+}
+
+@media (max-width:370px) {
+    .PlusText{font-size: 16pt;}
+    .PlusText:hover{font-size: 18pt;}
+    .plus{width: 40px; height: 40px; background-size: 30px;}
+    .PlusText:hover .plus{background-size: 38px;}
 }

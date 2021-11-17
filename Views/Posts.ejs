@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Public/CSS/Template.css">
+    <link rel="stylesheet" href="/Public/CSS/Posts.css">
+    <link rel="shortcut icon" href="/Public/ICON/Posts_active.svg" type="image/x-icon">
+    <style>    
+        .activeblock{
+            position: absolute;
+            width: 35px;
+            height: 150px;
+            left: 90px;
+            top: 210px;
+            z-index: 1;
+        }
+        .activeblock_right{
+            position: absolute;
+            width: 0px;
+            height: 150px;
+            left: 0px;
+            top: 130px;
+            z-index: 1;
+        }
+    </style>
+    <title>Posts</title>
+</head>
+<body>
+    <main class="flex_Page">
+        <div class="Menu_container">
+            <nav class="Menu">
+                <div class="hidden"></div>
+                <img src="/Public/ICON/Home_active.svg" alt="Error" class="Home_img">
+                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img">
+                <img src="/Public/ICON/Posts_active.svg" alt="Error" class="Posts_img" id="active">
+                <img src="/Public/ICON/Friends_active.svg" alt="Error" class="Friends_img">
+                <img src="/Public/ICON/Photos_active.svg" alt="Error" class="Photos_img">
+                <img src="/Public/ICON/Videos_active.svg" alt="Error" class="Videos_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu">
+                <img src="/Public/ICON/ActiveBlock.png" alt="Error" class="activeblock">
+            </nav>
+        </div>
+        <div class="Container">
+            <% if (Posts.length != 0) { %>
+                <% Posts.forEach(function(el){ %>
+                    <div class="Post" value="<%-el.date%>">
+                        <div class="Union_text_arrow">
+                            <div>
+                                <div class="News_Text"><%-el.content%></div>
+                            </div>
+                        </div>
+                        <div style="padding-top: 5px; padding-bottom: 10px;">
+                            <hr color="black" size="1px" class="News_Line" width="2000px" >
+                        </div>
+                        <div class="News_Footer">
+                            <div style="display: flex; align-items: center; ">
+                                <%-el.avatar%>
+                                <div class="Name_Avatar"><%-el.login%></div>
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; align-items: center; text-align: right;"><div style="text-align: center;"><%- new Date(el.date).toLocaleTimeString().slice(0,-3) %><br><%- new Date(el.date).toLocaleString().slice(0,10) %></div><div class="<%-el.classLike%>" onclick="Like(this)"></div><div class="LikesNum"><%-el.likes.length%></div></div>
+                        </div>
+                    </div>
+                <% }); %>
+              <% } %>
+        </div>   
+        <div class="Personal_Menu_container">
+            <nav class="Personal_Menu">
+                <%-avatar%>
+                <img src="/Public/ICON/Plus.svg" alt="Error" class="Add_News" >
+                <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
+                <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
+                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu_right">
+                <img src="/Public/ICON/ActiveBlock_right.png" alt="Error" class="activeblock_right">
+            </nav>
+        </div>
+        <div class="flex_line">
+            <div class="Menu_button">
+                <img src="/Public/ICON/Menu.svg" alt="Error" class="Menu_img">
+            </div>
+            <div class="Personal_Menu_button">
+                <%-avatar2%>
+            </div>
+        </div>
+    </main>
+    <script src="/Public/JavaScript/Menu_Animation.js"></script>
+    <script src="/Public/JavaScript/Posts.js"></script>
+</body>
+</html>

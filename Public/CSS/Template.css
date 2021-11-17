@@ -18,6 +18,7 @@ body{
     min-width: 125px;
     overflow: hidden;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    transition: 0.5s ease-in-out;
 }
 .Menu{
     display: flex;
@@ -42,6 +43,7 @@ body{
     margin-left: 25px;
     z-index: 2;
     filter: brightness(25%);
+    transition: 0.5s ease-in-out;
 }
 
 .slide_menu{
@@ -52,6 +54,13 @@ body{
     z-index: 2;
     transform: scale(-1,1);
     filter: brightness(25%);
+}
+
+.activeblock{
+    transition: 0.5s ease-in-out;
+}
+.activeblock_right{
+    transition: 0.5s ease-in-out;
 }
 
 .Home_img:hover, .News_img:hover, .Friends_img:hover, .Photos_img:hover, .Videos_img:hover, .Posts_img:hover,.Setting_img:hover, .LogOut_img:hover, .Arrow:hover, .Add_News:hover, .Menu_img:hover, .slide_menu:hover, .Avatar2:hover, .slide_menu_right:hover{
@@ -66,6 +75,7 @@ body{
     width: 55px;
     margin-left: 45px;
     filter: brightness(100%);
+    transition: 0.5s ease-in-out;
 }
 
 
@@ -187,6 +197,7 @@ body{
     position: fixed;
     right: 2vw;
     display: flex;
+    transition: 0.5s ease-in-out;
 }
 
 .Personal_Menu{
@@ -227,9 +238,11 @@ body{
 
 .Add_News{
     width: 40px;
+    opacity: 0.9;
     margin-top: 25px;
     z-index: 2;
     filter: brightness(25%);
+    transition: 0.5s ease-in-out;
 }
 
 .Setting_img{
@@ -237,6 +250,7 @@ body{
     margin-top: 25px;
     z-index: 2;
     filter: brightness(25%);
+    transition: 0.5s ease-in-out;
 }
 .LogOut_img{
     width: 40px;
@@ -244,6 +258,7 @@ body{
     margin-top: 25px;
     z-index: 2;
     filter: brightness(25%);
+    transition: 0.5s ease-in-out;
 }
 
 .Avatar2{
@@ -287,6 +302,7 @@ body{
     background:white;
     border-radius: 60px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    transition: 0.5s ease-in-out;
 }
 
 .Menu_button{
@@ -297,6 +313,7 @@ body{
     background:white;
     border-radius: 60px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    transition: 0.5s ease-in-out;
 }
 
 

@@ -21,7 +21,7 @@
             position: absolute;
             width: 0px;
             height: 150px;
-            left: -35px;
+            left: 0px;
             top: 130px;
             z-index: 1;
         }
@@ -52,7 +52,7 @@
                 <div class="AllVideos">
                       <% if (Video.length != 0) { %>
                         <% Video.forEach(function(v){ %>
-                            <div class="player" style='width:30%'>
+                            <div class="player" style='width:30%; min-width: 170px; margin-bottom: 20px;'>
                                 <video src="/Public/Files/<%=v%>" class="video" ontimeupdate="Progress(this)"></video>
                                 <div class="controls" onmouseover="DontHidden(this)" onmouseleave="Hidden(this)">
                                     <img src="/Public/ICON/Play.svg" class="PlayPause" width="20px" onclick="Play(this)">

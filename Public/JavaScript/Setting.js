@@ -95,6 +95,7 @@ function SendFile(){
     let form = document.querySelector('form');
     let FD = new FormData();
     FD.append('image', form.avatar.files[0]);
+    console.log(form.avatar.files[0]);
     var request = new XMLHttpRequest();
         request.open('POST','/Modules/Setting', true);
         request.send(FD);

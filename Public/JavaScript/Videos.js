@@ -50,8 +50,8 @@ function SendFile(){
         let answer = JSON.parse(request.response);
         if(answer.result == 'AvatarDone'){
             document.querySelector('.AvatarView').style.border="3px solid #66c15e";
-            document.querySelector('.AllVideos').innerHTML += `<div class="player" >
-                                                                    <video src="/Public/Files/Superman vs Batman & Green Lantern _ Justice League_ War.mp4" class="video" width="100%" ontimeupdate="Progress(this)"></video>
+            document.querySelector('.AllVideos').innerHTML += `<div class="player" style="width:30%; min-width: 170px; margin-bottom: 20px;" >
+                                                                    <video src="/Public/Files/${answer.video}" class="video" width="100%" ontimeupdate="Progress(this)"></video>
                                                                     <div class="controls" onmouseover="DontHidden(this)" onmouseleave="Hidden(this)">
                                                                         <img src="/Public/ICON/Play.svg" class="PlayPause" width="20px" onclick="Play(this)">
                                                                         <input type="range" name="ProgressBar" class="ProgressBar" min="0" max="100" step="0.05" value="0" oninput="Rewind(this)">

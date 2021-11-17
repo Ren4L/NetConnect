@@ -32,7 +32,13 @@ router.get('/:id',(req, res)=>{
       else{
         author.avatar = `<img src="/Public/Files/${author.avatar}" alt="Error" class="Avatar_News">`
       }
-      res.render('FullNews',{avatar:avatar, avatar2:avatar2, title:news.title, content:news.content, NewsPhoto:news.NewsPhoto, author:news.author, date:`${new Date(news.date).toLocaleString().slice(0,10)} ${new Date(news.date).toLocaleTimeString().slice(0,-3)}`, avatarAuthor:author.avatar, dopPhoto:news.dopPhoto})
+      if(req.session.moder){
+        res.render('FullNews',{avatar:avatar, avatar2:avatar2, title:news.title, content:news.content, NewsPhoto:news.NewsPhoto, author:news.author, date:`${new Date(news.date).toLocaleString().slice(0,10)} ${new Date(news.date).toLocaleTimeString().slice(0,-3)}`, avatarAuthor:author.avatar, dopPhoto:news.dopPhoto})
+      }
+      else{
+        res.render('FullNewsNotModer',{avatar:avatar, avatar2:avatar2, title:news.title, content:news.content, NewsPhoto:news.NewsPhoto, author:news.author, date:`${new Date(news.date).toLocaleString().slice(0,10)} ${new Date(news.date).toLocaleTimeString().slice(0,-3)}`, avatarAuthor:author.avatar, dopPhoto:news.dopPhoto})
+      }
+      
     });
 
 module.exports = router;

@@ -8,8 +8,8 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 17vw;
-    height: 17vw;
+    width: 250px;
+    height: 250px;
     background: #FFFFFF;
     border-radius: 40px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
@@ -47,6 +47,7 @@ a{
 .Container{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-around;
     margin-left: -1vw;
@@ -69,6 +70,8 @@ a{
     border-radius: 40px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
 }
+
+figcaption{font-size: 12pt;}
 
 .ListFPV:hover{
     cursor: pointer;
@@ -194,6 +197,7 @@ figure{
 
 .imgNum{
     height: 10vw;
+    min-height: 100px;
     padding: 20px;
     border-radius: 30px;
     transition: 0.3s ease-in-out;
@@ -290,28 +294,100 @@ figure{
     font-size: 16pt;
     font-family: Roboto;
 }
-
+.Posts{
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+}
 .Post{
     display: flex;
     flex-direction: column;
-    width: 96%;
+    width: 100%;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 50px;
     filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
     padding: 30px;
-    margin-top: 30px;
-    margin-right: 35px;
     overflow: hidden;
+    margin-top: 30px;
+}
+.date{
+    text-align: center;
+    margin-left: 15px;
 }
 
 .Like{
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     margin-left: 10px;
+    margin-bottom: 5px;
     background: url('/Public/ICON/Like.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;
     background-repeat: no-repeat;
     transition: 0.5s;
+}
+
+.Like:hover{
+    cursor: pointer;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.LikeOn{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background: url('/Public/ICON/LikeOn.svg');
+    background-size: 30px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.LikeOn:hover{
+    cursor: pointer;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.leftPart{
+    display: flex; 
+    flex-direction: column;
+}
+.rightPart{
+    display: flex; 
+    flex-direction: column; 
+    width: 60%;
+    margin-left: 10px;
+}
+
+@media (max-width:726px) {
+    .rightPart{width: 100%; margin-top: 20px; align-items: center;}
+    .leftPart{width: 100%; align-items: center;}
+    .ListAll{width: 70%;}
+    figcaption{font-size: 10pt;}
+    .avatarContainer{width: 50%;}
+    .avatar{width: 170px; height: 170px;}
+    .titleContainer{margin-left: 0px;}
+    .Show{font-size: 14pt; align-items: center;}
+    .PIText{font-size: 12pt; margin-top: 8px;}
+    .Statis{font-size: 12pt; flex-wrap: wrap; justify-content: space-around;}
+    .createPost{flex-wrap: wrap; align-items: center;}
+    .Posts{width: 100%; align-items: center;}
+}
+
+@media (max-width:550px) {
+    .leftPart{width: 100%; align-items: center;}
+    .ListAll{width: 100%;}
+    figcaption{font-size: 9pt;}
+    .avatarContainer{width: 100%;}
+    .avatar{width: 170px; height: 170px;}
+    .Post{padding: 15px; border-radius: 30px;}
 }
