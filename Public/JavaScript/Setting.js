@@ -97,7 +97,7 @@ function SendFile(){
     FD.append('image', form.avatar.files[0]);
     console.log(form.avatar.files[0]);
     var request = new XMLHttpRequest();
-        request.open('POST','/Modules/Setting', true);
+        request.open('POST','/modules/Setting', true);
         request.send(FD);
     request.addEventListener('load',()=>{
         let answer = JSON.parse(request.response);
@@ -137,7 +137,7 @@ function Send(){
     if(flag){
         var request = new XMLHttpRequest();
         request.overrideMimeType("application/json");
-        request.open('POST','/Modules/Setting', true);
+        request.open('POST','/modules/Setting', true);
         request.send(FD);
     }
     request.addEventListener('load',()=>{

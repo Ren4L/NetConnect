@@ -103,11 +103,11 @@ figcaption{font-size: 12pt;}
     cursor: pointer;
 }
 
-.ShowIcon{
+.Showicon{
     margin-left: 10px;
     width: 35px;
     height: 35px;
-    background: url('/Public/ICON/Show.svg');
+    background: url('/public/icon/Show.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;
@@ -320,7 +320,7 @@ figure{
     height: 40px;
     margin-left: 10px;
     margin-bottom: 5px;
-    background: url('/Public/ICON/Like.svg');
+    background: url('/public/icon/Like.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;
@@ -341,7 +341,7 @@ figure{
     height: 40px;
     margin-left: 10px;
     margin-bottom: 5px;
-    background: url('/Public/ICON/LikeOn.svg');
+    background: url('/public/icon/LikeOn.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;

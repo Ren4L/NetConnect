@@ -1,44 +1,65 @@
 const express = require('express');
-const fs = require('fs');
 const router = express.Router();
+const { getDatabase, ref, child, set, get } = require("firebase/database");
+const firebasedb = require('./database');
+const db = getDatabase();
+const refdb = ref(getDatabase());
+
 
 
 router.use(express.json());
-router.get('/:id',(req, res)=>{
-  fs.access(`./Public/Users/${req.params.id}.json`,(error)=>{
-    if(error){
+router.get('/:id',async(req, res)=>{
+  if(req.session.userName != undefined){
+    let FullList, flag = false;
+    await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
+    let Acc, PAcc, index, Pindex;
+    FullList.forEach(element => {
+      if(element.login == req.session.userName){
+        Acc = element;
+        index = FullList.indexOf(element);
+      }
+    });
+    FullList.forEach(element => {
+      if(element.login == req.params.id){
+        flag = true;
+        PAcc = element;
+        Pindex = FullList.indexOf(element);
+      }
+    });
+    if(!flag){
       res.render('404NotFound');
     }
     else{
-      let readAcc = fs.readFileSync(`./Public/Users/${req.params.id}.json`,'utf-8');
-      let Acc = new Function(`return(${readAcc})`)();
       let Person ={
-        login:Acc.login,
-        avatar:'',
+        login:PAcc.login,
+        avatar:undefined,
         friends:[],
         Photos:[],
         Videos:[],
-        FriendsNum:Acc.friends != undefined ? Acc.friends.length : 0,
-        PhotosNum:Acc.Photos != undefined ? Acc.Photos.length : 0,
-        VideosNum:Acc.Videos != undefined ? Acc.Videos.length : 0,
-        PostsNum:Acc.Posts != undefined ? Acc.Posts.length : 0,
+        Posts:[],
+        FriendsNum:PAcc.friends != undefined ? PAcc.friends.length : 0,
+        PhotosNum:PAcc.Photos != undefined ? PAcc.Photos.length : 0,
+        VideosNum:PAcc.Videos != undefined ? PAcc.Videos.length : 0,
+        PostsNum:PAcc.Posts != undefined ? PAcc.Posts.length : 0,
       }
-      if(Acc.avatar==''){
-        Person.avatar = `<div class="avatar">${Acc.login.slice(0,1)}</div>`;
+      if(PAcc.avatar == undefined){
+        Person.avatar = `<div class="avatar">${PAcc.login.slice(0,1)}</div>`;
       }
       else{
-        Person.avatar = `<img src="/Public/Files/${Acc.avatar}" class="avatar">`;
+        Person.avatar = `<img src="${PAcc.avatar}" class="avatar">`;
       }
 
       for(let i = 0; i < (Person.FriendsNum < 3 ? Person.FriendsNum : 3 ); i++){
-        let readFr = fs.readFileSync(`./Public/Users/${Acc.friends[i].login}.json`,'utf-8');
-        let Fr = new Function(`return(${readFr})`)();
+        let Fr;
+        FullList.forEach(el=>{
+          if(el.login == PAcc.friends[i])Fr = el;
+        })
         let buf = {
           login:Fr.login,
-          avatar:''
+          avatar:undefined
         }
-        if(Fr.avatar != ''){
-          buf.avatar = `<img src="/Public/Files/${Fr.avatar}" class="avatarFriend">`;
+        if(Fr.avatar != undefined){
+          buf.avatar = `<img src="${Fr.avatar}" class="avatarFriend">`;
         }
         else{
           buf.avatar = `<div class="avatarFriend">${buf.login.slice(0,1)}</div>`;
@@ -48,27 +69,27 @@ router.get('/:id',(req, res)=>{
 
       for(let i = 0; i < (Person.PhotosNum < 3 ? Person.PhotosNum : 3 ); i++){
         let buf = {
-          photo:Acc.Photos[i]
+          photo:PAcc.Photos[i]
         }
         Person.Photos.push(buf);
       }
       
       for(let i = 0; i < (Person.VideosNum < 3 ? Person.VideosNum : 3 ); i++){
         let buf = {
-          video:Acc.Videos[i]
+          video:PAcc.Videos[i]
         }
         Person.Videos.push(buf);
       }
 
       let PI = {
-        Firstname:(Acc.firstName!=undefined?Acc.firstName:''),
-        Lastname:(Acc.lastName!=undefined?Acc.lastName:''),
-        Patronymic:(Acc.patronymic!=undefined?Acc.patronymic:''),
-        Gender: (Acc.gender!=undefined?Acc.gender:''),
-        Date: (Acc.date!=undefined?Acc.date:''),
-        Country: (Acc.country!=undefined?Acc.country:''),
-        City: (Acc.city!=undefined?Acc.city:''),
-        Visibility: (Acc.visibility!=undefined?Acc.visibility:'')
+        Firstname:(PAcc.firstName!=undefined?PAcc.firstName:''),
+        Lastname:(PAcc.lastName!=undefined?PAcc.lastName:''),
+        Patronymic:(PAcc.patronymic!=undefined?PAcc.patronymic:''),
+        Gender: (PAcc.gender!=undefined?PAcc.gender:''),
+        Date: (PAcc.date!=undefined?PAcc.date:''),
+        Country: (PAcc.country!=undefined?PAcc.country:''),
+        City: (PAcc.city!=undefined?PAcc.city:''),
+        Visibility: (PAcc.visibility!=undefined?PAcc.visibility:'')
       }
       let PIEnd = '';
       if(PI.Visibility == '' || PI.Visibility == 'Everything'){
@@ -82,10 +103,10 @@ router.get('/:id',(req, res)=>{
         }
       }
       else if(PI.Visibility == 'Only friends'){
-        if(Acc.friends != undefined){
+        if(PAcc.friends != undefined){
           let flag = false;
-          for(let i = 0; i < Acc.friends.length; i++){
-            if(Acc.friends[i].login == req.session.userName){
+          for(let i = 0; i < PAcc.friends.length; i++){
+            if(PAcc.friends[i] == req.session.userName){
               flag = true;
             }
           }
@@ -108,45 +129,45 @@ router.get('/:id',(req, res)=>{
         PIEnd = `<div class="PIText" align="center"><strong>Information is not available</strong></div>`
       }
       let Posts = new Array();
-      if(Acc.Posts == undefined){Acc.Posts = [];}
-      for (let i = 0; i < Acc.Posts.length; i++) {
-        let readPost = fs.readFileSync(`./Public/Posts/${req.params.id}/${Acc.Posts[i].date}.json`);
-        let post = new Function(`return ${readPost}`)();
+      if(PAcc.Posts == undefined){PAcc.Posts = [];}
+      for (let i = 0; i < PAcc.Posts.length; i++) {
+        let post;
+        PAcc.Posts.forEach(el=>{
+          if(el.date == PAcc.Posts[i].date)post = el;
+        })
+        if(post.likes == undefined) post.likes = [];
+        post.login = PAcc.login;
         post.classLike = post.likes.indexOf(req.session.userName) == -1 ? 'Like' : 'LikeOn'; 
         post.likes = post.likes.length;
-        post.avatar = Acc.avatar == '' ? `<div class="News_avatar_container">${post.login.slice(0,1)}</div>` : `<img src="/Public/Files/${Acc.avatar}" class="News_avatar_container">`;
+        post.avatar = PAcc.avatar == undefined ? `<div class="News_avatar_container">${PAcc.login.slice(0,1)}</div>` : `<img src="${PAcc.avatar}" class="News_avatar_container">`;
         Posts.push(post);
       }
       Posts.reverse();
-        let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
-        let obj = new Function(`return (${readFile})`)();
         let flag = false;
-        for (let i = 0; i < obj.Users.length; i++) {
-          if(obj.Users[i].login == req.session.userName){
-            login = obj.Users[i].login;
+        for (let i = 0; i < FullList.length; i++) {
+          if(FullList[i].login == req.session.userName){
+            login = FullList[i].login;
             flag = true;
           }
         }
         if(req.session.userName == undefined){
-            avatar = '<img src="/Public/ICON/Enter.svg" class="Avatar">';
-            avatar2 = '<img src="/Public/ICON/Enter.svg" class="Avatar2">';
+            avatar = '<img src="/public/icon/Enter.svg" class="Avatar">';
+            avatar2 = '<img src="/public/icon/Enter.svg" class="Avatar2">';
           }
           else{
-            let readFile = fs.readFileSync(`./Public/Users/${req.session.userName}.json`, 'utf-8');
-            let obj = new Function(`return (${readFile})`)();
-            if(obj.avatar == ''){
+            if(Acc.avatar == undefined){
               avatar =`<div class="Avatar">${req.session.userName.slice(0,1)}</div>`;
               avatar2 = `<div class="Avatar2">${req.session.userName.slice(0,1)}</div>`
             }
             else{
-              avatar = `<img src="/Public/Files/${obj.avatar}" class="Avatar">`;
-              avatar2 = `<img src="/Public/Files/${obj.avatar}" class="Avatar2">`;
+              avatar = `<img src="${Acc.avatar}" class="Avatar">`;
+              avatar2 = `<img src="${Acc.avatar}" class="Avatar2">`;
             }
           }
           if(flag){
             if(req.session.moder){
               if(req.session.userName == req.params.id){
-                res.redirect('/Modules/Home');
+                res.redirect('/modules/Home');
               }
               else{
                 res.render('PersonalPageTemplate',{avatar:avatar, avatar2:avatar2, Person:Person, PI:PIEnd, Posts:Posts})
@@ -154,7 +175,7 @@ router.get('/:id',(req, res)=>{
             }
             else{
               if(req.session.userName == req.params.id){
-                res.redirect('/Modules/HomeNotModer');
+                res.redirect('/modules/HomeNotModer');
               }
               else{
                 res.render('PersonalPageTemplateNotModer',{avatar:avatar, avatar2:avatar2, Person:Person, PI:PIEnd, Posts:Posts})
@@ -165,48 +186,69 @@ router.get('/:id',(req, res)=>{
             res.render('Authorization',{avatar:avatar, avatar2:avatar2})
           }
     }
-  });
+  }
+  else{res.render('Authorization',{avatar:avatar, avatar2:avatar2})}
 })
-  .post('/', (req, res)=>{
+  .post('/', async(req, res)=>{
+    let FullList;
+    await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
+    let Acc, index;
+    FullList.forEach(element => {
+      if(element.login == req.session.userName){
+        Acc = element;
+        index = FullList.indexOf(element);
+      }
+    });
+    let AccFr, indexFr;
+    FullList.forEach(el=>{
+      if(el.login == req.body.login){
+        AccFr = el;
+        indexFr = FullList.indexOf(el);
+      }
+    })
     switch (req.body.post) {
       case "FrNum":
-        let readFile = fs.readFileSync(`./Public/Users/${req.body.login}.json`, 'utf-8');
-        let obj = new Function(`return ${readFile}`)();
         let List = {list:[]};
-        for (let i = 0; i < obj.friends.length; i++) {
-          let read = fs.readFileSync(`./Public/Users/${obj.friends[i].login}.json`);
-          let objF = new Function(`return ${read}`)();
+        for (let i = 0; i < AccFr.friends.length; i++) {
+          let F;
+          FullList.forEach(el=>{
+            if(AccFr.friends[i] == el.login)F = el;
+          })
           let buf = {
-            login: objF.login,
-            avatar: objF.avatar
+            login: F.login,
+            avatar: F.avatar
           }
           List.list.push(buf);
         }
         res.json(List);
         break;
       case "PhNum":
-        let readFileP = fs.readFileSync(`./Public/Users/${req.body.login}.json`, 'utf-8');
-        let objP = new Function(`return ${readFileP}`)();
-        res.json(objP.Photos);
+        res.json(AccFr.Photos);
         break;
       case "ViNum":
-        let readFileV = fs.readFileSync(`./Public/Users/${req.body.login}.json`, 'utf-8');
-        let objV = new Function(`return ${readFileV}`)();
-        res.json(objV.Videos);
+        res.json(AccFr.Videos);
         break;
       case "Like":
-        let readPost = fs.readFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`);
-        let post = new Function(`return ${readPost}`)();
+        let post;
+        AccFr.Posts.forEach(el=>{
+          if(el.date == req.body.name)post = el;
+        })
+        if(post.likes == undefined)post.likes = [];
         post.likes.push(req.session.userName);
-        fs.writeFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`, JSON.stringify( post, null, ' '));
+        FullList[indexFr]=AccFr;
+        await set(ref(db, `users`), FullList);
         let bufLK = {bool:true};
         res.json(bufLK);
       break;
       case "DisLike":
-        let readPostDis = fs.readFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`);
-        let postDis = new Function(`return ${readPostDis}`)();
+        let postDis;
+        AccFr.Posts.forEach(el=>{
+          if(el.date == req.body.name)postDis = el;
+        })
+        if(postDis.likes == undefined)postDis.likes = [];
         postDis.likes.splice(postDis.likes.indexOf(req.session.userName), postDis.likes.indexOf(req.session.userName) + 1);
-        fs.writeFileSync(`./Public/Posts/${req.body.login}/${req.body.name}.json`, JSON.stringify( postDis, null, ' '));
+        FullList[indexFr]=AccFr;
+        await set(ref(db, `users`), FullList);
         let bufDis = {bool:true};
         res.json(bufDis);
       break;

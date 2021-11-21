@@ -79,12 +79,12 @@ document.querySelector(".Menu").addEventListener("click",function(e){
             }
         }
 
-        if(target.className=="Home_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Home",500)}else
-        if(target.className=="News_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/News",500)}else
-        if(target.className=="Posts_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Posts",500)}else
-        if(target.className=="Friends_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Friends",500)}else
-        if(target.className=="Photos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Photos",500)}else
-        if(target.className=="Videos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Videos",500)};
+        if(target.className=="Home_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Home",500)}else
+        if(target.className=="News_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/News",500)}else
+        if(target.className=="Posts_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Posts",500)}else
+        if(target.className=="Friends_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Friends",500)}else
+        if(target.className=="Photos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Photos",500)}else
+        if(target.className=="Videos_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Videos",500)};
             
 
 });
@@ -147,9 +147,9 @@ document.querySelector(".Personal_Menu").addEventListener("click",function(e){
                 }, 500);
             }
         }
-        if(target.className=="Add_News" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/CreateNews",500)}else
-        if(target.className=="Setting_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Setting",500)}else
-        if(target.className=="LogOut_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/Modules/Authorization",500)};
+        if(target.className=="Add_News" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/CreateNews",500)}else
+        if(target.className=="Setting_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Setting",500)}else
+        if(target.className=="LogOut_img" && target!=document.querySelector("#active")){setTimeout(() => document.location.href="/modules/Authorization",500)};
         
 
 });

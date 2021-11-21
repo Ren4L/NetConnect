@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Public/CSS/Template.css">
-    <link rel="stylesheet" href="/Public/CSS/FullNewsTemplate.css">
-    <link rel="shortcut icon" href="/Public/ICON/News_active.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/public/css/Template.css">
+    <link rel="stylesheet" href="/public/css/FullNewsTemplate.css">
+    <link rel="shortcut icon" href="/public/icon/News_active.svg" type="image/x-icon">
     <style>    
         .activeblock{
             position: absolute;
@@ -44,21 +44,21 @@
         <div class="Menu_container">
             <nav class="Menu">
                 <div class="hidden"></div>
-                <img src="/Public/ICON/Home_active.svg" alt="Error" class="Home_img">
-                <img src="/Public/ICON/News_active.svg" alt="Error" class="News_img" id="active">
-                <img src="/Public/ICON/Posts_active.svg" alt="Error" class="Posts_img" >
-                <img src="/Public/ICON/Friends_active.svg" alt="Error" class="Friends_img">
-                <img src="/Public/ICON/Photos_active.svg" alt="Error" class="Photos_img" >
-                <img src="/Public/ICON/Videos_active.svg" alt="Error" class="Videos_img">
-                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu">
-                <img src="/Public/ICON/ActiveBlock.png" alt="Error" class="activeblock">
+                <img src="/public/icon/Home_active.svg" alt="Error" class="Home_img">
+                <img src="/public/icon/News_active.svg" alt="Error" class="News_img" id="active">
+                <img src="/public/icon/Posts_active.svg" alt="Error" class="Posts_img" >
+                <img src="/public/icon/Friends_active.svg" alt="Error" class="Friends_img">
+                <img src="/public/icon/Photos_active.svg" alt="Error" class="Photos_img" >
+                <img src="/public/icon/Videos_active.svg" alt="Error" class="Videos_img">
+                <img src="/public/icon/Arrow_Right.svg" alt="Error" class="slide_menu">
+                <img src="/public/icon/ActiveBlock.png" alt="Error" class="activeblock">
             </nav>
         </div>
         <div class="Container">
             <div class="FullNews">
-                <a href="/Modules/News" ><img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="ArrowOut" style="transform: scale(-1,1);"></a>
+                <a href="/modules/News" ><img src="/public/icon/Arrow_Right.svg" alt="Error" class="ArrowOut" style="transform: scale(-1,1);"></a>
                 <div>
-                    <img src="/Public/Files/<%=NewsPhoto%>" class="NewsPhoto">
+                    <img src="<%=NewsPhoto%>" class="NewsPhoto">
                     <div class="title"><%=title%></div>
                     <div class="content"><%=content%></div>
                 </div>
@@ -80,23 +80,23 @@
         <div class="Personal_Menu_container">
             <nav class="Personal_Menu">
                 <%-avatar%>
-                <img src="/Public/ICON/Setting.svg" alt="Error" class="Setting_img">
-                <img src="/Public/ICON/LogOut.svg" alt="Error" class="LogOut_img">
-                <img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="slide_menu_right">
-                <img src="/Public/ICON/ActiveBlock_right.png" alt="Error" class="activeblock_right">
+                <img src="/public/icon/Setting.svg" alt="Error" class="Setting_img">
+                <img src="/public/icon/LogOut.svg" alt="Error" class="LogOut_img">
+                <img src="/public/icon/Arrow_Right.svg" alt="Error" class="slide_menu_right">
+                <img src="/public/icon/ActiveBlock_right.png" alt="Error" class="activeblock_right">
             </nav>
         </div>
         <div class="flex_line">
             <div class="Menu_button">
-                <img src="/Public/ICON/Menu.svg" alt="Error" class="Menu_img">
+                <img src="/public/icon/Menu.svg" alt="Error" class="Menu_img">
             </div>
             <div class="Personal_Menu_button">
                 <%-avatar2%>
             </div>
         </div>
     </main>
-    <script src="/Public/JavaScript/slider.js"></script>
-    <script src="/Public/JavaScript/Menu_AnimationNotModer.js"></script>
+    <script src="/public/javascript/slider.js"></script>
+    <script src="/public/javascript/Menu_AnimationNotModer.js"></script>
     <script>
         function Check() {
             Check_Photo=document.querySelector('.NewsPhoto');

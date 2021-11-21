@@ -62,7 +62,7 @@ function CheckFr(){
         if(document.querySelector('.Search').value != '' && document.querySelector('.Search').value != ' '){
             var request = new XMLHttpRequest();
             request.overrideMimeType("application/json");
-            request.open('POST','/Modules/Friends',true);
+            request.open('POST','/modules/Friends',true);
             request.setRequestHeader('Content-type', 'application/json');
             let inquiry = {name:document.querySelector('.Search').value, post:'search'};
             request.addEventListener('load', ()=>{
@@ -84,10 +84,10 @@ function CheckFr(){
                             but = 'button'
                             break;
                         }
-                        if(answer.name[i].avatar != '' && document.querySelector('.Search').value != '' ){
+                        if(answer.name[i].avatar != undefined && document.querySelector('.Search').value != '' ){
                             document.querySelector('.FriendsContainer').innerHTML += `<div class="FriendsList">
                                                                                         <div class="AvText">
-                                                                                            <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
+                                                                                            <img src="${answer.name[i].avatar}" class="FriendsAvatar">
                                                                                             <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                                                 <div><strong>Login:</strong> ${answer.name[i].login}</div>
                                                                                                 <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
@@ -96,7 +96,7 @@ function CheckFr(){
                                                                                         <div class="${but}" value="${answer.name[i].login}"></div>
                                                                                     </div>`;
                         }
-                        else if(answer.name[i].avatar == '' && document.querySelector('.Search').value != '' ){
+                        else if(answer.name[i].avatar == undefined && document.querySelector('.Search').value != '' ){
                             document.querySelector('.FriendsContainer').innerHTML += `<div class="FriendsList">
                                                                                         <div class="AvText">
                                                                                             <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
@@ -123,7 +123,7 @@ function CheckFr(){
 function AddFriend(e){
         var request = new XMLHttpRequest();
         request.overrideMimeType("application/json");
-        request.open('POST','/Modules/Friends',true);
+        request.open('POST','/modules/Friends',true);
         request.setRequestHeader('Content-type', 'application/json');
         let inquiry;
         switch (e.className) {
@@ -131,9 +131,7 @@ function AddFriend(e){
                 inquiry = {name:e.getAttribute('value'), post:'add'};
                 request.addEventListener('load', ()=>{
                     let answer = JSON.parse(request.response);
-                    if(answer){
-                        e.transition = '0.3s'
-                        e.style.background = `url('/Public/ICON/FriendAdd.svg')`;
+                    if(answer.flag){
                         e.classList.remove('buttonAdd');
                         e.classList.add('buttonFr');
                     }
@@ -150,20 +148,19 @@ function AddFriend(e){
                 });
             break;
         }
-        console.log(inquiry);
         request.send(JSON.stringify(inquiry));
 }
 
 function FriendsLoad(){
     let req = new XMLHttpRequest();
     req.overrideMimeType('application/json');
-    req.open('POST', '/Modules/Friends', true);
+    req.open('POST', '/modules/Friends', true);
     req.setRequestHeader('Content-type', 'application/json');
     req.addEventListener('load', ()=>{
        let answer = JSON.parse(req.response);
        console.log(answer);
        for(let i = 0; i < answer.name.length; i++){
-        if(answer.name[i].avatar == ''){
+        if(answer.name[i].avatar == undefined){
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
                                                                 <div class="AvText">
                                                                     <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
@@ -174,14 +171,14 @@ function FriendsLoad(){
                                                                 </div>
                                                                 <div style="display:flex; justify-content: center;align-items: center;">
                                                                         <div class="delFr" value="${answer.name[i].login}"></div>
-                                                                        <a href="/Modules/PersonalPage/${answer.name[i].login}"><img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="ArroW"></a>
+                                                                        <a href="/modules/PersonalPage/${answer.name[i].login}"><img src="/public/icon/Arrow_Right.svg" alt="Error" class="ArroW"></a>
                                                                 </div>
                                                             </div>`;
        }
        else{
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
                                                                     <div class="AvText">
-                                                                        <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
+                                                                        <img src="${answer.name[i].avatar}" class="FriendsAvatar">
                                                                         <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                             <div><strong>Login:</strong> ${answer.name[i].login}</div>
                                                                             <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
@@ -189,7 +186,7 @@ function FriendsLoad(){
                                                                     </div>
                                                                     <div style="display:flex; justify-content: center;align-items: center;">
                                                                         <div class="delFr" value="${answer.name[i].login}"></div>
-                                                                        <a href="/Modules/PersonalPage/${answer.name[i].login}"><img src="/Public/ICON/Arrow_Right.svg" alt="Error" class="ArroW"></a>
+                                                                        <a href="/modules/PersonalPage/${answer.name[i].login}"><img src="/public/icon/Arrow_Right.svg" alt="Error" class="ArroW"></a>
                                                                     </div>
                                                                 </div>`;
         }
@@ -204,7 +201,7 @@ function FriendsLoad(){
 function delFr(e){
     let req = new XMLHttpRequest();
     req.overrideMimeType('application/json');
-    req.open('POST', '/Modules/Friends', true);
+    req.open('POST', '/modules/Friends', true);
     req.setRequestHeader('Content-type', 'application/json');
     req.addEventListener('load', ()=>{
        let answer = JSON.parse(req.response);
@@ -217,13 +214,13 @@ function delFr(e){
 function applicationsLoad(){
     let req = new XMLHttpRequest();
     req.overrideMimeType('application/json');
-    req.open('POST', '/Modules/Friends', true);
+    req.open('POST', '/modules/Friends', true);
     req.setRequestHeader('Content-type', 'application/json');
     req.addEventListener('load', ()=>{
        let answer = JSON.parse(req.response);
        console.log(answer);
        for(let i = 0; i < answer.name.length; i++){
-           if(answer.name[i].avatar == ""){
+           if(answer.name[i].avatar == undefined){
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
                                                                     <div class="AvText">
                                                                         <div class="FriendsAvatar">${answer.name[i].login.slice(0,1)}</div>
@@ -241,7 +238,7 @@ function applicationsLoad(){
            else{
             document.querySelector('.ContainerFr').innerHTML += `<div class="FriendsList" style="width:84%">
                                                                     <div class="AvText">
-                                                                        <img src="/Public/Files/${answer.name[i].avatar}" class="FriendsAvatar">
+                                                                        <img src="${answer.name[i].avatar}" class="FriendsAvatar">
                                                                         <div style="display: flex; flex-direction: column; margin-left: 25px;">
                                                                             <div><strong>Login:</strong> ${answer.name[i].login}</div>
                                                                             <div style="margin-top: 20px;"><strong>Email:</strong> ${answer.name[i].email}</div>
@@ -266,7 +263,7 @@ function applicationsLoad(){
 function AcceptFr(e){
     let req = new XMLHttpRequest();
     req.overrideMimeType('application/json');
-    req.open('POST', '/Modules/Friends', true);
+    req.open('POST', '/modules/Friends', true);
     req.setRequestHeader('Content-type', 'application/json');
     req.addEventListener('load', ()=>{
        let answer = JSON.parse(req.response);
@@ -279,7 +276,7 @@ function AcceptFr(e){
 function NotAcceptFr(e){
     let req = new XMLHttpRequest();
     req.overrideMimeType('application/json');
-    req.open('POST', '/Modules/Friends', true);
+    req.open('POST', '/modules/Friends', true);
     req.setRequestHeader('Content-type', 'application/json');
     req.addEventListener('load', ()=>{
        let answer = JSON.parse(req.response);

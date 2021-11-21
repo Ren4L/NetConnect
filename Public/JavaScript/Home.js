@@ -4,19 +4,19 @@ let LikeFlag = true;
 document.querySelector('.Show').addEventListener('click', ()=>{
     if(flag){
         flag = false;
-        document.querySelector('.ShowIcon').style.transform = `scale(1,-1)`;
+        document.querySelector('.Showicon').style.transform = `scale(1,-1)`;
         document.querySelector('.PI').style.height = `${40 + (document.querySelector('.PI').children.length - 1) * 30}px`;
     }
     else{
         flag = true;
-        document.querySelector('.ShowIcon').style.transform = `scale(1,1)`;
+        document.querySelector('.Showicon').style.transform = `scale(1,1)`;
         document.querySelector('.PI').style.height = '40px';
     }
 });
 
 document.querySelector('.ListFPV').addEventListener('click',(e)=>{
     let target = e.target;
-    if(target.tagName != 'FIGURE' && target.tagName != 'FIGCAPTION' && target.tagName != 'A' && target.tagName != 'IMG'){
+    if(target.tagName != 'FIGURE' && target.tagName != 'FIGCAPTION' && target.tagName != 'A' && target.tagName != 'IMG' && target.className != 'avatarFriend'){
         OpenFriend();
     }
 });
@@ -25,7 +25,7 @@ function OpenFriend(){
     if(document.querySelector('.FrNum').innerHTML.match(/(.+?)<br>/)[1] != 0){
         let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST','/Modules/Home', true)
+        req.open('POST','/modules/Home', true)
         req.setRequestHeader('Content-type', 'application/json');
         let container = document.createElement('div');
         let back = document.createElement('div');
@@ -39,11 +39,11 @@ function OpenFriend(){
             let answer = JSON.parse(req.response);
             FrList.innerHTML += '<div class="Con"></div>';
             for (let i = 0; i < answer.list.length; i++) {
-                if(answer.list[i].avatar != ''){
-                    document.querySelector('.Con').innerHTML += `<a href="/Modules/PersonalPage/${answer.list[i].login}" style="display:flex; flex-direction:column; align-items:center; padding: 15px;"><img src = "/Public/Files/${answer.list[i].avatar}" class="avatarFr"><div style="font-size:20pt">${answer.list[i].login}</div></a>`
+                if(answer.list[i].avatar != undefined){
+                    document.querySelector('.Con').innerHTML += `<a href="/modules/PersonalPage/${answer.list[i].login}" style="display:flex; flex-direction:column; align-items:center; padding: 15px;"><img src = "${answer.list[i].avatar}" class="avatarFr"><div style="font-size:20pt">${answer.list[i].login}</div></a>`
                 } 
                 else{
-                    document.querySelector('.Con').innerHTML += `<a href="/Modules/PersonalPage/${answer.list[i].login}" style="display:flex; flex-direction:column; align-items:center; padding: 15px;"><div class="avatarFr">${answer.list[i].login.slice(0,1)}</div><div style="font-size:20pt">${answer.list[i].login}</div></a>`
+                    document.querySelector('.Con').innerHTML += `<a href="/modules/PersonalPage/${answer.list[i].login}" style="display:flex; flex-direction:column; align-items:center; padding: 15px;"><div class="avatarFr">${answer.list[i].login.slice(0,1)}</div><div style="font-size:20pt">${answer.list[i].login}</div></a>`
                 }   
             }
         });
@@ -60,7 +60,7 @@ function OpenPhoto(){
     if(document.querySelector('.PhNum').innerHTML.match(/(.+?)<br>/)[1] != 0){
         let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST','/Modules/Home', true)
+        req.open('POST','/modules/Home', true)
         req.setRequestHeader('Content-type', 'application/json');
         let container = document.createElement('div');
         let back = document.createElement('div');
@@ -74,8 +74,8 @@ function OpenPhoto(){
             let answer = JSON.parse(req.response);
             FrList.innerHTML += '<div class="Con"></div>';
             for (let i = 0; i < answer.length; i++) {
-                document.querySelector('.Con').innerHTML += `<img src="/Public/Files/${answer[i]}" class="imgNum">`;
-                document.querySelector(`[src="/Public/Files/${answer[i]}"]`).setAttribute('onclick', 'Full(this)');
+                document.querySelector('.Con').innerHTML += `<img src="${answer[i]}" class="imgNum">`;
+                document.querySelector(`[src="${answer[i]}"]`).setAttribute('onclick', 'Full(this)');
             }
         });
         let post = {post:'PhNum'};
@@ -92,7 +92,7 @@ function OpenVideo(){
     if(document.querySelector('.ViNum').innerHTML.match(/(.+?)<br>/)[1] != 0){
         let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST','/Modules/Home', true)
+        req.open('POST','/modules/Home', true)
         req.setRequestHeader('Content-type', 'application/json');
         let container = document.createElement('div');
         let back = document.createElement('div');
@@ -107,13 +107,13 @@ function OpenVideo(){
             FrList.innerHTML += '<div class="Con"></div>';
             for (let i = 0; i < answer.length; i++) {
                 document.querySelector('.Con').innerHTML += `<div class="player">
-                                                                <video src="/Public/Files/${answer[i]}" class="video" width="100%" ontimeupdate="Progress(this)"></video>
+                                                                <video src="${answer[i]}" class="video" width="100%" ontimeupdate="Progress(this)"></video>
                                                                 <div class="controls" onmouseover="DontHidden(this)" onmouseleave="Hidden(this)">
-                                                                    <img src="/Public/ICON/Play.svg" class="PlayPause" width="20px" onclick="Play(this)">
+                                                                    <img src="/public/icon/Play.svg" class="PlayPause" width="20px" onclick="Play(this)">
                                                                     <input type="range" name="ProgressBar" class="ProgressBar" min="0" max="100" step="0.05" value="0" oninput="Rewind(this)">
                                                                     <input type="range" name="volume" class="volume" min="0" max="1" step="0.005" value="1" oninput="Volume(this)">
                                                                     <div class="TwoX" onclick="Speed(this)">2X</div>
-                                                                    <img src="/Public/ICON/FullSrceenIn.svg" class="FullScreen" width="20px" onclick="FullScreen(this)">
+                                                                    <img src="/public/icon/FullSrceenIn.svg" class="FullScreen" width="20px" onclick="FullScreen(this)">
                                                                 </div>
                                                             </div>`;
                                                     document.querySelector('.video').setAttribute('ontimeupdate','Progress(this)');
@@ -169,11 +169,11 @@ function Full(e){
     back.setAttribute('onclick','del(this)');
     conPhoto.className = 'conPhoto';
     document.querySelector('.List').style.display = 'none';
-    container.innerHTML = `<img src="/Public/ICON/swipe.svg" class="swLeft">`
-    conPhoto.innerHTML += `<img src="/Public/Files/${arr[index].getAttribute('src').match(/\/Public\/Files\/(.{32})/)[1]}" class="OpenPhoto">`
+    container.innerHTML = `<img src="/public/icon/swipe.svg" class="swLeft">`
+    conPhoto.innerHTML += `<img src="${arr[index].getAttribute('src')}" class="OpenPhoto">`
     container.prepend(back); 
     container.append(conPhoto);
-    container.innerHTML += `<img src="/Public/ICON/swipe.svg" class="swRight">`
+    container.innerHTML += `<img src="/public/icon/swipe.svg" class="swRight">`
     document.body.prepend(container);
     document.querySelector('.containerModal2').setAttribute('onclick', 'del(this)');
     document.querySelector('.swRight').setAttribute('onclick', 'Right()');
@@ -291,7 +291,7 @@ function Create(e){
     else{
         let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST', '/Modules/Home');
+        req.open('POST', '/modules/Home');
         req.setRequestHeader('Content-type', 'application/json');
         req.addEventListener('load',()=>{
             let answer = JSON.parse(req.response);
@@ -308,10 +308,10 @@ function Create(e){
                             </div>
                             <div class="News_Footer">
                                 <div style="display: flex; align-items: center; ">
-                                    ${answer.avatar == '' ? `<div class="News_avatar_container">${answer.login.slice(0,1)}</div>` : `<img src="/Public/Files/${answer.avatar}" class="News_avatar_container">`}
+                                    ${answer.avatar == undefined ? `<div class="News_avatar_container">${answer.login.slice(0,1)}</div>` : `<img src="${answer.avatar}" class="News_avatar_container">`}
                                     <div class="Name_Avatar">${answer.login}</div>
                                 </div>
-                                <div style="display: flex; justify-content: center; align-items: center;">${new Date(answer.date).toLocaleString().slice(0,10)} ${new Date(answer.date).toLocaleTimeString().slice(0,-3)}<div class="Trush"></div><div class="Like"></div><div class="LikesNum">0</div></div>
+                                <div style="display: flex; justify-content: center; align-items: center;"><div class="date">${new Date(answer.date).toLocaleTimeString().slice(0,-3)}<br>${new Date(answer.date).toLocaleString().slice(0,10)}</div><div class="Trush"></div><div class="Like"></div><div class="LikesNum">0</div></div>
                             </div>`;
             document.querySelector('.Posts').prepend(CP);
             document.querySelector('.Trush').setAttribute('onclick', 'DelPost(this)');
@@ -345,7 +345,7 @@ function Create(e){
 function DelPost(e){
     let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST', '/Modules/Home');
+        req.open('POST', '/modules/Home');
         req.setRequestHeader('Content-type', 'application/json');
         req.addEventListener('load',()=>{
             let answer = JSON.parse(req.response);
@@ -366,7 +366,7 @@ function Like(e){
         LikeFlag = false;
         let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST', '/Modules/Home');
+        req.open('POST', '/modules/Home');
         req.setRequestHeader('Content-type', 'application/json');
         switch (e.className) {
             case "Like":

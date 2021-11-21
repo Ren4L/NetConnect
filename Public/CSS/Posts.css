@@ -99,11 +99,11 @@ a{
     cursor: pointer;
 }
 
-.ShowIcon{
+.Showicon{
     margin-left: 10px;
     width: 35px;
     height: 35px;
-    background: url('/Public/ICON/Show.svg');
+    background: url('/public/icon/Show.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;
@@ -307,7 +307,7 @@ figure{
     height: 40px;
     margin-left: 10px;
     margin-bottom: 5px;
-    background: url('/Public/ICON/deletePostDark.svg');
+    background: url('/public/icon/deletePostDark.svg');
     opacity: 0.8;
     background-size: 30px;
     background-position-x: center;
@@ -318,7 +318,7 @@ figure{
 
 .Trush:hover{
     cursor: pointer;
-    background: url('/Public/ICON/deletePost.svg');
+    background: url('/public/icon/deletePost.svg');
     opacity: 0.75;
     background-size: 38px;
     background-position-x: center;
@@ -331,7 +331,7 @@ figure{
     height: 40px;
     margin-left: 10px;
     margin-bottom: 5px;
-    background: url('/Public/ICON/Like.svg');
+    background: url('/public/icon/Like.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;
@@ -352,7 +352,7 @@ figure{
     height: 40px;
     margin-left: 10px;
     margin-bottom: 5px;
-    background: url('/Public/ICON/LikeOn.svg');
+    background: url('/public/icon/LikeOn.svg');
     background-size: 30px;
     background-position-x: center;
     background-position-y: center;
@@ -400,7 +400,7 @@ figure{
 .plus{
     width: 50px;
     height: 50px;
-    background: url('/Public/ICON/Plus_Dark.svg');
+    background: url('/public/icon/Plus_Dark.svg');
     background-size: 40px;
     background-position-x: center;
     background-position-y: center;
@@ -409,7 +409,7 @@ figure{
 }
 .plus:hover{
     cursor: pointer;
-    background: url('/Public/ICON/Plus.svg');
+    background: url('/public/icon/Plus.svg');
     background-size: 48px;
     opacity: 1;
     background-position-x: center;

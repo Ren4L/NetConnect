@@ -3,7 +3,7 @@
     width: 0;
 }
 body{
-    background-image: url("/Public/ICON/Background.png");
+    background-image: url("/public/icon/Background.png");
 }
 .flex_Page{
     display: flex;
@@ -319,7 +319,7 @@ body{
 
 @font-face{
     font-family: Roboto;
-    src: url(/Public/Fonts/Roboto.ttf);
+    src: url(/public/fonts/Roboto.ttf);
 }
 
 @media (max-width: 1100px) {

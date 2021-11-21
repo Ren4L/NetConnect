@@ -1,46 +1,24 @@
-
+let request = new XMLHttpRequest();
 document.querySelector('.Registration').addEventListener('submit', (e)=>{
     e.preventDefault();
-    var FullList;
-    var flag = true;
-    readTextFile("/Public/Users/FullList.json", function(text){
-        FullList = JSON.parse(text);
-    });
-    for (let i = 0; i < FullList.Users.length; i++) {
-        if(document.forms[0].login.value == FullList.Users[i].login){
+    request.open('POST','/modules/Registration',true);
+    request.setRequestHeader('Content-type', 'application/json');
+    let inquiry = {login:document.forms[0].login.value, email:document.forms[0].email.value, post:'check'}
+    request.send(JSON.stringify(inquiry));
+    request.addEventListener('load', ()=>{
+        let answer = JSON.parse(request.response);
+        if(!answer.logflag && document.forms[0].login.value.length > 5){
             document.forms[0].login.style.borderBottom="3px solid red";
-            flag = false;
         }
-        if(document.forms[0].email.value == FullList.Users[i].email){
+        else if(!answer.mailflag){
             document.forms[0].email.style.borderBottom="3px solid red";
-            flag = false;
         }
-        if(!flag){break;}
-    }
-    if(flag){
-        if(document.forms[0].password.value == document.forms[0].confirmPassword.value){
-            if(document.forms[0].login.value.length >= 4){
-                document.querySelector('.Registration').submit();
-            }
-            else{
-                document.forms[0].login.style.borderBottom="3px solid red";
-            }
+        else if(document.forms[0].password.value != document.forms[0].confirmPassword.value){
+            document.forms[0].confirmpassword.style.borderBottom="3px solid red";
         }
         else{
-            document.forms[0].confirmPassword.style.borderBottom="3px solid red";
+            document.querySelector('.Registration').submit();
         }
-    }
+    });
 });
 
-
-function readTextFile(file, callback) {
-    var ReadFullFile = new XMLHttpRequest();
-    ReadFullFile.overrideMimeType("application/json");
-    ReadFullFile.open("GET", file, false);
-    ReadFullFile.onreadystatechange = function() {
-        if (ReadFullFile.readyState === 4 && ReadFullFile.status == "200") {
-            callback(ReadFullFile.responseText);
-        }
-    }
-    ReadFullFile.send(null);
-}

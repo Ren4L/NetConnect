@@ -43,13 +43,13 @@ function SendFile(){
     let FD = new FormData();
     FD.append('image', form.avatar.files[0]);
     var request = new XMLHttpRequest();
-        request.open('POST','/Modules/Photos', true);
+        request.open('POST','/modules/Photos', true);
         request.send(FD);
     request.addEventListener('load',()=>{
         let answer = JSON.parse(request.response);
         if(answer.result == 'AvatarDone'){
             document.querySelector('.AvatarView').style.border="3px solid #66c15e";
-            document.querySelector('.AllPhotos').innerHTML += `<img src="/Public/Files/${answer.photo}" class="Photos">`;
+            document.querySelector('.AllPhotos').innerHTML += `<img src="${answer.photo}" class="Photos">`;
         }
     });
 }
@@ -72,10 +72,10 @@ document.querySelector('.AllPhotos').addEventListener('click', (e)=>{
         conPhoto.className = 'conPhoto';
         back.className = 'back';
         back.setAttribute('onclick','del(this)');
-        container.innerHTML = `<img src="/Public/ICON/swipe.svg" class="swLeft">`
-        conPhoto.innerHTML += `<img src="/Public/Files/${arr[index].getAttribute('src').match(/\/Public\/Files\/(.{32})/)[1]}" class="OpenPhoto">`
+        container.innerHTML = `<img src="/public/icon/swipe.svg" class="swLeft">`
+        conPhoto.innerHTML += `<img src="${arr[index].getAttribute('src')}" class="OpenPhoto">`
         container.append(conPhoto);
-        container.innerHTML += `<img src="/Public/ICON/swipe.svg" class="swRight">`
+        container.innerHTML += `<img src="/public/icon/swipe.svg" class="swRight">`
         container.prepend(back); 
         document.body.prepend(container);
         document.querySelector('.swRight').setAttribute('onclick', 'Right()');

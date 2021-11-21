@@ -22,7 +22,7 @@ async function Send(code, login, email, key){
             subject:'Change password',
             text:'This message with attachments.',
             html:`Hello, to change your password, follow this link 
-            <a href="http://localhost:3000/Modules/ChangePassword/${login}&${code}">http://localhost:3000/Modules/ChangePassword/${login}&${code}</a>`,
+            <a href="http://localhost:3000/modules/ChangePassword/${login}&${code}">http://localhost:3000/modules/ChangePassword/${login}&${code}</a>`,
           };
       }else if(key == 'MailConfir'){
             message = {
@@ -31,7 +31,7 @@ async function Send(code, login, email, key){
             subject:'Email confirmation',
             text:'This message with attachments.',
             html:`Hello, this mail has been registered on the NetConnect website, 
-            to confirm, follow this link <a href="http://localhost:3000/Modules/ConfirmationMail/${login}">http://localhost:3000/Modules/ConfirmationMail/${login}</a> and enter this code <strong>${code}</strong>, if it was not you, 
+            to confirm, follow this link <a href="http://localhost:3000/modules/ConfirmationMail/${login}">http://localhost:3000/modules/ConfirmationMail/${login}</a> and enter this code <strong>${code}</strong>, if it was not you, 
             then ignore this message.`,
           };
       }

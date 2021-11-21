@@ -4,7 +4,7 @@ function Like(e){
         LikeFlag = false;
         let req = new XMLHttpRequest();
         req.overrideMimeType('application/json');
-        req.open('POST', '/Modules/PersonalPage');
+        req.open('POST', '/modules/Posts');
         req.setRequestHeader('Content-type', 'application/json');
         switch (e.className) {
             case "Like":

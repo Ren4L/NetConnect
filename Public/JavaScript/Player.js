@@ -7,17 +7,17 @@ function Play(e){
                 console.log(allVideo[i]);
                 allVideo[i].pause();
                 allVideo[i].currentTime = 0;
-                allVideo[i].parentNode.querySelector('.PlayPause').src = '/Public/ICON/Play.svg';
+                allVideo[i].parentNode.querySelector('.PlayPause').src = '/public/icon/Play.svg';
                 allVideo[i].parentNode.querySelector('.ProgressBar').value = 0;
                 allVideo[i].currentTime = 0;   
             }
         }
         video.play();
-        e.src = '/Public/ICON/Pause.svg';
+        e.src = '/public/icon/Pause.svg';
     }
     else{
         video.pause();
-        e.src = '/Public/ICON/Play.svg';
+        e.src = '/public/icon/Play.svg';
     }
 }
 
@@ -31,7 +31,7 @@ function Hidden(e){
 
 function FullScreen(e){
     if(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement){
-        e.src = '/Public/ICON/FullSrceenIn.svg';
+        e.src = '/public/icon/FullSrceenIn.svg';
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
@@ -43,7 +43,7 @@ function FullScreen(e){
         }
     }
     else{
-        e.src = '/Public/ICON/FullSrceenOut.svg';
+        e.src = '/public/icon/FullSrceenOut.svg';
         if (e.parentNode.parentNode.requestFullscreen) {
             e.parentNode.parentNode.requestFullscreen();
         } else if (e.parentNode.parentNode.mozRequestFullScreen) {

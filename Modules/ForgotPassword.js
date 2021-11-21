@@ -1,9 +1,13 @@
 const express = require('express');
 const Mailer = require('./Mailer');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const router = express.Router();
+const { getDatabase, ref, child, set, get } = require("firebase/database");
+const firebasedb = require('./database');
+const db = getDatabase();
+const refdb = ref(getDatabase());
 
+router.use(express.json());
 router.use(bodyParser.urlencoded({extended:false}));
 
 router.get('/', (req, res)=>{
@@ -11,23 +15,35 @@ router.get('/', (req, res)=>{
     res.render('ForgotPassword');
 })
 
-.post('/',(req, res)=>{
-    let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
-    let obj = new Function(`return (${readFile})`)();
-    let login;
-    for (let i = 0; i < obj.Users.length; i++) {
-      if(obj.Users[i].email == req.body.email){
-        login = obj.Users[i].login;
-        index = i;
-      }
+.post('/', async(req, res)=>{
+  let FullList;
+  await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
+    if(req.body.post == 'pass'){
+      let buf = {mail:false}
+      FullList.forEach(element => {
+        if(element.email == req.body.email){
+          buf = {mail:true}
+        }
+      });
+      res.json(buf);
     }
-    let code = Math.floor(Math.random() * (100000 - 10000)) + 10000;
-    obj.Users[index].PassCode = code;
-    Mailer.Send(code, login, req.body.email, 'ForgotPass');
-    setTimeout(() => {
-      fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj, null, ' '));
-      res.redirect('Authorization');
-    }, 3000);
+    else{
+      let User, index;
+      for (let i = 0; i < FullList.length; i++) {
+        if(FullList[i].email == req.body.email){
+          User = FullList[i];
+          index = i;
+        }
+      }
+      let code = Math.floor(Math.random() * (100000 - 10000)) + 10000;
+      User.PassCode = code;
+      Mailer.Send(code, User.login, req.body.email, 'ForgotPass');
+      setTimeout(async() => {
+        FullList[index] = User;
+        await set(ref(db, `users`), FullList)
+        res.redirect('Authorization');
+      }, 3000);
+    }
 });
 
 module.exports = router;

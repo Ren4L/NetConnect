@@ -1,33 +1,44 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const { json } = require('body-parser');
 const router=express.Router();
-const urlencodedParser = bodyParser.urlencoded({extended: false});
+const { getDatabase, ref, child, set, get } = require("firebase/database");
+const firebasedb = require('./database');
+const db = getDatabase();
+const refdb = ref(getDatabase());
+
+router.use(bodyParser.urlencoded({extended: false}));
+router.use(express.json());
 
 router.get('/:id',(req, res)=>{
   
     res.render('ConfirmationMail', {url:req.params.id});
   })
-  .post('/', urlencodedParser, (req, res) => {
-    let readFullList = fs.readFileSync('./Public/Users/FullList.json','utf-8');
-    let obj1 = new Function(`return (${readFullList})`)();
-    let readUser = fs.readFileSync(`./Public/Users/NotMail${req.body.login}.json`,'utf-8');
-    let obj2 = new Function(`return (${readUser})`)();
-    if(req.body.code == obj2.Code){
-      for (let i = 0; i < obj1.Users.length; i++) {
-        console.log(obj1.Users[i]);
-        if(obj1.Users[i].login == req.body.login){
-          obj1.Users[i].ConfirmationMail = true;
-          break;
-        }
+  .post('/', async(req, res) => {
+    let FullList;
+    await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
+    let User, index=0;
+    for (let i = 0; i < FullList.length; i++) {
+      if(FullList[i].login == req.body.login){
+        User = FullList[i];
+        index = i;
       }
-      obj2.ConfirmationMail = true;
-      delete obj2.Code;
-      fs.unlinkSync(`./Public/Users/NotMail${req.body.login}.json`);
-      fs.writeFileSync('./Public/Users/FullList.json', JSON.stringify(obj1, null, ' '));
-      fs.writeFileSync(`./Public/Users/${req.body.login}.json`, JSON.stringify(obj2, null, ' '));
-      fs.mkdirSync(`./Public/Posts/${req.body.login}`);
+    }
+    if(req.body.post == 'check'){
+      let buf;
+      if(req.body.code == User.Code){
+        buf = {flag:true}
+      }
+      else{
+        buf = {flag:false}
+      }
+      res.json(buf)
+    }
+    else  if(req.body.code == User.Code){
+      User.ConfirmationMail = true;
+      delete User.Code;
+      FullList[index] = User;
+      await set(ref(db, `users`), FullList)
       res.redirect('Authorization');
     }
     });

@@ -1,33 +1,43 @@
 var News;
 var num = 0;
 var flag = true;
-
+let id = window.location.href.split('/')[5];
+let req = new XMLHttpRequest();
+    req.overrideMimeType('application/json');
+    req.open('POST', '/modules/FullNews');
+    req.setRequestHeader('Content-type', 'application/json');
+    req.addEventListener('load',()=>{
+        News = JSON.parse(req.response);
+    });
+    list = {id:id}
+    req.send(JSON.stringify(list));
 
 function load(){
-    let id = window.location.href.split('/')[5];
-    readTextFile(`/Public/News/${id}.json`, function(text){
-        News = JSON.parse(text);
-    });
-    if(News.dopPhoto.length == 1){
-        document.querySelector('.slider').innerHTML = `<img src="/Public/Files/${News.dopPhoto}" class="sliderPhoto">`
-    }
-    else if(News.dopPhoto.length > 1){
-        document.querySelector('.slider').innerHTML = `<img src="/Public/Files/${News.dopPhoto[num]}" class="sliderPhoto">
-                                                        <img src="/Public/ICON/swipe.svg" class="swipeRight" onclick="slideRight()">
-                                                        <img src="/Public/ICON/swipe.svg" class="swipeLeft" onclick="slideLeft()">`
-        document.querySelector('.slider').style.height = '25vw';
-        
-        let img = new Image();
-        img.onload=()=>{
-            if(document.querySelector('.sliderPhoto').naturalWidth < document.querySelector('.sliderPhoto').naturalHeight){
-                document.querySelector('.sliderPhoto').style.width = '25%';
-                console.log("ok");
-            }
-            else{
-                document.querySelector('.sliderPhoto').style.width = '50%';
-            }
+    if(News != undefined){
+        if(News.dopPhoto.length == 1){
+            document.querySelector('.slider').innerHTML = `<img src="${News.dopPhoto}" class="sliderPhoto">`
         }
-        img.src=`/Public/Files/${News.dopPhoto[num]}`;
+        else if(News.dopPhoto.length > 1){
+            document.querySelector('.slider').innerHTML = `<img src="${News.dopPhoto[num]}" class="sliderPhoto">
+                                                            <img src="/public/icon/swipe.svg" class="swipeRight" onclick="slideRight()">
+                                                            <img src="/public/icon/swipe.svg" class="swipeLeft" onclick="slideLeft()">`
+            document.querySelector('.slider').style.height = '25vw';
+            
+            let img = new Image();
+            img.onload=()=>{
+                if(document.querySelector('.sliderPhoto').naturalWidth < document.querySelector('.sliderPhoto').naturalHeight){
+                    document.querySelector('.sliderPhoto').style.width = '25%';
+                    console.log("ok");
+                }
+                else if(document.querySelector('.sliderPhoto').naturalWidth == document.querySelector('.sliderPhoto').naturalHeight){
+                    document.querySelector('.sliderPhoto').style.width = '25%';
+                }
+                else{
+                    document.querySelector('.sliderPhoto').style.width = '50%';
+                }
+            }
+            img.src=News.dopPhoto[num];
+        }
     }
 }
 
@@ -35,93 +45,45 @@ function load(){
 function slideRight(){
     if(flag){
         flag = false;
-        let opacity = 1;
-        p = setInterval(() => {
-        if(opacity < 0){
-            num++;
-            if(num>News.dopPhoto.length-1){num=0};
-            document.querySelector('.sliderPhoto').src = `/Public/Files/${News.dopPhoto[num]}`;
-            let img = new Image();
-            img.onload=()=>{
-                if(document.querySelector('.sliderPhoto').naturalWidth < document.querySelector('.sliderPhoto').naturalHeight){
-                    document.querySelector('.sliderPhoto').style.width = '25%';
-                    console.log("ok");
-                }
-                else{
-                    document.querySelector('.sliderPhoto').style.width = '50%';
-                }
+        num++;
+        if(num>News.dopPhoto.length-1){num=0};
+        document.querySelector('.sliderPhoto').src = News.dopPhoto[num];
+        let img = new Image();
+        img.onload=()=>{
+            if(document.querySelector('.sliderPhoto').naturalWidth < document.querySelector('.sliderPhoto').naturalHeight){
+                document.querySelector('.sliderPhoto').style.width = '25%';
             }
-            img.src=`/Public/Files/${News.dopPhoto[num]}`;
-            opacity = 0;
-            d = setInterval(() => {
-                if(opacity > 1){
-                    clearInterval(d);
-                }
-                else{
-                    document.querySelector('.sliderPhoto').style.opacity = opacity;
-                    opacity+=0.05;
-                }
-            }, 10);
-            flag = true;
-            clearInterval(p);
+            else if(document.querySelector('.sliderPhoto').naturalWidth == document.querySelector('.sliderPhoto').naturalHeight){
+                document.querySelector('.sliderPhoto').style.width = '25%';
+            }
+            else{
+                document.querySelector('.sliderPhoto').style.width = '50%';
+            }
         }
-        else{
-            document.querySelector('.sliderPhoto').style.opacity = opacity;
-            opacity-=0.05;
-        }
-    }, 10);
+        img.src=News.dopPhoto[num];
+        flag = true;
     }   
 };
 
 function slideLeft(){
     if(flag){
         flag = false;
-        let opacity = 1;
-        p = setInterval(() => {
-        if(opacity < 0){
-            num--;
-            if(num<0){num=News.dopPhoto.length-1};
-            document.querySelector('.sliderPhoto').src = `/Public/Files/${News.dopPhoto[num]}`;
-            let img = new Image();
-            img.onload=()=>{
-                if(document.querySelector('.sliderPhoto').naturalWidth < document.querySelector('.sliderPhoto').naturalHeight){
-                    document.querySelector('.sliderPhoto').style.width = '25%';
-                    console.log("ok");
-                }
-                else{
-                    document.querySelector('.sliderPhoto').style.width = '50%';
-                }
+        num--;
+        if(num < 0){num = News.dopPhoto.length - 1};
+        document.querySelector('.sliderPhoto').src = News.dopPhoto[num];
+        let img = new Image();
+        img.onload=()=>{
+            if(document.querySelector('.sliderPhoto').naturalWidth < document.querySelector('.sliderPhoto').naturalHeight){
+                document.querySelector('.sliderPhoto').style.width = '25%';
             }
-            img.src=`/Public/Files/${News.dopPhoto[num]}`;
-            opacity = 0;
-            d = setInterval(() => {
-                if(opacity > 1){
-                    clearInterval(d);
-                }
-                else{
-                    document.querySelector('.sliderPhoto').style.opacity = opacity;
-                    opacity+=0.05;
-                }
-            }, 10);
-            flag = true;
-            clearInterval(p);
+            else if(document.querySelector('.sliderPhoto').naturalWidth == document.querySelector('.sliderPhoto').naturalHeight){
+                document.querySelector('.sliderPhoto').style.width = '25%';
+            }
+            else{
+                document.querySelector('.sliderPhoto').style.width = '50%';
+            }
         }
-        else{
-            document.querySelector('.sliderPhoto').style.opacity = opacity;
-            opacity-=0.05;
-        }
-    }, 10);
-    }
+        img.src=News.dopPhoto[num];
+        flag = true;
+    }  
 };
-
-function readTextFile(file, callback) {
-    var ReadFullFile = new XMLHttpRequest();
-    ReadFullFile.overrideMimeType("application/json");
-    ReadFullFile.open("GET", file, false);
-    ReadFullFile.onreadystatechange = function() {
-        if (ReadFullFile.readyState === 4 && ReadFullFile.status == "200") {
-            callback(ReadFullFile.responseText);
-        }
-    }
-    ReadFullFile.send(null);
-}

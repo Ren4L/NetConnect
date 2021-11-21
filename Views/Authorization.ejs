@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Public/CSS/Authorization.css">
-    <link rel="shortcut icon" href="/Public/ICON/Authorization.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/public/css/Authorization.css">
+    <link rel="shortcut icon" href="/public/icon/Authorization.svg" type="image/x-icon">
     <title>Authorization</title>
 </head>
 <body>
     <div class="flex_Page">
-        <form class="Authorization" method="POST" action="/Modules/Authorization">
+        <form class="Authorization" method="POST" action="/modules/Authorization" enctype="application/x-www-form-urlencoded">
             <div class="Welcome">Welcome back!</div>
             <div class="form_group">
                 <input type="email" name="email" class="form_input" placeholder="Email" required>
@@ -20,17 +20,17 @@
             </div>
             <div class="footer">
                 <div class="inFooter"> 
-                    <a href="/Modules/News">News</a>
-                    <a href="/Modules/Registration" style="margin-left: 20px; word-wrap: none;">Sign up</a>
-                    <a href="/Modules/ForgotPassword" style="margin-left: 20px; word-wrap: none;">Forgot Password</a>
+                    <a href="/modules/News">News</a>
+                    <a href="/modules/Registration" style="margin-left: 20px; word-wrap: none;">Sign up</a>
+                    <a href="/modules/ForgotPassword" style="margin-left: 20px; word-wrap: none;">Forgot Password</a>
                 </div>
                 <label>
-                    <img src="/Public/ICON/in.svg" alt="Erorr" width="90px" height="90px" class="in">
+                    <img src="/public/icon/in.svg" alt="Erorr" width="90px" height="90px" class="in">
                     <input type="submit" style="display: none;">
                 </label>
             </div>
         </form>
     </div>
-    <script src="/Public/JavaScript/Authorization.js"></script>
+    <script src="/public/javascript/Authorization.js"></script>
 </body>
 </html>

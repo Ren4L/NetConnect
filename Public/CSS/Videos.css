@@ -13,7 +13,7 @@
 .plus{
     width: 60px;
     height: 60px;
-    background: url('/Public/ICON/Plus_Dark.svg');
+    background: url('/public/icon/Plus_Dark.svg');
     background-size: 50px;
     background-position-x: center;
     background-position-y: center;
@@ -39,7 +39,7 @@
     font-size: 23pt;
 }
 .PlusText:hover .plus{
-    background: url('/Public/ICON/Plus.svg');
+    background: url('/public/icon/Plus.svg');
     background-size: 60px;
     background-position-x: center;
     background-position-y: center;
@@ -106,7 +106,7 @@ form{
 .DownloadAvatar{
     width: 12vw;
     height: 12vw;
-    background: url('/Public/ICON/DarkDownloadAvatar.svg');
+    background: url('/public/icon/DarkDownloadAvatar.svg');
     opacity: 0.7;
     background-size: 10vw;
     background-position-x: center;
@@ -116,7 +116,7 @@ form{
 }
 .DownloadAvatar:hover{
     cursor: pointer;
-    background: url('/Public/ICON/DownloadAvatar.svg');
+    background: url('/public/icon/DownloadAvatar.svg');
     opacity: 1;
     background-size: 12vw;
     background-position-x: center;
@@ -137,7 +137,7 @@ form{
 .send{
     width: 12vw;
     height: 12vw;
-    background: url('/Public/ICON/SendDark.svg');
+    background: url('/public/icon/SendDark.svg');
     opacity: 0.5;
     background-size: 8vw;
     background-position-x: center;
@@ -147,7 +147,7 @@ form{
 }
 .send:hover{
     cursor: pointer;
-    background: url('/Public/ICON/Send.svg');
+    background: url('/public/icon/Send.svg');
     background-size: 10vw;
     opacity: 1;
     background-position-x: center;

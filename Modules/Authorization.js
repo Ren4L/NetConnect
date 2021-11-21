@@ -1,37 +1,48 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
 const Cipher = require('./EncryptionDecryption.js');
+const { getDatabase, ref, child, get } = require("firebase/database");
+const firebasedb = require('./database');
 const jsonparser = express.json();
+const refdb = ref(getDatabase());
+
 
 router.get('/',(req, res)=>{
   req.session.destroy(()=>{
     res.render('Authorization');
   });
   })
-  .post('/',jsonparser,(req,res)=>{
-    let readFile = fs.readFileSync('./Public/Users/FullList.json','utf-8');
-    let obj = new Function(`return (${readFile})`)();
-    let login, index;
-    for (let i = 0; i < obj.Users.length; i++) {
-      if(obj.Users[i].email == req.body.email){
-        login = obj.Users[i].login;
-        index = i;
-      }
-    }
-    let User = fs.readFileSync(`./Public/Users/${login}.json`,'utf-8');
-    let obj2 = new Function(`return (${User})`)();
-    password=Cipher.Decryption(obj2.password.split(''), login.split(''));
-    console.log(password);
-    if(password != req.body.password){
-      user = {confirmation:false};
-    }
-    else{
-      user = {confirmation:true};
-      req.session.userName = login;
-      req.session.moder = obj2.moder;
-    }
-    res.json(user);
+  .post('/',jsonparser, async(req,res)=>{
+      get(child(refdb, `users`)).then((snapshot) => {
+      FullList = snapshot.val();
+          let login, password, moder, ConfM;
+          FullList.forEach(element => {
+            if(element.email == req.body.email){
+              login = element.login;
+              password = element.password;
+              moder = element.moder;
+              ConfM = element.ConfirmationMail;
+            }
+          });
+          if(login == undefined || ConfM == false){
+            user = {mail:false}
+            res.json(user)
+          }
+          else{user = {mail:true}}
+          password=Cipher.Decryption(password.split(''), login.split(''));
+          console.log(req.body.email + '   ' + password);
+          if(password != req.body.password){
+            user.pass = false;
+          }
+          else{
+            user.pass = true;
+            req.session.userName = login;
+            req.session.moder = moder;
+          }
+          res.json(user);
+    }).catch((error) => {
+      console.error(error);
+    });
   });
 
 

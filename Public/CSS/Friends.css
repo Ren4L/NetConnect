@@ -130,7 +130,7 @@ body{
 .buttonFr{
     width: 130px;
     height: 130px;
-    background: url('/Public/ICON/FriendAdd.svg');
+    background: url('/public/icon/FriendAdd.svg');
     opacity: 0.9;
     background-size: 120px;
     background-position-x: center;
@@ -141,7 +141,7 @@ body{
 .buttonSend{
     width: 130px;
     height: 130px;
-    background: url('/Public/ICON/AddFriendsSend.svg');
+    background: url('/public/icon/AddFriendsSend.svg');
     opacity: 0.9;
     background-size: 120px;
     background-position-x: center;
@@ -152,7 +152,7 @@ body{
 .buttonAdd{
     width: 130px;
     height: 130px;
-    background: url('/Public/ICON/AddFriendsDark.svg');
+    background: url('/public/icon/AddFriendsDark.svg');
     opacity: 0.9;
     background-size: 120px;
     background-position-x: center;
@@ -162,7 +162,7 @@ body{
 }
 
 .buttonAdd:hover{
-    background: url('/Public/ICON/AddFriendsFinal.svg');
+    background: url('/public/icon/AddFriendsFinal.svg');
     cursor: pointer;
     background-size: 128px;
     opacity: 1;
@@ -174,7 +174,7 @@ body{
 .buttonDel{
     width: 130px;
     height: 130px;
-    background: url('/Public/ICON/delFrAppDark.svg');
+    background: url('/public/icon/delFrAppDark.svg');
     opacity: 0.9;
     background-size: 120px;
     background-position-x: center;
@@ -184,7 +184,7 @@ body{
 }
 
 .buttonDel:hover{
-    background: url('/Public/ICON/delFrApp.svg');
+    background: url('/public/icon/delFrApp.svg');
     cursor: pointer;
     background-size: 128px;
     opacity: 1;
@@ -203,7 +203,7 @@ body{
 .delFr{
     width: 130px;
     height: 130px;
-    background: url('/Public/ICON/delFrDark.svg');
+    background: url('/public/icon/delFrDark.svg');
     opacity: 0.9;
     background-size: 120px;
     background-position-x: center;
@@ -214,7 +214,7 @@ body{
 
 
 .delFr:hover{
-    background: url('/Public/ICON/delFr.svg');
+    background: url('/public/icon/delFr.svg');
     cursor: pointer;
     background-size: 128px;
     opacity: 1;
@@ -226,7 +226,7 @@ body{
 .button{
     width: 130px;
     height: 130px;
-    background: url('/Public/ICON/AddFriendsDark.svg');
+    background: url('/public/icon/AddFriendsDark.svg');
     opacity: 0.9;
     background-size: 120px;
     background-position-x: center;
@@ -236,7 +236,7 @@ body{
 }
 .button:hover{
     cursor: pointer;
-    background: url('/Public/ICON/AddFriendsHover.svg');
+    background: url('/public/icon/AddFriendsHover.svg');
     background-size: 128px;
     opacity: 1;
     background-position-x: center;
@@ -253,7 +253,7 @@ body{
 
 @font-face{
     font-family: Roboto;
-    src: url(/Public/Fonts/Roboto.ttf);
+    src: url(/public/fonts/Roboto.ttf);
 }
 
 @media (max-width:1424px) {
