@@ -7,8 +7,10 @@ async function Send(code, login, email, key){
         port:587,
         secure:false,
         auth:{
+          type:'OAuth2',
           user:'netconnectv2.0@gmail.com',
-          pass:'admin221212',
+          accessToken:'ya29.a0ARrdaM_TKX47IT2wD7mE4aAZVW-puFRYnvx48PS72WeaSEKnD1Wz9JICOiIXYiK_ynbIhN2FXESNrn4SUT11got4dRet7OSB80HUYAI8bgKTxknjnJrtpMUCAWcHZlV_jSSwKMJ2BEcxTxR8aCJJoH1JcUND',
+          expires: 1637490403422 + 6428160000000
         },
         tls: {
           rejectUnauthorized: false,
@@ -35,6 +37,7 @@ async function Send(code, login, email, key){
             then ignore this message.`,
           };
       }
+      
     let result = await transporter.sendMail(message, (err, res)=>{
       if(err){
           console.log(err);
@@ -42,7 +45,6 @@ async function Send(code, login, email, key){
         console.log("Message sent: " + res);
       }
       transporter.close();
-      console.log(result);
     });
 }
 

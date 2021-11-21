@@ -35,6 +35,7 @@ router.get('/', async(req, res)=>{
             avatar = `<img src="${Acc.avatar}" class="Avatar">`;
             avatar2 = `<img src="${Acc.avatar}" class="Avatar2">`;
             }
+            if(Acc.friends == undefined) Acc.friends = [];
             for (let i = 0; i < Acc.friends.length; i++) { 
                 let Fr;
                 FullList.forEach(el=>{
