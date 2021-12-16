@@ -141,7 +141,7 @@
                                         <%-el.avatar%>
                                         <div class="Name_Avatar"><%-el.login%></div>
                                     </div>
-                                    <div style="display: flex; justify-content: center; align-items: center;"><div class="date"><%- new Date(el.date).toLocaleTimeString().slice(0,-3) %><br><%- new Date(el.date).toLocaleString().slice(0,10) %></div><div class="Trush" onclick="DelPost(this)"></div><div class="<%-el.classLike%>" onclick="Like(this)"></div><div class="LikesNum"><%-el.likes%></div></div>
+                                    <div style="display: flex; justify-content: center; align-items: center;"><div class="date"><%- new Date(el.date).toTimeString().slice(0,5) %><br><%- new Date(el.date).toLocaleString().slice(0,10) %></div><div class="Trush" onclick="DelPost(this)"></div><div class="<%-el.classLike%>" onclick="Like(this)"></div><div class="LikesNum"><%-el.likes%></div></div>
                                 </div>
                             </div>
                         <% }); %>
@@ -159,6 +159,8 @@
                 <img src="/public/icon/ActiveBlock_right.png" alt="Error" class="activeblock_right">
             </nav>
         </div>
+        <img src="/public/icon/UP.svg" class="UpDown">
+        <img src="/public/icon/UP.svg" class="Down">
         <div class="flex_line">
             <div class="Menu_button">
                 <img src="/public/icon/Menu.svg" alt="Error" class="Menu_img">
