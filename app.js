@@ -1,9 +1,8 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-
-const multer = require('multer');
-var FileStore = require('session-file-store')(session);
+const FirebaseStore = require('connect-session-firebase')(session);
+const firebase = require('./modules/firebase.js');
 const Registration = require('./modules/Registration');
 const Authorization = require('./modules/Authorization');
 const ConfirmationMail = require('./modules/ConfirmationMail');
@@ -20,6 +19,7 @@ const Videos = require('./modules/Videos');
 const Home = require('./modules/Home');
 const Posts = require('./modules/Posts');
 const port = process.env.PORT || 3000;
+
 app.set("view engine", 'ejs');
 
 app.use('/public', express.static('public'));
@@ -27,11 +27,10 @@ app.use(session({
   secret:'Witcher Wild Hunt',
   key:'sid',
   resave:false,
-  store: new FileStore({
-    ttl:sessionTime(),
-    reapInterval:sessionTime(),
-  }),
   saveUninitialized:true,
+  store: new FirebaseStore({
+    database: firebase.database()
+  })
 }));
 
 app.use('/modules/Registration', Registration);
@@ -60,10 +59,4 @@ app.get('/',(req, res)=>{
 app.get('*',(req, res)=>{
   res.render('404NotFound');
 });
-
-function sessionTime(){
-  let date = new Date();
-  let time = (24 * 60 * 60) - ((date.getHours() * 60 * 60) + (date.getMinutes()* 60));
-  return time
-};
 
