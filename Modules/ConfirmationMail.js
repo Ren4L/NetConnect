@@ -17,7 +17,7 @@ router.get('/:id',(req, res)=>{
   .post('/', async(req, res) => {
     let FullList;
     await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
-    let User, index=0;
+    let User, index;
     for (let i = 0; i < FullList.length; i++) {
       if(FullList[i].login == req.body.login){
         User = FullList[i];
@@ -34,7 +34,7 @@ router.get('/:id',(req, res)=>{
       }
       res.json(buf)
     }
-    else  if(req.body.code == User.Code){
+    else{
       User.ConfirmationMail = true;
       delete User.Code;
       FullList[index] = User;

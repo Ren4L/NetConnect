@@ -18,10 +18,10 @@ router.get('/', (req, res)=>{
 .post('/', async(req, res)=>{
   let FullList;
   await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
-    if(req.body.post == 'pass'){
+    if(req.body.post == 'mail'){
       let buf = {mail:false}
       FullList.forEach(element => {
-        if(element.email == req.body.email){
+        if(element.email == req.body.email && element.ConfirmationMail == true){
           buf = {mail:true}
         }
       });

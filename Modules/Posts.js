@@ -10,6 +10,7 @@ router.use(express.json());
 
 router.get('/', async(req, res)=>{
     let FullList, flag = false;
+    let avatar = '', avatar2 = '';
     await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
     if(req.session.userName != undefined){
         let Acc, index;
@@ -41,6 +42,7 @@ router.get('/', async(req, res)=>{
                 FullList.forEach(el=>{
                     if(el.login == Acc.friends[i]) Fr = el;
                 })
+                if(Fr.Posts == undefined) Fr.Posts = [];
                 for (let j = 0; j < Fr.Posts.length; j++) {
                     let post = Fr.Posts[j];
                     if(post.likes != undefined) {

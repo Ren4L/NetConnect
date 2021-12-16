@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const Cipher = require('./EncryptionDecryption');
 const router=express.Router();
 const { getDatabase, ref, child, set, get } = require("firebase/database");

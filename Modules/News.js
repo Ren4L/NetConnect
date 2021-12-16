@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get('/',async (req, res)=>{
   let FullList;
+  let avatar = '', avatar2 = '';
   await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
   let login, index;
     let flag = false;
@@ -52,16 +53,17 @@ router.get('/',async (req, res)=>{
           avatar2 = `<img src="${FullList[index].avatar}" class="Avatar2">`;
         }
       }
+      console.log(avatar);
       news.sort((el1, el2)=> el2.date - el1.date);
-      if(flag){
+      if(flag){ 
         if(req.session.moder){
           res.render('News',{news:news, avatar:avatar, avatar2:avatar2})
         }
         else{
-          res.render('NewsNotModer',{news:news})
+          res.render('NewsNotModer',{news:news, avatar:avatar, avatar2:avatar2})
         }
       }
-      else{res.render('NewsNotModer',{news:news})}
+      else{res.render('NewsNotModer',{news:news, avatar:avatar, avatar2:avatar2})}
   });
   
 module.exports = router;

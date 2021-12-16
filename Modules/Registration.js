@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const Cipher = require('./EncryptionDecryption.js');
 const Mailer = require('./Mailer');
 const router=express.Router();

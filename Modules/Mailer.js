@@ -7,10 +7,8 @@ async function Send(code, login, email, key){
         port:587,
         secure:false,
         auth:{
-          type:'OAuth2',
           user:'netconnectv2.0@gmail.com',
-          accessToken:'ya29.a0ARrdaM_TKX47IT2wD7mE4aAZVW-puFRYnvx48PS72WeaSEKnD1Wz9JICOiIXYiK_ynbIhN2FXESNrn4SUT11got4dRet7OSB80HUYAI8bgKTxknjnJrtpMUCAWcHZlV_jSSwKMJ2BEcxTxR8aCJJoH1JcUND',
-          expires: 1637490403422 + 6428160000000
+          pass:'smbbhbkkdyqchuet'
         },
         tls: {
           rejectUnauthorized: false,
@@ -24,7 +22,7 @@ async function Send(code, login, email, key){
             subject:'Change password',
             text:'This message with attachments.',
             html:`Hello, to change your password, follow this link 
-            <a href="http://localhost:3000/modules/ChangePassword/${login}&${code}">http://localhost:3000/modules/ChangePassword/${login}&${code}</a>`,
+            <a href="https://netconnectv2.herokuapp.com/modules/ChangePassword/${login}&${code}">https://netconnectv2.herokuapp.com/modules/ChangePassword/${login}&${code}</a>`,
           };
       }else if(key == 'MailConfir'){
             message = {
@@ -33,7 +31,7 @@ async function Send(code, login, email, key){
             subject:'Email confirmation',
             text:'This message with attachments.',
             html:`Hello, this mail has been registered on the NetConnect website, 
-            to confirm, follow this link <a href="http://localhost:3000/modules/ConfirmationMail/${login}">http://localhost:3000/modules/ConfirmationMail/${login}</a> and enter this code <strong>${code}</strong>, if it was not you, 
+            to confirm, follow this link <a href="https://netconnectv2.herokuapp.com/modules/ConfirmationMail/${login}">https://netconnectv2.herokuapp.com/modules/ConfirmationMail/${login}</a> and enter this code <strong>${code}</strong>, if it was not you, 
             then ignore this message.`,
           };
       }

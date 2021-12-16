@@ -4,13 +4,12 @@ const { getDatabase, ref, child, set, get } = require("firebase/database");
 const firebasedb = require('./database');
 const db = getDatabase();
 const refdb = ref(getDatabase());
-
-let Users = new Array();
   
 
 router.use(express.json());
 router.get('/', async(req, res)=>{
   let FullList;
+  let avatar = '', avatar2 = '';
   await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
   let Acc;
   let flag = false;

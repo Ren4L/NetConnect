@@ -25,6 +25,7 @@ router.use(Multer.any());
 router.use(bodyParser.urlencoded({extended: false}));
 router.get('/',async(req, res)=>{
   let FullList;
+  let avatar = '', avatar2 = '';
   await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
   let Acc;
   FullList.forEach(element => {

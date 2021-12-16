@@ -21,6 +21,7 @@ router.use(Multer.any());
 router.use(express.json());
 router.get('/',async(req, res)=>{
   let FullList;
+  let avatar = '', avatar2 = '';
     await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
     let Acc, index;
     FullList.forEach(element => {
@@ -106,6 +107,7 @@ router.get('/',async(req, res)=>{
       console.log('Error: No files found');
     }
     else{
+      if(Acc.avatar == undefined) Acc.avatar = '';
       Acc.avatar = `https://firebasestorage.googleapis.com/v0/b/netconnectv2-9fd5b.appspot.com/o/${req.files[0].fileRef.id}?alt=media&token=dd934776-a238-46f4-9c87-255ae101247f`;
       await set(ref(db, `users`), FullList);
       let Result = {result:'AvatarDone'};

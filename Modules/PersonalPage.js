@@ -9,6 +9,7 @@ const refdb = ref(getDatabase());
 
 router.use(express.json());
 router.get('/:id',async(req, res)=>{
+  let avatar = '<img src="/public/icon/Enter.svg" class="Avatar">', avatar2 = '<img src="/public/icon/Enter.svg" class="Avatar2">';
   if(req.session.userName != undefined){
     let FullList, flag = false;
     await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});

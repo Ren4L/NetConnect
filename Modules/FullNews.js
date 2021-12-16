@@ -10,8 +10,10 @@ router.use(express.json());
 
 router.get('/:id', async (req, res)=>{
     let News;
-    let users;
     let indexU;
+    let users;
+    let avatar = '', avatar2 = '';
+    await get(child(refdb, 'users')).then((snap)=>{users = snap.val();}).catch((err)=>{console.log(err);})
     await get(child(refdb, 'news')).then((snap)=>{News = snap.val();}).catch((err)=>{console.log(err);})
     let indexN;
     for (let i = 0; i < News.length; i++) {
@@ -24,7 +26,6 @@ router.get('/:id', async (req, res)=>{
         avatar2 = '<img src="/public/icon/Enter.svg" class="Avatar2">';
       }
       else{
-        await get(child(refdb, 'users')).then((snap)=>{users = snap.val();}).catch((err)=>{console.log(err);})
         for (let i = 0; i < users.length; i++) {
           if(users[i].login == req.session.userName){
             indexU = i;
@@ -41,9 +42,9 @@ router.get('/:id', async (req, res)=>{
         }
       }
       let author;
-      users.forEach(element => {
-        if(element.login == News[indexN].author){author = element}
-      });
+      for (let i = 0; i < users.length; i++) {
+        if(users[i].login == News[indexN].author){author = users[i]}
+      }
       if(author.avatar == undefined){
         author.avatar = `<div>${author.login.slice(0,1)}</div>`;
 

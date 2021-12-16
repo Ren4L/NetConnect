@@ -25,6 +25,7 @@ router.use(Multer.any());
 
 router.get('/', async(req, res)=>{
   let FullList, Video = '';
+  let avatar = '', avatar2 = '';
   await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
   let Acc;
   FullList.forEach(element => {

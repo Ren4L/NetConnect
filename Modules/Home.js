@@ -8,6 +8,7 @@ const refdb = ref(getDatabase());
 
 router.use(express.json());
 router.get('/',async(req, res)=>{
+  let avatar = '', avatar2 = '';
   if(req.session.userName != undefined){
     let FullList;
   await get(child(refdb, `users`)).then((snapshot) => {FullList = snapshot.val(); }).catch((error) => {console.error(error);});
@@ -162,7 +163,7 @@ router.get('/',async(req, res)=>{
         res.json(Acc.Videos);
         break;
       case "NewPost":
-        if(Acc.Posts == undefined){Acc.Posts = [];}
+        if(Acc.Posts == undefined) Acc.Posts = [];
         let buf = {date: req.body.date, content: req.body.content}
         Acc.Posts.push(buf);
         FullList[index] = Acc;
