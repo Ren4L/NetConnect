@@ -1,0 +1,103 @@
+body{
+    background-image: url("/public/icon/Background.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 97vh;
+}
+
+.Registration{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    background: #FFFFFF;
+    border-radius: 45px;
+    padding: 50px;
+    font-family: Roboto;
+    color:#5D5D5D;
+    min-width: 100px;
+    filter: drop-shadow(0px 20px 46px rgba(117, 84, 84, 0.3));
+}
+
+.Welcome{
+    font-weight: bold;
+    font-size: 36pt; 
+    width: 190px; 
+    margin-bottom: 30px;
+}
+
+.form_group{
+    position: relative;
+    margin-bottom: 30px;
+}
+.form_input{
+    font-family: Roboto;
+    font-size: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+    
+}
+
+.form_input:focus{
+    border-bottom: 3px solid #5EAAC1;
+}
+
+.in:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+
+a{
+    text-decoration: none;
+    font-family: Roboto;
+    color:#5D5D5D;
+}
+
+.footer{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap;
+}
+
+.inFooter{
+    display: flex;
+    font-size: 14pt;
+}
+
+
+
+
+@font-face{
+    font-family: Roboto;
+    src: url(/public/fonts/Roboto.ttf);
+}
+
+@media (max-width:947px) {
+    .in{margin-top: 20px;}
+    .inFooter{justify-content: space-between;}
+    .Authorization{padding: 50px;}
+    .Welcome{font-size: 30pt;}
+}
+
+@media (max-width:572px) {
+    .Welcome{font-size: 25pt; width: 150px;}
+}
+
+@media (max-width:486px) {
+    .footer{justify-content: center;}
+}
+
+@media (max-width:420px) {
+    .Welcome{font-size: 23pt; width: 100px;}
+}
+
+@media (max-width:340px) {
+    .Welcome{font-size: 20pt; width: 50px;}
+}

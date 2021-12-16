@@ -1,0 +1,424 @@
+a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.avatarContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17vw;
+    height: 17vw;
+    background: #FFFFFF;
+    border-radius: 40px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+}
+
+.avatar{
+    display: flex;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #EDBABA;
+    justify-content: center;
+    align-items: center;
+    font-size: 64pt;
+    font-weight: normal;
+    color: white;
+    font-family: Roboto;
+    z-index: 2;
+
+}
+
+.titleContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    padding: 15px;
+    background: #FFFFFF;
+    border-radius: 40px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+}
+
+.Container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -1vw;
+}
+
+
+.ListFPV{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14pt;
+    padding: 20px;
+    padding-bottom: 35px;
+    font-family: Roboto;
+    width: 17vw - 20px;
+    margin-top: 30px;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 40px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+}
+
+.ListFPV:hover{
+    cursor: pointer;
+}
+
+.avatarFriend{
+    display: flex;
+    border-radius: 50%;
+    background-color: #EDBABA;
+    width: 45px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18pt;
+    font-weight: normal;
+    color: white;
+    font-family: Roboto;
+    z-index: 2;
+}
+
+.Show{
+    display: flex;
+    font-family: Roboto;
+    font-size: 20pt;
+    font-weight: normal;
+}
+
+.Show:hover{
+    cursor: pointer;
+}
+
+.Showicon{
+    margin-left: 10px;
+    width: 35px;
+    height: 35px;
+    background: url('/public/icon/Show.svg');
+    background-size: 30px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.PI{
+    width: auto;
+    height: 40px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.PIText{
+    margin-top: 5px;
+    font-size: 16pt;
+    font-family: Roboto;
+}
+
+figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+    font-weight:lighter;
+    z-index: 3;
+}
+
+.FrNum:hover, .PhNum:hover, .ViNum:hover, .PoNum:hover{
+    cursor: pointer;
+}
+
+.back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 200vh;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+}
+
+.containerModal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.List{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14pt;
+    padding: 20px;
+    padding-bottom: 35px;
+    font-family: Roboto;
+    height: auto;
+    background: #FFFFFF;
+    border-radius: 40px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    width: 60%;
+}
+
+.Con{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: scroll;
+    padding: 20px;
+    height: 60vh;
+}
+
+.player{
+    height: 50%;
+    margin: 20px;
+}
+
+.imgNum{
+    height: 10vw;
+    padding: 20px;
+    border-radius: 30px;
+    transition: 0.3s ease-in-out;
+}
+
+.imgNum:hover{
+    cursor: pointer;
+    height: 10.7vw;
+}
+
+.conPhoto{
+    z-index: 1;
+}
+
+.OpenPhoto{
+    height: 40vw;
+    border-radius: 15px;
+}
+
+.back2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.containerModal2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.swLeft{
+    width: 10%;
+    filter: brightness(10%);
+    opacity: 0.9;
+    transform: scale(-1,1);
+}
+
+.swLeft:hover{
+    cursor: pointer;
+}
+
+
+.swRight{
+    width: 10%;
+    filter: brightness(10%);
+    opacity: 0.9;
+}
+
+.swRight:hover{
+    cursor: pointer;
+}
+
+
+.avatarFr{
+    display: flex;
+    border-radius: 50%;
+    background-color: #EDBABA;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    font-size: 40pt;
+    font-weight: normal;
+    color: white;
+    font-family: Roboto;
+}
+
+.ListContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.Statis{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    width: 80%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 16pt;
+    font-family: Roboto;
+}
+
+.Post{
+    display: flex;
+    flex-direction: column;
+    width: 76%;
+    background: rgba(255, 255, 255);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 30px;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
+
+.Trush{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background: url('/public/icon/deletePostDark.svg');
+    opacity: 0.8;
+    background-size: 30px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.Trush:hover{
+    cursor: pointer;
+    background: url('/public/icon/deletePost.svg');
+    opacity: 0.75;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.Like{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background: url('/public/icon/Like.svg');
+    background-size: 30px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.Like:hover{
+    cursor: pointer;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.LikeOn{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    background: url('/public/icon/LikeOn.svg');
+    background-size: 30px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.LikeOn:hover{
+    cursor: pointer;
+    background-size: 38px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.createPost{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    width: 99%;
+    border-radius: 70px;
+    background: rgba(255, 255, 255);
+    transition: 0.2s;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+}
+.createPost textarea{
+    margin-left: 20px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-family: Roboto;
+    font-size: 12pt;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+    transition: 0.3s;
+}
+
+.createPost textarea:focus{
+    border-radius: 7px;
+    border: 3px solid #5EAAC1;
+}
+
+.plus{
+    width: 50px;
+    height: 50px;
+    background: url('/public/icon/Plus_Dark.svg');
+    background-size: 40px;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+.plus:hover{
+    cursor: pointer;
+    background: url('/public/icon/Plus.svg');
+    background-size: 48px;
+    opacity: 1;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width:500px) {
+    .Post{padding: 15px; border-radius: 25px;}
+    .News_Footer{font-size: 6pt;}
+    .Post{width: 100%;}
+}

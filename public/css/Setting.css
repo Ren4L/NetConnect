@@ -1,0 +1,281 @@
+.Setting{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 15px;
+    margin-top: 30px;
+    margin-right: 35px;
+    overflow: hidden;
+}
+
+.MenuContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 13pt;
+    z-index: 0;
+}
+
+.form{
+    width: 85%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px;
+    filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+    padding: 15px;
+    margin-top: 30px;
+    margin-right: 35px;
+    overflow: hidden;
+}
+
+.slider{
+    position: absolute;
+    top: 15px;
+    height: 45px;
+    border-radius: 50px;
+    background: #66cdec;
+    opacity: 0.6;
+    z-index: -1;
+    transition: left 0.5s ease-in-out, width 0.5s ease-in-out;
+}
+
+.Av, .Pass, .Inf{
+    text-align: center;
+    padding: 15px;
+}
+
+.Av:hover, .Pass:hover, .Inf:hover{
+    cursor: pointer;
+}
+[name=Pass]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 30px;
+}
+
+[name=Inf]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 30px;
+    flex-wrap: wrap;
+}
+[name=Av]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+[type=text]{
+    font-family: Roboto;
+    font-size: 100%;
+    width: 40%;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+
+[type=password]{
+    font-family: Roboto;
+    font-size: 100%;
+    width: 30vw;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+
+[name=Inf] [type=text]{
+    font-family: Roboto;
+    font-size: 100%;
+    width: 30vw;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+
+select{
+    font-family: Roboto;
+    color: gray;
+    font-size: 100%;
+    width: 40.4%;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+
+[name=Inf] select{
+    font-family: Roboto;
+    color: gray;
+    font-size: 100%;
+    width: 30vw;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+
+[type=date]{
+    font-family: Roboto;
+    color: gray;
+    font-size: 100%;
+    width: 40.4%;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+[name=Inf] [type=date]{
+    font-family: Roboto;
+    color: gray;
+    font-size: 100%;
+    width: 30vw;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    background-color: transparent;
+    transition: 0.3s;
+    border-bottom: 3px solid rgba(135, 152, 158, 0.56);
+}
+[type=date]:hover{
+    cursor:text;
+}
+
+[type=date]:focus{
+    border-bottom: 3px solid #5EAAC1;
+    transition: 0.3s;
+}
+
+select:hover{
+    cursor: pointer;
+}
+
+select:focus{
+    border-bottom: 3px solid #5EAAC1;
+    transition: 0.3s;
+}
+
+
+[type=text]:focus{
+    border-bottom: 3px solid #5EAAC1;
+    transition: 0.3s;
+}
+
+[type=password]:focus{
+    border-bottom: 3px solid #5EAAC1;
+    transition: 0.3s;
+}
+
+.send{
+    width: 8vw;
+    height: 8vw;
+    background: url('/public/icon/SendDark.svg');
+    opacity: 0.5;
+    background-size: 6vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+.send:hover{
+    cursor: pointer;
+    background: url('/public/icon/Send.svg');
+    background-size: 7vw;
+    opacity: 1;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.DownloadAvatar{
+    width: 12vw;
+    height: 12vw;
+    background: url('/public/icon/DarkDownloadAvatar.svg');
+    opacity: 0.7;
+    background-size: 10vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+}
+.DownloadAvatar:hover{
+    cursor: pointer;
+    background: url('/public/icon/DownloadAvatar.svg');
+    opacity: 1;
+    background-size: 12vw;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.AvatarView{
+    display: flex;
+    border-radius: 50%;
+    background-color: white;
+    width: 15vw;
+    height: 15vw;
+    min-width: 125px;
+    min-height: 125px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+
+#InputAvatar{
+    display: flex;
+    width: 15.5vw;
+    height: 15.5vw;
+    min-width: 125px;
+    min-height: 125px;
+}
+
+@media (max-width: 1100px) {
+    .Setting, .form{width: 90%; margin-right: 0px;}
+}
+
+@media (max-width:875px) {
+    .DownloadAvatar{background-size: 50px; width: 70px; height: 70px;}
+    .DownloadAvatar:hover{background-size: 60px;}
+    .send{background-size: 50px; width: 70px; height: 70px; margin-top: 10px;}
+    .send:hover{background-size: 60px;}
+}
+
+@media (max-width:685px) {
+    .MenuContainer{justify-content: space-around;}
+}
+
+@media (max-width:490px) {
+    .Av,.Inf,.Pass{padding: 5px;}
+}
+
+@media (max-width:380px) {
+    .MenuContainer{font-size: 8pt;}
+}
+
+@media (max-width:371px) {
+    [name=Inf], [name=Av], [name=Pass]{flex-direction: column;}
+}
