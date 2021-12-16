@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="News">
+        <div class="Union_text_arrow">
+            <div class="PTT">
+                <img src="<%=newsphoto%>" alt="Error" class="News_Photo">
+                <div class="news_title"><%=title%></div><br>
+                <div class="News_Text"><%=content%></div>
+            </div>
+            <a href="/modules/Fullnews/<%=datemilsec%>"><img src="/public/icon/Arrow_Right.svg" alt="Error" class="Arrow"></a>
+        </div>
+        <div style="padding-top: 5px; padding-bottom: 10px;">
+            <hr color="black" size="1px" class="News_Line" width="2000px" >
+        </div>
+        <div class="News_Footer">
+            <div style="display: flex; align-items: center; ">
+                <div class="News_avatar_container">
+                    <%-avatar%>
+                </div>
+                <div class="Name_Avatar"><%=author%></div>
+            </div>
+            <div class="Date_Avatar"><%=date%></div>
+        </div>
+    </div>
+</body>
+</html>

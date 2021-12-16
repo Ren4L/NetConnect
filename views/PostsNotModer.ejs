@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/Template.css">
+    <link rel="stylesheet" href="/public/css/Posts.css">
+    <link rel="shortcut icon" href="/public/icon/Posts_active.svg" type="image/x-icon">
+    <style>    
+        .activeblock{
+            position: absolute;
+            width: 35px;
+            height: 150px;
+            left: 90px;
+            top: 210px;
+            z-index: 1;
+        }
+        .activeblock_right{
+            position: absolute;
+            width: 0px;
+            height: 150px;
+            left: 0px;
+            top: 130px;
+            z-index: 1;
+        }
+        .Personal_Menu{
+            display: flex;
+            width: 90px;
+            flex: 0 0 90px;
+            flex-direction: column;
+            align-items: center;
+            height: 316px;
+            background:white;
+            border-radius: 60px;
+            filter: drop-shadow(5px 20px 31px rgba(0, 0, 0, 0.3));
+        }
+    </style>
+    <title>Posts</title>
+</head>
+<body>
+    <main class="flex_Page">
+        <div class="Menu_container">
+            <nav class="Menu">
+                <div class="hidden"></div>
+                <img src="/public/icon/Home_active.svg" alt="Error" class="Home_img">
+                <img src="/public/icon/News_active.svg" alt="Error" class="News_img">
+                <img src="/public/icon/Posts_active.svg" alt="Error" class="Posts_img" id="active">
+                <img src="/public/icon/Friends_active.svg" alt="Error" class="Friends_img">
+                <img src="/public/icon/Photos_active.svg" alt="Error" class="Photos_img">
+                <img src="/public/icon/Videos_active.svg" alt="Error" class="Videos_img">
+                <img src="/public/icon/Arrow_Right.svg" alt="Error" class="slide_menu">
+                <img src="/public/icon/ActiveBlock.png" alt="Error" class="activeblock">
+            </nav>
+        </div>
+        <div class="Container">
+            <% if (Posts.length != 0) { %>
+                <% Posts.forEach(function(el){ %>
+                    <div class="Post" value="<%-el.date%>">
+                        <div class="Union_text_arrow">
+                            <div>
+                                <div class="News_Text"><%-el.content%></div>
+                            </div>
+                        </div>
+                        <div style="padding-top: 5px; padding-bottom: 10px;">
+                            <hr color="black" size="1px" class="News_Line" width="2000px" >
+                        </div>
+                        <div class="News_Footer">
+                            <div style="display: flex; align-items: center; ">
+                                <%-el.avatar%>
+                                <div class="Name_Avatar"><%-el.login%></div>
+                            </div>
+                            <div style="display: flex; justify-content: flex-end; align-items: center; text-align: right;"><div style="text-align: center;"><%- new Date(el.date).toTimeString().slice(0, 5) %><br><%- new Date(el.date).toLocaleDateString().slice(0,10) %></div><div class="<%-el.classLike%>" onclick="Like(this)"></div><div class="LikesNum"><%-el.likes%></div></div>
+                        </div>
+                    </div>
+                <% }); %>
+              <% } %>
+        </div>   
+        <div class="Personal_Menu_container">
+            <nav class="Personal_Menu">
+                <%-avatar%>
+                <img src="/public/icon/Setting.svg" alt="Error" class="Setting_img">
+                <img src="/public/icon/LogOut.svg" alt="Error" class="LogOut_img">
+                <img src="/public/icon/Arrow_Right.svg" alt="Error" class="slide_menu_right">
+                <img src="/public/icon/ActiveBlock_right.png" alt="Error" class="activeblock_right">
+            </nav>
+        </div>
+        <img src="/public/icon/UP.svg" class="UpDown">
+        <img src="/public/icon/UP.svg" class="Down">
+        <div class="flex_line">
+            <div class="Menu_button">
+                <img src="/public/icon/Menu.svg" alt="Error" class="Menu_img">
+            </div>
+            <div class="Personal_Menu_button">
+                <%-avatar2%>
+            </div>
+        </div>
+    </main>
+    <script src="/public/javascript/Menu_AnimationNotModer.js"></script>
+    <script src="/public/javascript/Posts.js"></script>
+</body>
+</html>
